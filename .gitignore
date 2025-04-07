@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+bin
+lib
+.env
+frontend/build
+frontend/node_modules
