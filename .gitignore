@@ -2,5 +2,6 @@
 bin
 lib
 .env
+*.sqlite3
 frontend/build
 frontend/node_modules
