@@ -24,8 +24,8 @@ Clone the repository and set up your virtual environment:
 1. Clone the repository:
 ```bash
     git clone https://github.com/Koech01/veg-connect.git
-    virtualenv veg-connect-main/
-    cd veg-connect-main
+    virtualenv veg-connect/
+    cd veg-connect
 ```
 
 2. Install dependencies:
