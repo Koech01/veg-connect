@@ -32,6 +32,10 @@ class HomeView(APIView):
         profile        = Profile.objects.get(username=request.user)
         recurringTasks = Tasks.objects.filter(owner=profile, recurring=True)
         newTasks       = []
+
+        print('\n')
+        print('backend-profileIcon: ', profile.profileIcon.url)
+        print('\n')
   
         for task in recurringTasks:
             if task.scheduledTime < timezone.now() and not task.completed:

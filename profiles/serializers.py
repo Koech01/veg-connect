@@ -69,6 +69,7 @@ class ProfileSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('This email is already taken.')
         return value
 
+
     def create(self, validated_data):
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)

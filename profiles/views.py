@@ -1,8 +1,11 @@
 import random
 import string
-import jwt, datetime 
+import jwt, datetime
+from PIL import Image
+from io import BytesIO
 from django.utils import timezone
-from rest_framework import status 
+from rest_framework import status
+from django.core.files import File
 from django.core.mail import send_mail
 from rest_framework.views import APIView
 from django.forms import ValidationError
@@ -12,6 +15,15 @@ from django.core.validators import validate_email
 from .models import Profile, ProfileToken, ResetPassword
 from rest_framework.exceptions import AuthenticationFailed, APIException
 from .auth import generateAccessToken, generateRefreshToken, JWTAuthentication
+
+
+def compress(image):
+    userImage   = Image.open(image)
+    imageIO     = BytesIO()
+    imageFormat = userImage.format if userImage.format else 'JPEG'  
+    userImage.save(imageIO, imageFormat, quality=60)
+    newImage = File(imageIO, name=image.name)
+    return newImage
 
 
 class SignUpView(APIView):
@@ -125,8 +137,9 @@ class ProfileUpdateView(APIView):
         profile.email     = newEmail
         profilePicture    = request.FILES.get('profileIcon')
 
-        if profilePicture: 
-            profile.profileIcon = profilePicture
+        if profilePicture:
+            compressedImage     = compress(profilePicture)
+            profile.profileIcon = compressedImage
         profile.save()
 
         try: 
