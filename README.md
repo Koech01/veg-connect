@@ -1,67 +1,90 @@
 # Veg-Connect Setup Guide
+A data-driven React-Django app that fetches plant data from OpenFarm’s API, allowing users to schedule and share farming tasks in topic-specific communities while accessing plant growth insights and growing tips through features like bar graphs. Additionally, it incorporates a robust real-time chat system utilizing WebSocket technology for instantaneous communication and seamless collaboration among community members.
 
-Quickly set up the Veg-Connect project by following these steps:
+# Table of Contents
+    - Prerequisites.
+    - Installation.
+    - Environment Setup.
+    - Frontend Setup.
+    - Database Migrations and Superuser.
+    - Running the Application. 
+    - License. 
 
-## Prerequisites
-Ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (v14+)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [Git](https://git-scm.com/)
+# Prerequisites
+Before you begin, ensure you have the following installed:
+- [Git](https://git-scm.com/downloads)
+- [Python](https://www.python.org/downloads/) (3.x)
+- [Node.js](https://nodejs.org/en/download)
+- [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html)
+- [Docker](https://docs.docker.com/engine/install/)
 
-## Getting Started
+# Installation
+Clone the repository and set up your virtual environment:
+
 1. Clone the repository:
-    ```bash
-    git clone <repository-url>
-    cd veg-connect
-    ```
+```bash
+    git clone https://github.com/Koech01/veg-connect.git
+    virtualenv veg-connect-main/
+    cd veg-connect-main
+```
 
 2. Install dependencies:
-    ```bash
+```bash
+    source bin/activate
+    pip install -r requirements.txt
+```
+
+# Environment Setup.
+Configure the environment:
+
+1. Create an .env file:
+```bash
+    touch .env 
+```
+
+2. Generate a Django secret key:
+```bash
+    python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
+
+3. Open the `.env` file and add the following lines, with your newly generated secret key for `SECRET_KEY`. Make sure to keep DEBUG=True for local development:
+```env
+    SECRET_KEY=your_generated_secret_key_here
+    DEBUG=True
+```
+
+# Frontend Setup.
+
+1. Set up the frontend by navigating to the frontend directory and installing dependencies:
+```bash
+    cd frontend
     npm install
-    ```
-    Or, if using yarn:
-    ```bash
-    yarn install
-    ```
-
-3. Configure the environment:
-    - Create a `.env` file in the root directory.
-    - Use `.env.example` as a reference for required variables.
-
-## Development
-Start the development server:
-```bash
-npm start
-```
-Or, if using yarn:
-```bash
-yarn start
-```
-Access the app at [http://localhost:3000](http://localhost:3000).
-
-## Testing
-Run tests:
-```bash
-npm test
-```
-Or, if using yarn:
-```bash
-yarn test
+    npm run build
 ```
 
-## Production Build
-Generate a production-ready build:
-```bash
-npm run build
-```
-Or, if using yarn:
-```bash
-yarn build
-```
+# Database Migrations and Superuser.
 
-## Contributing
-1. Fork the repository and create a feature branch.
-2. Submit a pull request with a clear description of your changes.
+1. Run Django migrations and create a superuser to access the admin panel:
+```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py createsuperuser
+```
+Follow the prompts to set up your superuser credentials.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
+# Running the Application.
+
+1. For chat functionality, ensure Redis is running:
+```bash
+    sudo docker run -d -p 6379:6379 redis 
+```
+Enter your password.
+
+2. Start the Django development server:
+```bash
+    python manage.py runserver 
+```
+You can now access the application at `http://127.0.0.1:8000/`.
+
+# License.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
