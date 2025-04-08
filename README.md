@@ -6,7 +6,7 @@ A data-driven React-Django app that fetches plant data from OpenFarm’s API, al
     - Installation.
     - Environment Setup.
     - Frontend Setup.
-    - Database Migrations and Superuser.
+    - Database Migrations.
     - Running the Application. 
     - License. 
 
@@ -63,15 +63,13 @@ Configure the environment:
     cd ..
 ```
 
-# Database Migrations and Superuser.
+# Database Migrations.
 
-1. Run Django migrations and create a superuser to access the admin panel:
+1. Run Django migrations:
 ```bash
     python manage.py makemigrations
-    python manage.py migrate
-    python manage.py createsuperuser
-```
-Follow the prompts to set up your superuser credentials.
+    python manage.py migrate 
+``` 
 
 # Running the Application.
 
