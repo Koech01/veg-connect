@@ -60,6 +60,7 @@ Configure the environment:
     cd frontend
     npm install
     npm run build
+    cd ..
 ```
 
 # Database Migrations and Superuser.
