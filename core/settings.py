@@ -14,7 +14,6 @@ DEBUG      = os.environ.get("DEBUG", "False").lower() in ("true", "1")
 ALLOWED_HOSTS = []
 
 # Application definition
-
 INSTALLED_APPS = [
     #Listed before - django.contrib.staticfiles
     'daphne',
