@@ -30,8 +30,8 @@ cd veg-connect
 
 2. Install dependencies:
 ```bash
-    source bin/activate
-    pip install -r requirements.txt
+source bin/activate
+pip install -r requirements.txt
 ```
 
 # Environment Setup.
