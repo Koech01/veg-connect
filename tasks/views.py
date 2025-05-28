@@ -24,7 +24,7 @@ class CreateTaskSuggestionView(APIView):
 
     def post(self, request):
         try:
-            plants = Plants.objects.filter(taskSuggestionsPlant__isnull=True)[:6]
+            plants = Plants.objects.all()
         except Plants.DoesNotExist:
             return Response({'error': 'Plant does not exist.'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -85,11 +85,11 @@ class CreateTaskView(APIView):
             taskRepeat        = request.data.get('taskRepeat')
             recurringType     = request.data.get('recurringType')
             taskScheduledTime = request.data.get('scheduledTime')
- 
-            if not taskTitle and taskTitle == "Task title":
+
+            if not taskTitle or taskTitle.strip() == "" or taskTitle.strip().lower() == "task title":
                 return Response({'error':"Task Title cannot be empty."}, status=status.HTTP_400_BAD_REQUEST)
             
-            if not taskDescription and taskDescription == "Task Details (e.g., 'Apply compost to boost growth')":
+            if not taskDescription or taskDescription.strip() == "" or taskDescription.strip().lower() == "task details (e.g., 'apply compost to boost growth')":
                 return Response({'error':"Task Description cannot be empty."}, status=status.HTTP_400_BAD_REQUEST)
             
             if not taskScheduledTime:
@@ -273,7 +273,9 @@ class TaskCompleteToggleView(APIView):
                 task.completed = True
             else:
                 task.completed = False
-            task.save()
+            task.save() 
+        else:
+            return Response({'error' : 'Not authorized to modify this task.'}, status=status.HTTP_403_FORBIDDEN)
 
         serializer = TaskSerializer(task)
         return Response(serializer.data, status=status.HTTP_200_OK)

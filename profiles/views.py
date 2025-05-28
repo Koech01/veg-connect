@@ -18,8 +18,8 @@ from .auth import generateAccessToken, generateRefreshToken, JWTAuthentication
 
 
 def compress(image):
-    userImage   = Image.open(image)
-    imageIO     = BytesIO()
+    userImage = Image.open(image)
+    imageIO = BytesIO()
     imageFormat = userImage.format if userImage.format else 'JPEG'  
     userImage.save(imageIO, imageFormat, quality=60)
     newImage = File(imageIO, name=image.name)
@@ -29,7 +29,7 @@ def compress(image):
 class SignUpView(APIView):
     def post(self, request):
         profileData = request.data.copy()
-        profileIcon = profileData.pop('profileIcon', None)
+        profileIcon = request.FILES.get('profileIcon')
         serializer  = ProfileSerializer(data=profileData)
         serializer.is_valid(raise_exception=True)
         profile = serializer.save()
@@ -168,6 +168,8 @@ class ProfileToggleView(APIView):
                     return Response(serializer.data, status=status.HTTP_200_OK)
                 except Exception as e:
                     return Response({'error' : str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response({'error' : 'Invalid theme value.'}, status=status.HTTP_400_BAD_REQUEST)
         
         elif toggleType == 'visibility':
             profile.visibility = toggleVal == 'true' 

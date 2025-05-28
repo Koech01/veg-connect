@@ -10,7 +10,7 @@ from profiles.models import Profile
 from rest_framework.views import APIView
 from profiles.auth import JWTAuthentication
 from rest_framework.response import Response
-from tasks.serializers import TaskSerializer 
+from tasks.serializers import TaskSerializer
 from plants.serializers import PlantSerializer
 from profiles.serializers import ProfileSerializer
 
@@ -91,7 +91,6 @@ class SearchView(APIView):
         for plantData in openfarmData.get('data', [])[:5]:
             plantAttributes = plantData.get('attributes', {})
             newPlant        = self.createPlantInstance(plantAttributes)
-            print('newPlant: ', newPlant.plantName)
 
             if newPlant:
                 if not Plants.objects.filter(Q(binomialName=newPlant.binomialName) | Q(plantName=newPlant.plantName)).exists():

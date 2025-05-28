@@ -16,13 +16,8 @@ class PlantGrowthDaysView(APIView):
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
-        plants = Plants.objects.exclude(growingDays__isnull=True).exclude(growingDays__exact='')
-
-        if plants.count() >= 6:
-            filteredPlants = random.sample(list(plants), 6)
-        else:
-            filteredPlants = list(plants)
-        
+        plants          = Plants.objects.exclude(growingDays__isnull=True).exclude(growingDays__exact='')
+        filteredPlants  = random.sample(list(plants), 6)
         plantSerializer = PlantSerializer(filteredPlants, many=True)
         return Response(plantSerializer.data, status=status.HTTP_200_OK)
     
