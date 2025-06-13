@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React, { useState } from 'react';
 import css from '../Forum/index.module.css';
-import { MessageProps, ProfileProps, GroupProps, getMessageFileFormat, formatTaskDate } from '../types/index';
+import { type MessageProps, type ProfileProps, type GroupProps, getMessageFileFormat, formatTaskDate } from '../types/index';
 
 
 interface ForumInboxMessagesProps {
@@ -10,7 +10,7 @@ interface ForumInboxMessagesProps {
   chatDetails    : ProfileProps | GroupProps | null;
   selectedChatId : number | null;
   onMediaClick   : (fileUrl: string, fileType: 'image' | 'video') => void;
-  chatEndRef     : React.RefObject<HTMLDivElement>;
+  chatEndRef     : React.RefObject<HTMLDivElement | null>;
 }
 
 
@@ -31,7 +31,7 @@ const ForumInboxMessages: React.FC<ForumInboxMessagesProps> = ({
 
     const handleMessageFileClick = (messageId: number) => { setClickedMsgFileId(messageId); };
 
-
+    
   return (
     <div className={css.forumInboxMessagesDiv}>
 
@@ -294,10 +294,117 @@ const ForumInboxMessages: React.FC<ForumInboxMessagesProps> = ({
                         </div>
 
                         <div className={css.forumMsgPeerContentDiv}>
-                            <div className={`${css.forumMessageTaskDiv} ${css.forumMessageReceiverTaskDiv}`}>
-                                <p className={css.forumMessageTaskHeader}>{message.plant.plantName}</p>
-                                <p className={css.forumMessageTaskDate}>{message.plant.binomialName}</p>
-                                <p className={css.forumMessageTaskText}>{message.plant.description}</p>
+                            <div className={`${css.forumMessageTaskDiv} ${css.forumMessageReceiverTaskDiv}`}> 
+                                <p className={css.forumMessageTaskHeader}>{message.plant.commonName}</p>
+                                <p className={css.forumMessageTaskDate}>Scientific Name<p className={css.forumPlantSectionValue}>{message.plant.scientificName}</p></p>
+
+                                <div className={css.forumPlantSectionDiv}>  
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>Plant Information</p>
+                                    </div>
+                                    
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>
+                                            Family 
+                                            <p className={css.forumPlantSectionValue}>{message.plant.family}</p>
+                                        </p> 
+                                    </div>
+
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>
+                                            Life Cycle 
+                                            <p className={css.forumPlantSectionValue}>{message.plant.lifeCycles.join(', ')}</p>
+                                        </p> 
+                                    </div>
+
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>
+                                            Height 
+                                            <p className={css.forumPlantSectionValue}>{message.plant.height} m</p> 
+                                        </p> 
+                                    </div>
+
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>
+                                            Width 
+                                            <p className={css.forumPlantSectionValue}>{message.plant.width} m</p>
+                                        </p> 
+                                    </div>
+                                </div>
+
+                                <div  className={css.forumPlantSectionDiv}>  
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>Growth Conditions</p>
+                                    </div>
+
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>
+                                            Soil pH 
+                                            <p className={css.forumPlantSectionValue}>{message.plant.soilPH}</p>
+                                        </p> 
+                                    </div>
+
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>
+                                            Soil Type 
+                                            <p className={css.forumPlantSectionValue}>{message.plant.soilTypes.join(', ')}</p>
+                                        </p> 
+                                    </div>
+
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>
+                                            Light Requirement 
+                                            <p className={css.forumPlantSectionValue}>{message.plant.lightRequirements.join(', ')}</p> 
+                                        </p> 
+                                    </div>
+
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>
+                                            USDA Hardiness Zone 
+                                            <p className={css.forumPlantSectionValue}>{message.plant.usdaHardinessZone}</p>
+                                        </p> 
+                                    </div>
+                                </div>
+
+                                <div className={css.forumPlantSectionDiv}>  
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>Utility | Use</p>
+                                    </div>
+
+                                    {
+                                        (Array.isArray(message.plant.utility)
+                                        ? message.plant.utility
+                                        : (message.plant.utility as string).split(',')
+                                        )
+                                        .map((name: string) => name.trim())
+                                        .filter((name: string, index: number, arr: string[]) => arr.indexOf(name) === index)
+                                        .sort((a: string, b: string) => a.localeCompare(b))
+                                        .map((name: string, index: number) => {
+                                            const capitalized = name.charAt(0).toUpperCase() + name.slice(1);
+                                            return <li className={css.forumMessagePlantListItem} key={`alternateName-${index}`}>{index + 1}. {capitalized}</li>;
+                                        })
+                                    }
+                                </div>
+ 
+                                <div className={css.forumPlantSectionDiv}>  
+                                    <div className={css.forumPlantSectionTextDiv}>
+                                        <p className={css.forumMessageTaskDate}>Alternate Names</p>
+                                    </div>
+
+                                    {
+                                        (Array.isArray(message.plant.alternateNames)
+                                        ? message.plant.alternateNames
+                                        : (message.plant.alternateNames as string).split(',')
+                                        )
+                                        .map((name: string) => name.trim())
+                                        .filter((name: string, index: number, arr: string[]) => arr.indexOf(name) === index)
+                                        .sort((a: string, b: string) => a.localeCompare(b))
+                                        .map((name: string, index: number) => {
+                                            const capitalized = name.charAt(0).toUpperCase() + name.slice(1);
+                                            return <li className={css.forumMessagePlantListItem} key={`alternateName-${index}`}>{index + 1}. {capitalized}</li>;
+                                        })
+                                    }
+                                </div>
                             </div>
                         </div>
 
@@ -543,9 +650,117 @@ const ForumInboxMessages: React.FC<ForumInboxMessagesProps> = ({
                 ) && (
                     <div className={`${css.forumAuthorTextMsgDiv} ${css.fadeIn}`} key={message.id}>
                         <div className={`${css.forumMessageTaskDiv} ${css.forumMessageProfileTaskDiv}`}>
-                            <p className={css.forumMessageTaskHeader}>{message.plant.plantName}</p>
-                            <p className={css.forumMessageTaskDate}>{message.plant.binomialName}</p>
-                            <p className={css.forumMessageTaskText}>{message.plant.description}</p>
+
+                            <p className={css.forumMessageTaskHeader}>{message.plant.commonName}</p>
+                            <p className={css.forumMessageTaskDate}>Scientific Name <p className={css.forumPlantSectionValue}>{message.plant.scientificName}</p></p>
+
+                            <div  className={css.forumPlantSectionDiv}>  
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>Plant Information</p>
+                                </div>
+                                
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>
+                                        Family 
+                                        <p className={css.forumPlantSectionValue}>{message.plant.family}</p>
+                                    </p> 
+                                </div>
+
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>
+                                        Life Cycle 
+                                        <p className={css.forumPlantSectionValue}>{message.plant.lifeCycles.join(', ')}</p>
+                                    </p> 
+                                </div>
+                                
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>
+                                        Height 
+                                        <p className={css.forumPlantSectionValue}>{message.plant.height} m</p> 
+                                    </p> 
+                                </div>
+
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>
+                                        Width 
+                                        <p className={css.forumPlantSectionValue}>{message.plant.width} m</p>
+                                    </p> 
+                                </div>
+                            </div>
+
+                            <div  className={css.forumPlantSectionDiv}>  
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>Growth Conditions</p>
+                                </div>
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>
+                                        Soil pH 
+                                        <p className={css.forumPlantSectionValue}>{message.plant.soilPH}</p>
+                                    </p> 
+                                </div>
+
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>
+                                        Soil Type 
+                                        <p className={css.forumPlantSectionValue}>{message.plant.soilTypes.join(', ')}</p>
+                                    </p> 
+                                </div>
+
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>
+                                        Light Requirement 
+                                        <p className={css.forumPlantSectionValue}>{message.plant.lightRequirements.join(', ')}</p> 
+                                    </p> 
+                                </div>
+
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>
+                                        USDA Hardiness Zone 
+                                        <p className={css.forumPlantSectionValue}>{message.plant.usdaHardinessZone}</p>
+                                    </p> 
+                                </div>
+                            </div> 
+
+                            <div className={css.forumPlantSectionDiv}>  
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>Utility | Use</p>
+                                </div>
+
+                                {
+                                    (Array.isArray(message.plant.utility)
+                                    ? message.plant.utility
+                                    : (message.plant.utility as string).split(',')
+                                    )
+                                    .map((name: string) => name.trim())
+                                    .filter((name: string, index: number, arr: string[]) => arr.indexOf(name) === index)
+                                    .sort((a: string, b: string) => a.localeCompare(b))
+                                    .map((name: string, index: number) => {
+                                        const capitalized = name.charAt(0).toUpperCase() + name.slice(1);
+                                        return <li className={css.forumMessagePlantListItem} key={`alternateName-${index}`}>{index + 1}. {capitalized}</li>;
+                                    })
+                                }
+                            </div>
+
+
+                            <div className={css.forumPlantSectionDiv}>  
+                                <div className={css.forumPlantSectionTextDiv}>
+                                    <p className={css.forumMessageTaskDate}>Alternate Names</p>
+                                </div>
+
+                                {
+                                    (Array.isArray(message.plant.alternateNames)
+                                    ? message.plant.alternateNames
+                                    : (message.plant.alternateNames as string).split(',')
+                                    )
+                                    .map((name: string) => name.trim())
+                                    .filter((name: string, index: number, arr: string[]) => arr.indexOf(name) === index)
+                                    .sort((a: string, b: string) => a.localeCompare(b))
+                                    .map((name: string, index: number) => {
+                                        const capitalized = name.charAt(0).toUpperCase() + name.slice(1);
+                                        return <li className={css.forumMessagePlantListItem} key={`alternateName-${index}`}>{index + 1}. {capitalized}</li>;
+                                    })
+                                }
+                            </div>
                         </div>
 
                         {message.text && (

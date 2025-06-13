@@ -1,10 +1,9 @@
-import css from '../Create/index.module.css';
-import { ProfileProps } from '../types/index';
+import css from '../Create/index.module.css'; 
+import { useAuth } from '../Auth/authContext';
 import { useEffect, useState, useRef } from 'react';
 import statusDarkSvg from '../assets/completedDark.svg'; 
 import calendarDarkSvg from '../assets/calendarDark.svg';
 import statusLightSvg from '../assets/completedLight.svg'; 
-import { TaskProps, formatDate, formatTaskDate } from '../types/index'; 
 import calendarLightSvg from '../assets/calendarLight.svg'; 
 import arrowLeftDarkSvg from '../assets/arrowLeftDark.svg';  
 import taskErrorDarkSvg from '../assets/taskErrorDark.svg';
@@ -16,10 +15,12 @@ import taskRepeatLightSvg from '../assets/taskRepeatLight.svg';
 import arrowRightLightSvg from '../assets/arrowRightLight.svg';
 import mobileTimeDarkBtnSvg from '../assets/taskUnfinishedDark.svg';
 import mobileTimeLightBtnSvg from '../assets/taskUnfinishedLight.svg';
+import { type TaskProps, type ProfileProps, formatDate, formatTaskDate } from '../types/index'; 
 
 
 const CreateTask: React.FC<ProfileProps> = ({ profile }) => {
 
+  const { accessToken }                       = useAuth();
   const [error, setError]                     = useState('');
   const [currentDate, setCurrentDate]         = useState(new Date());
   const [days, setDays]                       = useState<number[]>([]); 
@@ -89,16 +90,11 @@ const CreateTask: React.FC<ProfileProps> = ({ profile }) => {
 
 
   const handleCreateTask = async () => {
-    if (taskTitle.trim()) { console.log("Task Title cannot be empty.") }
-    
-    if (taskDescription.trim()) { console.log("Task Description cannot be empty.") }
-
-    const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/v1/tasks/create/', {
+      const response = await fetch('/api/v1/tasks/create/', {
         method  : 'POST',
-        headers : { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
+        headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         body    : JSON.stringify({
           taskTitle       : taskTitle,
           taskDescription : taskDescription,
@@ -135,7 +131,7 @@ const CreateTask: React.FC<ProfileProps> = ({ profile }) => {
       }
 
     }
-    catch (error) { console.log("An error occurred.Please try again later: ", error) }
+    catch (error) { console.error("An error occurred.Please try again later: ", error) }
   } 
 
 

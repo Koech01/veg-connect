@@ -3,6 +3,7 @@ import EmojiComponent from '../Emoji';
 import ChatItem from '../Forum/chatItem';
 import css from '../Forum/index.module.css';
 import EmojiModal from '../Modal/emojiModal';
+import { useAuth } from '../Auth/authContext';
 import CreateForum from '../Forum/createForum';
 import mediaDarkIcon from '../assets/mediaDark.svg';
 import emojiDarkIcon from '../assets/emojiDark.svg';
@@ -25,11 +26,12 @@ import forumGroupAdminDarkIcon from '../assets/groupAdminDark.svg';
 import forumSendMsgLightIcon from '../assets/forumSendMsgLight.svg';
 import dotsVerticalLightIcon from '../assets/dotsVerticalLight.svg'; 
 import forumGroupAdminLightIcon from '../assets/groupAdminLight.svg';
-import { MessageProps, ProfileProps, GroupProps } from '../types/index';
+import type { MessageProps, ProfileProps, GroupProps } from '../types/index';
 
 
 const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
 
+  const { accessToken }                           = useAuth();
   const [newGroupName, setNewGroupName]           = useState('');
   const [newGroupError, setNewGroupError]         = useState('');
   const [groupEditError, setGroupEditError]       = useState('');
@@ -88,11 +90,10 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
       formData.append('groupIcon', selectedGroupIcon);
     }
     
-    try {
-      const token    = localStorage.getItem('token');
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/groups/${groupId}/update/`, {
+    try { 
+      const response = await fetch(`/api/v1/groups/${groupId}/update/`, {
         method      : 'PATCH',
-        headers     : { 'Authorization': `Bearer ${token}` },
+        headers : { Authorization: `Bearer ${accessToken}` },
         credentials : 'include',
         body        : formData,
       });
@@ -115,23 +116,21 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
 
       else {
         const data = await response.json();
-        setGroupEditError(data.error);
-        console.log("error: ", data.error);
+        setGroupEditError(data.error); 
         setTimeout(() => { setGroupEditError(''); }, 4000); 
       }
 
     }
 
-    catch (error) { console.log('An error occurred. Please try again later: ', error); }
+    catch (error) { console.error('An error occurred. Please try again later: ', error); }
   } 
 
 
   const fetchChats = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch('http://127.0.0.1:8000/api/v1/chats/', {
+    try { 
+      const response = await fetch('/api/v1/chats/', {
         method      : 'GET',
-        headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include',
       });
   
@@ -201,12 +200,11 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
    
 
   const handleCreateGroup = async () => {
-    const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/v1/groups/create/', {
+      const response = await fetch('/api/v1/groups/create/', {
         method      : 'POST',
-        headers     : { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         body        : JSON.stringify({ newGroupName: newGroupName }),
         credentials : 'include'
       });
@@ -228,16 +226,16 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
       }
 
     }
-    catch (error) { console.log("An error occurred. Please try again later: ", error); }
+    catch (error) { console.error("An error occurred. Please try again later: ", error); }
   };
  
 
   const fetchChatMessages = async(chatType: 'user' | 'group', chatId: number) => {
-    const token = localStorage.getItem('token');
+ 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/messages/${chatType}/${chatId}/`, {
+      const response = await fetch(`/api/v1/messages/${chatType}/${chatId}/`, {
         method      : 'PATCH',
-        headers     : { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include'
       });
   
@@ -267,6 +265,7 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
                 newChat      : false,
                 visibility   : false,
                 receiveMails : false,
+                climate      : { country : '', name : '', precipitationClass : '' },
                 created      : ""
               },
               updateProfile: () => {}
@@ -289,6 +288,7 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
               newChat      : false,
               visibility   : false,
               receiveMails : false,
+              climate      : { country : '', name : '', precipitationClass : '' },
               created      : ""
             },
             updateProfile: () => {}
@@ -331,7 +331,7 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
 
         setMessageLoading(false);
       }
-      else { console.log('Failed to fetch chats: ', response.status); }
+      else { console.error('Failed to fetch chats: ', response.status); }
     } catch (error) { console.error('Error fetching messages:', error); }
   };
 
@@ -445,11 +445,11 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
 
 
   const handleClearChat = async(chatType: 'user' | 'group', chatId: number) => {
-    const token = localStorage.getItem('token');
+ 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/messages/${chatType}/${chatId}/delete/`, {
+      const response = await fetch(`/api/v1/messages/${chatType}/${chatId}/delete/`, {
         method      : 'PATCH',
-        headers     : { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include'
       });
   
@@ -469,12 +469,11 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
     groupId     : number, 
     profileId   : number
   ) => {
-    const token = localStorage.getItem('token');
-  
+ 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/groups/${requestType}/${groupId}/${profileId}/request/`, {
+      const response = await fetch(`/api/v1/groups/${requestType}/${groupId}/${profileId}/request/`, {
         method      : 'PATCH',
-        headers     : {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include',
       });
   
@@ -507,11 +506,10 @@ const Forum: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
 
 
   const handleGroupAutoJoin = async (groupId: number, autoJoinVal: string) => {
-    try {
-      const token    = localStorage.getItem('token');
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/groups/${groupId}/${autoJoinVal}/auto/join/`, {
+    try { 
+      const response = await fetch(`/api/v1/groups/${groupId}/${autoJoinVal}/auto/join/`, {
         method      : 'PATCH',
-        headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include'
       });
 

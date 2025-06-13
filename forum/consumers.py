@@ -12,13 +12,13 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from .serializers import MessageSerializer, GroupMessageSerializer
 
 
-@sync_to_async
-def compressMessageImage(image):
-    messageImage   = Image.open(image)
-    messageImageIO = BytesIO()
-    messageImage.save(messageImageIO, 'JPEG', quality=60)
-    newImage = File(messageImageIO, name=image.name)
-    return newImage
+# @sync_to_async
+# def compressMessageImage(image):
+#     messageImage   = Image.open(image)
+#     messageImageIO = BytesIO()
+#     messageImage.save(messageImageIO, 'JPEG', quality=60)
+#     newImage = File(messageImageIO, name=image.name)
+#     return newImage
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -152,9 +152,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             contentFile    = ContentFile(fileContent, name=fileName)
 
             if fileName.lower().endswith(('png', 'jpeg', 'jpg')):
-                compressedFile = await compressMessageImage(contentFile)
-                messageFileObj = await sync_to_async(MessageFile.objects.create)(file=compressedFile)
-            else:
                 messageFileObj = await sync_to_async(MessageFile.objects.create)(file=contentFile)
             fileObjs.append(messageFileObj)
 

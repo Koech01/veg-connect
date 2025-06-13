@@ -1,9 +1,9 @@
 import React from "react";
-import { ModalProps } from '../types/index';
 import css from "../Modal/index.module.css";
+import type { ModalProps } from '../types/index';
 
 
-const Modal: React.FC<ModalProps> = ({ profile, isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ profile, isOpen, children }) => {
 
     if (!isOpen) return null;
 

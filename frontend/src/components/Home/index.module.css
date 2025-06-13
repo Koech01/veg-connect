@@ -11,8 +11,9 @@
 
     .darkTheme .homeParentChildDiv, .darkTheme .homeParentColumnDiv { background-color: #000000; }
 
-    .mobileInsightChildDiv {
+    .mobilePlantTaskDiv {
         display: flex; 
+        gap: 10px;
         width: 90%;  
         margin: 0px;
         height: 80vh;
@@ -22,8 +23,60 @@
         flex-direction: column; 
         justify-content: flex-start; 
     }
+ 
+    .mobilePlantMenuDiv {
+        display: flex;
+        position: -webkit-sticky;
+        position: sticky; 
+        gap: 15px;
+        top: 0px;
+        width: 100%;
+        padding: 0px; 
+        border: none; 
+        border-radius: 10px;
+        height: fit-content;
+        align-items: center;
+        justify-content: center; 
+    }
 
-    .mobileInsightListDiv {
+    .darkTheme .mobilePlantMenuDiv { background-color: #0A0A0A; }
+
+    .mobilePlantMenuItem {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 14px;
+        font-style: normal;
+        border-radius: 13px;
+        text-decoration: none;
+        margin: 10px 0px 10px 0px; 
+        padding: 6px 12px 6px 12px;
+        transition: background-color 0.5s ease; 
+    }
+
+    .mobilePlantMenuItem:hover { cursor: pointer; }
+
+    .lightTheme .mobilePlantMenuItem { 
+        border: none;
+        color: #757575; 
+        background-color: #FFFFFF;
+    }
+    .darkTheme .mobilePlantMenuItem {  
+        border: none;
+        color: #616161; 
+        background-color: #0A0A0A;
+    }
+
+    .lightTheme .mobilePlantMenuItem:hover, .lightTheme .mobilePlantMenuItem.active { 
+        color: #171717;
+        box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+    }
+
+    .darkTheme .mobilePlantMenuItem:hover, .darkTheme .mobilePlantMenuItem.active { 
+        color: #E0E0E0; 
+        background-color: #121212;
+    }
+  
+    .mobilePlantTaskListDiv {
         display: flex;
         gap: 15px;
         margin: 0px; 
@@ -31,13 +84,15 @@
         border: none; 
         overflow-y: auto;
         overflow-x: hidden; 
+        align-items: center;
         scrollbar-width: none;  
         flex-direction: column;  
         -ms-overflow-style: none;  
-        padding: 4px 0px 4px 0px;
+        padding: 4px 0px 4px 0px; 
+        justify-content: flex-start;
     }
     
-    .mobileInsightListDiv::-webkit-scrollbar { display: none; }
+    .mobilePlantTaskListDiv::-webkit-scrollbar { display: none; }
 
     .mobileGraphChildDiv {
         display: flex;
@@ -121,9 +176,9 @@
         padding: 10px; 
     }
 
-    .darkTheme .homeStatsChildDiv { border: 1px solid #121212; }
+    .darkTheme .homePlantsPairChildDiv { border: 1px solid #121212; }
 
-    .darkTheme .homeStatBarGraphKeysParent { border: 1px solid #121212; }
+    .darkTheme .homePlantsPairGroupListParent { border: 1px solid #121212; }
  
     .homeParentColumnDiv:nth-child(1), 
     .homeParentColumnDiv:nth-child(3),     
@@ -213,8 +268,8 @@
         padding: 15px; 
     }
 
-    .darkTheme .homeStatsChildDiv, 
-    .darkTheme .homeStatBarGraphKeysParent { border: 1px solid #0A0A0A; }
+    .darkTheme .homePlantsPairChildDiv, 
+    .darkTheme .homePlantsPairGroupListParent { border: 1px solid #0A0A0A; }
 
     .homeClickedItemParentDiv {
         padding: 5px;
@@ -301,18 +356,18 @@
         padding: 15px; 
     }
 
-    .darkTheme .homeStatsChildDiv 
-    .darkTheme .homeStatBarGraphKeysParent { border: 1px solid #0A0A0A; }
+    .darkTheme .homePlantsPairChildDiv, 
+    .darkTheme .homePlantsPairGroupListParent { border: 1px solid #0A0A0A; }
 
     .homeClickedItemParentDiv { 
         width: 98%; 
         padding: 5px;
-        height: fit-content;
+        height: fit-content; 
     }
 
     .homeClickedItemDiv {  
         width: 96%; 
-        padding: 15px; 
+        padding: 15px;  
     }
  
     .homeClickedRadioBtnDiv { gap: 20px; }
@@ -413,7 +468,7 @@
 
 .darkTheme .homeTaskRepeatIndicator   { background-color: #0097A7; }
 
-.homeTaskOverdueText, .homeTaskRepeatText {
+.homeTaskOverdueText, .homeTaskRepeatText, .homePlantTaskIndicatorText {
     margin: 0px;
     padding: 0px;
     font-size: 14px;
@@ -432,6 +487,10 @@
 
 .darkTheme .homeTaskRepeatText { color: #0097A7; }
  
+.lightTheme .homePlantTaskIndicatorText { color: #4FC3F7; }
+
+.darkTheme .homePlantTaskIndicatorText { color: #01579B; }
+
 .homeSearchResultHeader {
     margin: 0px;
     padding: 0px;
@@ -473,6 +532,7 @@
     display: flex;
     flex: 1;
     gap: 15px;
+    width: 100%;  
     margin: 0px;
     border: none;
     overflow-y: auto;
@@ -523,6 +583,15 @@
     justify-content: center;
 }
 
+.homeTaskSuggestionBtnFlexDiv {
+    display: flex; 
+    margin: 0px;
+    width: 100%; 
+    padding: 0px; 
+    align-items: center; 
+    justify-content: space-between;
+}
+ 
 .homeTaskSuggestionIcon {
     margin: 0px;
     padding: 0px;
@@ -545,6 +614,31 @@
 
 .darkTheme .homeTaskSuggestionPlantName { color: #BDBDBD; }
  
+.homePlantTaskIndicatorDiv {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px 0px 5px; 
+}
+
+.lightTheme .homePlantTaskIndicatorDiv { background-color: #EAF8FE; }
+
+.darkTheme .homePlantTaskIndicatorDiv { background-color: #111111; }
+
+.homePlantTaskIndicatorIcon { 
+    width: 16px;
+    padding: 0px;
+    height: 16px;
+    object-fit: cover;
+    margin: 0px 0px 1px 0px;
+}
+
 .homeTaskSuggestionDescription {
     margin: 0px;
     padding: 0px;
@@ -716,14 +810,22 @@
     flex-direction: column;
 }
 
-.homeSearchResultListDiv {
-    display: flex;
-    gap: 5px;
+.homeSearchTaskListDiv, .homeSearchPlantListDiv {
+    display: flex; 
     width: 100%;
-    margin: 0px;
-    padding: 0px;
+    margin: 0px; 
     border: none;
     flex-direction: column;
+}
+ 
+.homeSearchTaskListDiv {
+    gap: 5px;
+    padding: 0px;
+}
+
+.homeSearchPlantListDiv {
+    gap: 10px;
+    padding: 0px 0px 0px 2px;
 }
 
 .homeSearchResultItemDiv {
@@ -737,15 +839,26 @@
     align-items: center;
 }
 
-.homeSearchTaskIconDiv, .homeSearchCompletedIconDiv {
-    display: flex; 
-    width: 26px; 
-    margin: 0px; 
-    height: 26px;
+.homeSearchTaskIconDiv, .homeSearchCompletedIconDiv, .homeSearchPlantIconDiv {
+    display: flex;  
+    margin: 0px;  
     padding: 2px;
-    border-radius: 50%;
     align-items: center;
     justify-content: center;
+}
+
+.homeSearchTaskIconDiv, .homeSearchCompletedIconDiv {
+    width: 26px; 
+    height: 26px;
+    padding: 2px;
+    border-radius: 50%; 
+}
+
+.homeSearchPlantIconDiv {
+    width: 28px; 
+    height: 28px;
+    padding: 0px;
+    border-radius: 6px;
 }
 
 .lightTheme .homeSearchTaskIconDiv {  
@@ -753,12 +866,16 @@
     background-color: #F3F9FE;
 }
 
+.lightTheme .homeSearchPlantIconDiv {  
+box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
 .lightTheme .homeSearchCompletedIconDiv {  
     border: 1px solid #E5F9ED; 
     background-color: #E5F9ED;
 }
 
-.darkTheme .homeSearchTaskIconDiv, .darkTheme .homeSearchCompletedIconDiv {  
+.darkTheme .homeSearchTaskIconDiv, .darkTheme .homeSearchCompletedIconDiv, .darkTheme .homeSearchPlantIconDiv {  
     border: 1px solid #121212; 
     background-color: #121212;
 }
@@ -766,6 +883,15 @@
 .homeSearchItemIcon {
     margin: 0px;
     width: 22px;
+    padding: 0px;
+    border: none;
+    height: auto;
+    object-fit: cover;
+}
+
+.homeSearchPlantIcon {
+    margin: 0px;
+    width: 30px;
     padding: 0px;
     border: none;
     height: auto;
@@ -839,8 +965,8 @@
     margin: 0px; 
     border: none;
     overflow: auto; 
-    align-items: center;
     scrollbar-width: none;  
+    align-items: flex-start; 
     justify-content: flex-start;
 }
 
@@ -963,8 +1089,7 @@
 .homeClickedItemHeader {
     margin: 0px;
     padding: 0px;
-    border: none;  
-    font-size: 14px;
+    border: none;   
     overflow: hidden;
     font-weight: 600;
     line-height: 20px;
@@ -975,22 +1100,39 @@
 
 .darkTheme .homeClickedItemHeader { color: #BDBDBD; }
  
-.homeClickedItemText, .homeClickedItemDate {
-    margin: 0px;
+.homeClickedPlantText, .homeClickedValueText { all: unset; }
+
+.homeClickedItemText, .homeClickedItemDate, .homeClickedListItemText, .homeClickedPlantText, .homeClickedValueText {
     padding: 0px;
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
     font-style: normal;
 }
- 
-.lightTheme .homeClickedItemText { color: #666; }
 
-.darkTheme .homeClickedItemText { color: #BDBDBD; }
+.homeClickedItemText, .homeClickedItemDate { margin: 0px; }
+
+.homeClickedListItemText { margin: 0px 0px 0px 30px; }
+
+.homeClickedPlantText {  
+    display: flex;
+    gap: 10px; 
+    align-items: center;  
+    margin: 0px 0px 0px 10px; 
+    justify-content: flex-start;
+}
+ 
+.lightTheme .homeClickedItemText, .lightTheme .homeClickedListItemText { color: #666; }
+
+.darkTheme .homeClickedItemText, .darkTheme .homeClickedListItemText { color: #BDBDBD; }
  
 .lightTheme .homeClickedItemDate { color: #9E9E9E; }
 
 .darkTheme .homeClickedItemDate { color: #616161; }
+
+.lightTheme .homeClickedValueText { color: #212121; }
+
+.darkTheme .homeClickedValueText { color: #616161; }
 
 .homeTaskHeaderDiv {
     display: flex;
@@ -1018,6 +1160,26 @@
 .lightTheme .homeTaskHeader { color: #424242; }
 
 .darkTheme .homeTaskHeader { color: #BDBDBD; }
+
+.homeClickedPlantsectionDiv {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin: 0px;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 10px 0px 10px 0px; 
+}
+
+.lightTheme .homeClickedPlantsectionDiv { 
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE; 
+}
+
+.darkTheme .homeClickedItemDiv { 
+    background: #0A0A0A;
+    border: 1px solid #151515; 
+}
 
 .homeFirstTaskList {
     display: flex; 
@@ -1157,7 +1319,7 @@
     border: none;
 }
  
-.homeGraphAndForumParentDiv {
+.homePlantsandGroupsParentDiv {
     display: flex;
     margin: 0px;
     width: 100%;
@@ -1169,25 +1331,26 @@
     justify-content: space-between;
 }
  
-.homeGraphAndForumShimmerDiv {
+.homePlantsPairShimmerDiv {
     display: flex;
-    gap: 4%;
+    gap: 10%;
     width: 96%; 
     margin: 0px;
-    height: 40%; 
+    height: 35%; 
     border: none;
     padding: 10px;
     border-radius: 18px;
-    align-items: flex-end;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; 
 }
 
-.homeStatBarGraphKeysShimmer {
+.homePlantsPairGroupListShimmer {
     display: flex;
     gap: 0px;
     width: 90%;
     margin: 0px;
-    height: 32%;
+    height: 28%;
     width: 100%;  
     border-radius: 15px; 
     flex-direction: column; 
@@ -1291,8 +1454,8 @@
     flex-direction: column; 
 }
 
-.lightTheme .homeGraphAndForumShimmerDiv, 
-.lightTheme .homeStatBarGraphKeysShimmer, 
+.lightTheme .homePlantsPairShimmerDiv, 
+.lightTheme .homePlantsPairGroupListShimmer, 
 .lightTheme .homeForumCardShimmer,
 .lightTheme .homeSuggestionShimmerDivOne,
 .lightTheme .mobileCardShimmer, 
@@ -1301,8 +1464,8 @@
     background-color: #FFFFFF;
 }
 
-.darkTheme .homeGraphAndForumShimmerDiv, 
-.darkTheme .homeStatBarGraphKeysShimmer, 
+.darkTheme .homePlantsPairShimmerDiv, 
+.darkTheme .homePlantsPairGroupListShimmer, 
 .darkTheme .homeForumCardShimmer,
 .darkTheme .homeSuggestionShimmerDivOne 
 .darkTheme .mobileCardShimmer, 
@@ -1311,15 +1474,7 @@
     background-color: #0A0A0A;
 }
  
-.homeGraphShimmerBar {
-    display: flex;
-    width: 17%;
-    margin: 0px;  
-    padding: 0px;
-    border-radius: 10px;
-}
-
-.homeStatBarFlexShimmerDiv, .homeCardShimmerChildDiv, .homeSearchShimmerChildDiv {
+.homePlantsPairShimmerFlexDiv, .homeCardShimmerChildDiv, .homeSearchShimmerChildDiv {
     display: flex;
     width: 90%; 
     padding: 0px;
@@ -1329,13 +1484,13 @@
     justify-content: space-between; 
 }
 
-.homeStatBarFlexShimmerDiv { height: 10%; }
+.homePlantsPairShimmerFlexDiv { height: 10%; }
 
 .homeCardShimmerChildDiv { height: 20%; }
   
 .homeSearchShimmerChildDiv { height: 50%; }
   
-.homeStatBarItemShimmer, .homeStatBarEndShimmer {
+.homePlantsPairShimmer, .homePlantsPairEndShimmer {
     display: flex;
     height: 100%; 
     margin: 0px;  
@@ -1352,30 +1507,27 @@
     border-radius: 50%; 
 }
 
-.homeStatBarEndShimmerTwo   { width: 15%; }
+.homePlantsPairEndShimmerTwo   { width: 15%; }
 
-.homeStatBarEndShimmerThree { width: 10%; }
+.homePlantsPairEndShimmerThree { width: 10%; }
 
-.homeStatBarEndShimmerFour  { width: 18%; }
+.homePlantsPairEndShimmerFour  { width: 18%; }
 
-.shimmerBarOne   { height: 40%; }
+.homePlantsPairItemOne   { width: 50%; }
 
-.shimmerBarTwo   { height: 80%; }
+.homePlantsPairItemTwo   { width: 55%; }
 
-.shimmerBarThree { height: 30%; }
+.homePlantsPairItemThree { width: 63%; }
 
-.shimmerBarFour  { height: 10%; } 
+.homePlantsPairItemFour  { width: 57%; }
 
-.homeStatBarItemOne   { width: 50%; }
+.homePlantsPairTextOne   { width: 70%; }
 
-.homeStatBarItemTwo   { width: 55%; }
+.homePlantsPairTextTwo { width: 92%; }
 
-.homeStatBarItemThree { width: 63%; }
+.homePlantsPairTextThree { width: 100%; }
 
-.homeStatBarItemFour  { width: 57%; }
- 
-.lightTheme .homeGraphShimmerBar, 
-.lightTheme .homeStatBarItemShimmer,
+.lightTheme .homePlantsPairShimmer,
 .lightTheme .homeSearchShimmerIcon { 
     border: 1px solid #F5F5F5; 
     background: linear-gradient(90deg, #FCFCFC 40%, #fafafa 50%, #FCFCFC 60%);
@@ -1384,8 +1536,7 @@
     animation: shimmer 1s infinite linear;
 }
 
-.darkTheme .homeGraphShimmerBar, 
-.darkTheme .homeStatBarItemShimmer,
+.darkTheme .homePlantsPairShimmer,
 .darkTheme .homeSearchShimmerIcon  { 
     border: 1px solid #161616; 
     background: linear-gradient(90deg, #111111 40%, #191919 50%, #111111 60%);
@@ -1394,38 +1545,124 @@
     animation: shimmer 1s infinite linear;
 }
 
-.homeStatsChildDiv {
+.homePlantsPairChildDiv {
     display: flex;
     gap: 10px;
     width: 92%;
     margin: 0px;
-    height: 35%;
     transition: .3s;
-    padding: 10px 10px;
+    padding: 15px 10px;
     border-radius: 15px;
-    align-items: center;
-    justify-content: flex-start;
+    height: fit-content; 
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start; 
 }
 
-.lightTheme .homeStatsChildDiv { 
+.lightTheme .homePlantsPairChildDiv { 
     border: 1px solid #EEEEEE;
     background-color: #FFFFFF; 
 }
 
-.darkTheme .homeStatsChildDiv { background-color: #0A0A0A;  }
+.darkTheme .homePlantsPairChildDiv { background-color: #0A0A0A;  }
 
-.homeStatBarGraph {
+.homePlantsPairHeaderDiv {
     display: flex;
-    gap: 5%;
-    width: 100%;
+    gap: 10px;
+    width: 100%; 
     margin: 0px;
     padding: 0px;
-    height: 100%;
-    border: none;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;  
 }
+
+.homePlantsPairBookmarkBtnDiv {
+    display: flex;
+    flex: 1;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: flex-end;  
+}
+
+.homePlantsPairBookmarkBtn {
+    all: unset;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    transition: .3s;
+    align-items: center;
+    justify-content: center; 
+}
+
+.homePlantsPairBookmarkBtn:active { transform: scale(0.8); } 
  
+.homeItemBookmarkBtnIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.homePlantsPairHeaderIcon {
+    margin: 0px;
+    width: 18px;
+    padding: 0px;
+    height: 18px;
+    object-fit: cover; 
+}
+
+.homePlantsPairHeader {
+    margin: 0px;
+    padding: 0px;  
+    font-style: normal;
+}
+
+.lightTheme .homePlantsPairHeader { color: #212121; }
+
+.darkTheme .homePlantsPairHeader { color: #E0E0E0; }
+
+.homeGroupPlantListItemDiv {
+    display: flex;
+    margin: 0px;
+    padding: 0px;  
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.homeGroupPlantListItemPctDiv {
+    display: flex;
+    margin: 0px;
+    padding: 0px;  
+    min-width: 20%;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.homePlantsPairDescription, .homeGroupPlantListItem, .homeGroupPlantListPect {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    font-style: normal;
+}
+
+.homeGroupPlantListItem { 
+    max-width: 70%;  
+    overflow: hidden;  
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+
+.lightTheme .homePlantsPairDescription { color: #666; }
+
+.darkTheme .homePlantsPairDescription { color: #9E9E9E; }
+
+.lightTheme .homePlantsPairHint { color: #9E9E9E; }
+
+.darkTheme .homePlantsPairHint { color: #BDBDBD; }
+
 .homeStatCalibration {
     display: flex;
     margin: 0px;
@@ -1438,48 +1675,7 @@
     justify-content: space-between;
 }
  
-.homeStatCalibrationLabel {
-    margin: 0px;
-    padding: 0px;
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 11px;
-    font-style: normal;
-}
-
-.lightTheme .homeStatCalibrationLabel { color: #666; }
-
-.darkTheme .homeStatCalibrationLabel { color: #515151; }
- 
-.homeStatGraphBarItem {
-    display: flex;
-    gap: 4px;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-    border: none;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.homeStatGraphBar {
-    display: flex;
-    width: 80%;
-    height: 0%; 
-    margin: 0px;
-    padding: 0px;
-    border: none; 
-    border-radius: 8px;
-    flex-direction: column; 
-    transition: height .8s ease-out; 
-}
-
-.lightTheme .homeStatGraphBar { background-color: #15C182; }
-.darkTheme .homeStatGraphBar  { background-color: #E0E0E0; }
-
-.homeStatBarGraphKeysParent {
+.homePlantsPairGroupListParent {
     display: flex;
     gap: 2px;
     width: 90%;
@@ -1489,73 +1685,35 @@
     flex-direction: column;
 }
 
-.lightTheme .homeStatBarGraphKeysParent { 
+.lightTheme .homePlantsPairGroupListParent { 
     border: 1px solid #EEEEEE;
     background-color: #FFFFFF; 
 }
 
-.darkTheme .homeStatBarGraphKeysParent { background-color: #0A0A0A; }
-
-.homeStatBarGraphKeysItemDiv {
-    display: flex;
-    gap: 10px;
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    align-items: center;
-    height: fit-content;
-    justify-content: space-between;
-}
-
-.homeStatBarGraphLabel {
-    display: block;
-    padding: 0px;
-    font-size: 14px;
-    overflow: hidden;
-    font-weight: 400;
-    line-height: 21px;
-    white-space: nowrap;
-    margin: 0px 0px 5px 0px;
-}
-
-.homeStatBarGraphKeyLabel, .homeStatBarGraphKeyPlant, .homeStatBarGraphKeyDays {
-    display: block;
-    margin: 0px;
-    padding: 0px;
-    font-size: 14px;
-    overflow: hidden;
-    font-weight: 400;
-    line-height: 21px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.homeStatBarGraphKeyLabel { min-width: 10%; }
-
-.homeStatBarGraphKeyPlant {
-    width: 60%;
-    justify-content: flex-start;
-}
-
-.homeStatBarGraphKeyDays {
-    min-width: 18%;
-    justify-content: flex-end;
-}
+.darkTheme .homePlantsPairGroupListParent { background-color: #0A0A0A; }
 
 .lightTheme .homeStatBarGraphKeyLabel { color: #666; }
  
-.lightTheme .homeStatBarGraphLabel { color: #A1A1A1; }
-
-.lightTheme .homeStatBarGraphKeyDays, .lightTheme .homeStatBarGraphKeyPlant { color: #212121; }
-
-.darkTheme .homeStatBarGraphKeyDays { color: #BDBDBD; }
+.lightTheme .homeStatBarGraphKeyPlant { color: #212121; }
 
 .darkTheme .homeStatBarGraphKeyLabel { color: #515151; }
 
-.darkTheme .homeStatBarGraphLabel { color: #616161; }
-
 .darkTheme .homeStatBarGraphKeyPlant { color: #757575; }
  
+.homeGroupPlantList {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.lightTheme .homeGroupPlantListItem { color: #666; }
+
+.darkTheme .homeGroupPlantListItem { color: #9E9E9E; }
+
+.lightTheme .homeGroupPlantListPect { color: #212121; }
+
+.darkTheme .homeGroupPlantListPect { color: #FAFAFA; }
+
 .homeForumParentDiv {
     display: flex;
     margin: 0px;

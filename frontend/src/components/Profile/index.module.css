@@ -67,6 +67,29 @@
         line-height: 18px;
     }
 
+    .profileDesktopLocationDiv { display: none; }
+
+    .profileMobileLocationDiv { 
+        display: flex;
+        width: 100%;
+        margin: 0px;
+        padding: 0px; 
+    }
+
+    .profileItemInfoDiv {
+        gap: 10px;
+        flex-direction: column;
+    }
+ 
+    .profileItemLocationDiv { max-width: 100%; }
+
+    .profileLocationText {
+        max-width: 100%;  
+        overflow: hidden;  
+        white-space: nowrap; 
+        text-overflow: ellipsis; 
+    }
+
     .profileSettingChildDiv {
         gap: 0px;
         width: 90%;
@@ -139,6 +162,29 @@
         font-size: 13px;
         line-height: 18px;
     }
+ 
+    .profileMobileLocationDiv { display: none; }
+
+    .profileDesktopLocationDiv { 
+        display: flex;
+        width: 100%;
+        margin: 0px;
+        padding: 0px; 
+    }
+ 
+    .profileItemInfoDiv {
+        align-items: center;
+        justify-content: space-between;
+    }
+ 
+    .profileItemLocationDiv { max-width: 70%; }
+
+    .profileLocationText {
+        max-width: 100%;  
+        overflow: hidden;  
+        white-space: nowrap; 
+        text-overflow: ellipsis; 
+    }
 
     .profileSettingChildDiv {
         gap: 0px;
@@ -167,7 +213,7 @@
 
     .profileMobileParentCard { display: none; }
      
-    .profileCreatedInfoDiv { max-width: 30%; }
+    .profileCreatedInfoDiv { width: fit-content; }
  
     .profileUpdateCard {
         top: 10%; 
@@ -213,6 +259,29 @@
     .profileEditCardSpan {
         font-size: 13px;
         line-height: 18px;
+    }
+ 
+    .profileMobileLocationDiv { display: none; }
+
+    .profileDesktopLocationDiv { 
+        display: flex;
+        width: 100%;
+        margin: 0px;
+        padding: 0px; 
+    }
+
+    .profileItemInfoDiv { 
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .profileItemLocationDiv { max-width: 70%; }
+
+    .profileLocationText {
+        max-width: 100%;  
+        overflow: hidden;  
+        white-space: nowrap; 
+        text-overflow: ellipsis; 
     }
 
     .profileSettingChildDiv {
@@ -336,24 +405,39 @@
 .darkTheme .profileEmail { color: #888; }
 
 .profileItemInfoDiv {
-    display: flex;
-    gap: 20px;
+    display: flex; 
     margin: 0px;
     padding: 0px;
     border: none;
-    height: fit-content;
-    align-items: center;
+    height: fit-content; 
 }
 
 .profileItemInfoModelDiv {
     display: flex;
-    width: 100%;
     margin: 0px;
     padding: 0px;
     border: none;
+    width: fit-content; 
     height: fit-content;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between;  
+}
+
+.profileItemLocationDiv {
+    display: flex; 
+    margin: 0px;
+    padding: 0px;
+    border: none; 
+    align-items: center;
+    height: fit-content; 
+    justify-content: flex-start;  
+}
+
+.profileItemLocationIcon {  
+    width: 19px;
+    padding: 0px;
+    height: auto;
+    margin: 0px 0px 0px -5px;
 }
 
 .profileCreatedInfoDiv {
@@ -366,22 +450,23 @@
     justify-content: flex-end;
 }
 
-.profileJoinedLabel, .profileJoinedDate, .profileUpdateText {
+.profileLocationText, .profileJoinedLabel, .profileJoinedDate, .profileUpdateText {
     margin: 0px;
     padding: 0px;
     font-size: 14px;
     font-weight: 400;
     line-height: 14px;
-    font-style: normal;
+    font-style: normal; 
+    white-space: nowrap;  
 }
 
-.lightTheme .profileJoinedLabel , .lightTheme .profileJoinedDate { color: #9E9E9E; }
+.lightTheme .profileLocationText, .lightTheme .profileJoinedLabel, .lightTheme .profileJoinedDate { color: #9E9E9E; }
 
-.darkTheme .profileJoinedLabel , .darkTheme .profileJoinedDate { color: #888; }
+.darkTheme .profileLocationText, .darkTheme .profileJoinedLabel, .darkTheme .profileJoinedDate { color: #888; }
 
 .lightTheme .profileUpdateText  { color: #666666; }
 .darkTheme .profileUpdateText  { color: #888; }
-
+ 
 .profileUpdateCard {
     position: absolute;
     gap: 15px;

@@ -1,10 +1,15 @@
+import os
 import random
 import string
+import pandas as pd
 import jwt, datetime
 from PIL import Image
 from io import BytesIO
-from django.utils import timezone
+from home.models import City
+from django.conf import settings 
+from django.db import transaction 
 from rest_framework import status
+from django.utils import timezone 
 from django.core.files import File
 from django.core.mail import send_mail
 from rest_framework.views import APIView
@@ -12,14 +17,16 @@ from django.forms import ValidationError
 from .serializers import ProfileSerializer
 from rest_framework.response import Response
 from django.core.validators import validate_email
-from .models import Profile, ProfileToken, ResetPassword
+from rest_framework.permissions import IsAuthenticated 
+from .models import Profile, ProfileToken, ResetPassword 
+from plants.models import Plant, LifeCycle, LightRequirement, SoilType 
 from rest_framework.exceptions import AuthenticationFailed, APIException
 from .auth import generateAccessToken, generateRefreshToken, JWTAuthentication
 
 
 def compress(image):
     userImage = Image.open(image)
-    imageIO = BytesIO()
+    imageIO   = BytesIO()
     imageFormat = userImage.format if userImage.format else 'JPEG'  
     userImage.save(imageIO, imageFormat, quality=60)
     newImage = File(imageIO, name=image.name)
@@ -107,6 +114,137 @@ class RefreshApiView(APIView):
         accessToken = generateAccessToken(payload)
 
         return Response({ 'accessToken' : accessToken })
+ 
+
+class ProfileClimateView(APIView): 
+    authentication_classes = [JWTAuthentication]
+
+    def patch(self, request):
+        try:
+            profile = Profile.objects.get(username=request.user)
+        except Profile.DoesNotExist:
+            return Response({ 'error' : 'User not found.' }, status=status.HTTP_404_NOT_FOUND)
+
+        countryName = request.data.get('countryName') 
+        cityName = request.data.get('cityName') 
+        precipitation = request.data.get('precipitation') 
+
+        if not countryName:
+            return Response({'error' : 'Country name is required.'}, status=status.HTTP_400_BAD_REQUEST)
+    
+        if not cityName:
+            return Response({'error' : 'City name is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if not precipitation:
+            return Response({'error' : 'City precipitation is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        city, created = City.objects.get_or_create(
+            name__iexact=cityName,
+            defaults={
+                'country': countryName.strip().title(),
+                'name': cityName.strip().title(),
+                'precipitationClass': precipitation
+            }
+        )
+
+        profile.climate = None  
+        profile.climate = city
+        profile.save() 
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class OnboardingPlantListView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+ 
+    def get(self, request):
+        path = os.path.join(settings.BASE_DIR, 'verdant', 'plantNames.csv')
+
+        if not os.path.exists(path):
+            return Response({'error' : 'CSV not found'}, status=status.HTTP_404_NOT_FOUND) 
+
+        df = pd.read_csv(path, header=None, names=["name"])
+        df['name'] = df['name'].str.strip().str.lower()
+
+        plantNames = [
+            'Apple', 'Avocado', 'Blackberry', 'Cabbage', 'Carrot', 'Chili', 
+            'Corn', 'Eggplant', 'Garlic', 'Kiwi',
+            'Mango', 'Olive', 'Potato', 'Spinach',
+            'Strawberry', 'Tomato', 'Walnut', 'Yam'
+        ]
+
+        plantNames = [name.lower() for name in plantNames] 
+        filtered = df[df['name'].isin(plantNames)] 
+        return Response(filtered['name'].tolist())
+
+
+class ProfileUpdatePlantInterestsView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def patch(self, request):
+        selectedPlants = request.data.get('selectedPlants', [])
+        if not selectedPlants:
+            return Response({'error': 'No plants selected.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        path = os.path.join(settings.BASE_DIR, 'verdant', 'vectorised-plant-dataset.csv')
+
+        if not os.path.exists(path):
+            return Response({'error': 'Plant dataset not found.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        plantDf = pd.read_csv(path)
+
+        with transaction.atomic():
+            profile = request.user
+            for plant_name in selectedPlants:
+                plantRow = plantDf[
+                    (plantDf['Common name'].str.strip().str.lower() == plant_name.strip().lower()) |
+                    (plantDf['Scientific name'].str.strip().str.lower() == plant_name.strip().lower()) |
+                    (plantDf['Alternate name'].str.lower().str.contains(plant_name.strip().lower()))
+                ]
+                
+                if plantRow.empty:
+                    continue  
+
+                row = plantRow.iloc[0]
+                plantObj, created = Plant.objects.get_or_create(
+                    commonName=row['Common name'].strip(),
+                    scientificName=row['Scientific name'].strip(),
+                    defaults={
+                        'family': row.get('Family', 'Unknown').strip(),
+                        'width': float(row.get('Width', 0.0)),
+                        'height': float(row.get('Height', 0.0)),
+                        'soilpH': row.get('Soil pH', '6.0 - 7.0').strip(),
+                        'usdaHardinessZone': row.get('USDA Hardiness Zone', 'Unknown').strip(),
+                        'waterRequirement': row.get('Water Requirement', 'Moist').strip(),
+                        'utility': row.get('Utility', '').strip(),
+                        'alternateNames': row.get('Alternate name', '').strip(),
+                        'taskRecommendations': row.get('Task Recommendations.', '').strip(),
+                    }
+                )
+ 
+                for lCycle in str(row.get('Life cycle', '')).split(','):
+                    name = lCycle.strip()
+                    if name:
+                        lifeCycle, _ = LifeCycle.objects.get_or_create(name=name)
+                        plantObj.lifeCycles.add(lifeCycle)
+
+                for sType in str(row.get('Soil type', '')).split(','):
+                    name = sType.strip()
+                    if name:
+                        soilType, _ = SoilType.objects.get_or_create(name=name)
+                        plantObj.soilTypes.add(soilType)
+
+                for lRequirement in str(row.get('Light requirement', '')).split(','):
+                    name = lRequirement.strip()
+                    if name:
+                        lightReq, _ = LightRequirement.objects.get_or_create(name=name)
+                        plantObj.lightRequirements.add(lightReq)
+
+                profile.plantInterests.add(plantObj)
+
+        return Response({'message': 'User Plant interests updated successfully.'}, status=status.HTTP_200_OK)
 
 
 class ProfileUpdateView(APIView):
@@ -136,7 +274,35 @@ class ProfileUpdateView(APIView):
         profile.lastName  = data.get('lastName', profile.lastName)
         profile.email     = newEmail
         profilePicture    = request.FILES.get('profileIcon')
+        countryName       = data.get('countryName')
+        cityName          = data.get('cityName')
+        precipitation     = data.get('precipitation')
 
+        if countryName and cityName and precipitation:
+            normalizedCity = cityName.strip().title()
+            normalizedCountry = countryName.strip().title()
+
+            currentCity = profile.climate
+            climateChanged = (
+                not currentCity or
+                currentCity.name.lower() != normalizedCity.lower() or
+                currentCity.country.lower() != normalizedCountry.lower() or
+                currentCity.precipitationClass != precipitation
+            )
+
+            if climateChanged:
+                city, created = City.objects.get_or_create(
+                    name__iexact=normalizedCity,
+                    country=normalizedCountry,
+                    precipitationClass=precipitation,
+                    defaults={
+                        'name': normalizedCity,
+                        'country': normalizedCountry,
+                        'precipitationClass': precipitation
+                    }
+                )
+                profile.climate = city
+ 
         if profilePicture:
             compressedImage     = compress(profilePicture)
             profile.profileIcon = compressedImage

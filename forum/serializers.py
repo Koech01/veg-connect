@@ -1,14 +1,46 @@
 from tasks.models import Tasks
-from plants.models import Plants
+from plants.models import Plant
 from profiles.models import Profile
 from rest_framework import serializers
 from .models import Message, MessageFile, Group, GroupMessage
  
 
 class MessagePlantSerializer(serializers.ModelSerializer):
+    lifeCycles = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='name'
+    )
+    soilTypes = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='name'
+    )
+    lightRequirements = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='name'
+    )
+    
     class Meta:
-        model  = Plants
-        fields = ['id', 'plantName', 'binomialName', 'description']
+        model  = Plant
+        fields = [
+            'id',
+            'commonName',
+            'scientificName',
+            'family',
+            'width',
+            'soilpH',
+            'height',
+            'usdaHardinessZone',
+            'waterRequirement',
+            'lifeCycles',
+            'soilTypes',
+            'lightRequirements',
+            'utility',
+            'alternateNames',
+            'taskRecommendations',
+        ]
 
 
 class MessageTaskSerializer(serializers.ModelSerializer):
@@ -62,7 +94,6 @@ class GroupSerializer(serializers.ModelSerializer):
         model  = Group
         fields = ['id', 'name', 'description', 'admins', 'groupIcon', 'members', 'request', 'autoJoin', 'created']
      
-
      
 class GroupMessageSerializer(serializers.ModelSerializer):
     group       = GroupSerializer()

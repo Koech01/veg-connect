@@ -1,3 +1,10 @@
+export interface CityProps {
+  country            : string;
+  name               : string;
+  precipitationClass : string;
+}
+
+
 export interface ProfileProps {
   profile: {
     id           : number;
@@ -10,6 +17,7 @@ export interface ProfileProps {
     newChat      : boolean;
     visibility   : boolean;
     receiveMails : boolean;
+    climate      : { country : string; name : string; precipitationClass : string; };
     created      : string;
   };
 
@@ -25,7 +33,7 @@ export interface MessageProps {
   receiver?   : { id : number; username : string; profileIcon : string; };
   text        : string;
   task?       : { id : number; title : string; description : string; completed : boolean; created : string; }; 
-  plant?      : { id : number; plantName : string; binomialName : string; description : string; };
+  plant?      : PlantProps;
   files       : { id: number; file: string; created: string }[];
   unreadCount : number;
   created     : string;
@@ -44,18 +52,24 @@ export interface GroupProps {
   created     : string;
 }
 
-
+ 
 export interface PlantProps {
-  id              : number;
-  plantName       : string;
-  binomialName    : string;
-  description     : string;
-  sunRequirements : string;
-  growingDays     : string;
-  sowingMethod    : string;
-  spreadDiameter  : string;
-  rowSpacing      : string;
-  height          : string;
+  id                  : number;
+  commonName          : string;
+  scientificName      : string;
+  family              : string;
+  width               : number;
+  soilPH              : string[];
+  height              : number;
+  usdaHardinessZone   : string;
+  waterRequirement    : | "Dry" | "Moist" | "Wet" | "Dry, Moist" | "Moist, Wet" | "Dry, Moist, Wet" | "Moist, Wet, Water" | "Wet, Water";
+  lifeCycles          : string[];
+  soilTypes           : string[];
+  lightRequirements   : string[];
+  utility             : string[];
+  alternateNames      : string[];
+  taskRecommendations : string;
+  displayName?        : string;  
 }
 
 
@@ -71,11 +85,11 @@ export interface TaskProps {
 }
 
 
-export interface TaskSuggestionProps {
-  id          : number;
-  plant       : PlantProps;
-  description : string;
-  created     : string;
+export interface PlantRank {
+  rank          : number;
+  name          : string;
+  change        : '+' | '-' | '-';
+  percentChange : string;  
 }
 
 
@@ -98,6 +112,28 @@ export interface MediaModalProps {
   isOpen        : boolean;
   onClose       : () => void;
   onSendMessage : ( text: string, files: File[]) => void;
+}
+
+
+export interface BookmarkPayload {
+  title   : string;
+  context : string;
+  type    : 'plantPair' | 'task';
+}
+
+
+export interface Bookmark { 
+  id      : number; 
+  title   : string; 
+  context : string; type: 'plantPair' | 'task'; 
+  created : string; 
+};
+ 
+
+export interface ShareProfile {
+  id          : number;
+  username    : string;
+  profileIcon : string;
 }
 
 
@@ -133,8 +169,21 @@ export const getMessageFileFormat = (fileName: string): 'image' | 'video' | 'oth
 }
 
 
-export interface ShareProfile {
-  id          : number;
-  username    : string;
-  profileIcon : string;
-}
+export const transformApiPlantData = (apiData: any): PlantProps => ({
+  id                  : 0,  
+  commonName          : apiData["Common name"] ?? "",
+  scientificName      : apiData["Scientific name"] ?? "",
+  family              : apiData["Family"] ?? "",
+  height              : apiData["Height"] ?? 0,
+  width               : apiData["Width"] ?? 0,
+  soilPH              : apiData["Soil pH"] ?? "",
+  usdaHardinessZone   : apiData["USDA Hardiness zone"] ?? "",
+  waterRequirement    : apiData["Water requirement"] ?? "",
+  lifeCycles          : (apiData["Life cycle"] ?? "").split(",").map((s: string) => s.trim()).filter(Boolean),
+  soilTypes           : (apiData["Soil type"] ?? "").split(",").map((s: string) => s.trim()).filter(Boolean),
+  lightRequirements   : (apiData["Light requirement"] ?? "").split(",").map((s: string) => s.trim()).filter(Boolean),
+  utility             : (apiData["Utility"] ?? "").split(",").map((s: string) => s.trim()).filter(Boolean),
+  alternateNames      : (apiData["Alternate name"] ?? "").split(",").map((s: string) => s.trim()).filter(Boolean),
+  taskRecommendations : apiData["Task Recommendations."] ?? "",
+  displayName         : apiData["displayName"] ?? "",
+});

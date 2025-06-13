@@ -1,5 +1,4 @@
 from django.db import models
-from plants.models import Plants
 from profiles.models import Profile
 
 
@@ -16,10 +15,3 @@ class Tasks(models.Model):
 
     class Meta:
         db_table = 'Tasks'  
-
-
-class TaskSuggestion(models.Model):
-    plant       = models.ForeignKey(Plants, on_delete=models.CASCADE, related_name='taskSuggestionsPlant', blank=True)
-    taskType    = models.CharField(max_length=100) 
-    description = models.TextField()
-    created     = models.DateTimeField(auto_now_add=True)

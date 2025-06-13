@@ -1,6 +1,6 @@
 import React from 'react';
 import css from '../Post/index.module.css';
-import { ProfileProps } from '../types/index';
+import type { ProfileProps } from '../types/index';
 import chevronDownDark from '../assets/chevronDownDark.svg';
 
 

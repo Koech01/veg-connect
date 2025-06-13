@@ -1,6 +1,6 @@
 import React from 'react';
 import css from '../Forum/index.module.css';
-import { ProfileProps } from '../types/index';
+import { type ProfileProps } from '../types/index';
 import forumNewGroupDarkIcon from '../assets/forumNewGroupDark.svg';
 import forumNewGroupLightIcon from '../assets/forumNewGroupLight.svg';
 import forumCreateGroupDarkIcon from '../assets/forumCreateGroupDark.svg';

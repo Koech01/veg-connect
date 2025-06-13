@@ -1,6 +1,6 @@
 import css from '../Emoji/index.module.css';
-import { EmojiPickerProps } from '../types/index';
-import EmojiPicker, {EmojiClickData} from 'emoji-picker-react';
+import type { EmojiPickerProps } from '../types/index';
+import EmojiPicker, {type EmojiClickData} from 'emoji-picker-react';
 
 
 const EmojiComponent : React.FC<EmojiPickerProps> = ({ onEmojiSelect, isOpen }) => {

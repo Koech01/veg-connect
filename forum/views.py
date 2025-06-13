@@ -458,10 +458,10 @@ class GroupSuggestionView(APIView):
             return Response({'message': "No groups available at the moment."}, status=status.HTTP_200_OK)
  
         if joinedGroupsCount >= totalGroupsCount:
-            return Response({'message': "You've joined all groups — new ones coming soon!"}, status=status.HTTP_200_OK)
+            return Response({'message': "You've joined all groups - new ones coming soon!"}, status=status.HTTP_200_OK)
  
         if requestedGroupsCount >= totalGroupsCount - joinedGroupsCount:
-            return Response({'message': "You're on the waitlist for several groups—hang tight or watch for new ones!"}, status=status.HTTP_200_OK)
+            return Response({'message': "You're on the waitlist for several groups, hang tight or watch for new ones!"}, status=status.HTTP_200_OK)
  
         availableGroups = Group.objects.exclude(members=profile).exclude(request=profile)
         if availableGroups.exists():

@@ -1,15 +1,20 @@
 import css from '../Profile/index.module.css';
+import { useAuth } from '../Auth/authContext'; 
 import { useNavigate } from 'react-router-dom';
 import statusDarkSvg from '../assets/completedDark.svg';   
 import settingDarkIcon from '../assets/settingDark.svg';
 import statusLightSvg from '../assets/completedLight.svg'; 
 import settingLightIcon from '../assets/settingLight.svg';
-import { ProfileProps, formatDate } from '../types/index';
-import React, { useEffect, useRef, useState } from 'react';
+import { LocationDropdown } from '../Onboarding/dropdown';
+import React, { useEffect, useRef, useState } from 'react'; 
+import profileLocationDarkIcon from '../assets/profileLocationDark.svg'; 
+import profileLocationLightIcon from '../assets/profileLocationLight.svg';
+import { type CityProps, type ProfileProps, formatDate } from '../types/index';
 
 
 const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
 
+  const { accessToken }                               = useAuth();
   const [editMode, setEditMode]                       = useState(false);
   const [selectedProfileIcon, setSelectedProfileIcon] = useState<File | null>(null);
   const [updateMessage, setUpdateMessage]             = useState(false);
@@ -18,8 +23,10 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
   const [isModalOpen, setModalOpen]                   = useState<boolean>(false);
   const [profileVisibility, setProfileVisibility]     = useState(profile.visibility || true );
   const [activeDisplayMode, setActiveDisplayMode]     = useState(profile.displayTheme || 'dark' );
+  const [cities, setCities]                           = useState<CityProps[]>([]);
+  const [selectedCity, setSelectedCity]               = useState<CityProps | null>(null);
 
-
+  
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       if (JSON.stringify(profile) !== JSON.stringify(initialProfileRef.current)) {
@@ -58,11 +65,16 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
       formData.append('profileIcon', selectedProfileIcon);
     }
     
-    try {
-      const token    = localStorage.getItem('token');
-      const response = await fetch('http://127.0.0.1:8000/api/v1/profiles/', {
+    if (selectedCity) {
+      formData.append('cityName', selectedCity.name);
+      formData.append('countryName', selectedCity.country);
+      formData.append('precipitation', selectedCity.precipitationClass);
+    }
+
+    try { 
+      const response = await fetch('/api/v1/profiles/', {
         method      : 'PATCH',
-        headers     : { 'Authorization': `Bearer ${token}` },
+        headers     : { Authorization: `Bearer ${accessToken}` },
         credentials : 'include',
         body        : formData,
       });
@@ -86,7 +98,7 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
 
     }
 
-    catch (error) { console.log('An error occurred. Please try again later: ', error); }
+    catch (error) { console.error('An error occurred. Please try again later: ', error); }
   }
 
 
@@ -99,11 +111,10 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
 
 
   const handleTogglesChange = async (toggleType: 'theme' | 'visibility', toggleVal: string) => {
-    try {
-      const token    = localStorage.getItem('token');
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/profiles/${toggleType}/${toggleVal}/preference/`, {
+    try { 
+      const response = await fetch(`/api/v1/profiles/${toggleType}/${toggleVal}/preference/`, {
         method      : 'POST',
-        headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include',
       });
 
@@ -130,7 +141,7 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
   
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/v1/logout/', {
+      const response = await fetch('/api/v1/logout/', {
         method      : 'POST',
         headers     : { 'Content-Type' : 'application/json' },
         credentials : 'include',
@@ -147,6 +158,49 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
   }
 
 
+  useEffect(() => {
+    const loadCSV = async () => {
+      try {
+        const response = await fetch('/static/cities-precipitation.csv');
+        const text = await response.text();
+        const lines = text.trim().split('\n');
+
+        const parsed: CityProps[] = lines.slice(1).map(line => {
+          const values: string[] = [];
+          let current = '';
+          let inQuotes = false;
+
+          for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+            if (char === '"') {
+              inQuotes = !inQuotes;
+            } 
+
+            else if (char === ',' && !inQuotes) {
+              values.push(current.trim());
+              current = '';
+            } 
+            
+            else { current += char; }
+          }
+          values.push(current.trim()); 
+
+          return { country: values[0], name: values[1], precipitationClass: values[3] };
+        });
+
+        setCities(parsed);
+      } 
+      
+      catch (error) { console.error("Error loading city CSV:", error);      }
+    };
+
+    loadCSV();
+  }, []);
+
+
+  const updatePlantInterests = () => { navigate('/welcome/'); };
+
+
   const openModal  = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
@@ -160,7 +214,7 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
           <>
             <div className={css.profileCard}>
               <div className={css.profileChildCard}>
-                <img className={css.profileIcon} alt="profile-user-icon"  src={profile.profileIcon}/>
+                <img className={css.profileIcon} alt="profile-user-icon" src={profile.profileIcon}/>
 
                 <div className={css.profileHeaderDiv}>
                   <div className={css.profileUsernameDiv}>
@@ -179,7 +233,16 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
                 </div>
               </div>
 
-              <div className={css.profileItemInfoDiv}> 
+              <div className={css.profileItemInfoDiv}>  
+                <div className={css.profileItemLocationDiv}>
+                  <img 
+                    className = {css.profileItemLocationIcon}  
+                    alt       = "profile-location-icon"
+                    src       = {profile.displayTheme === 'light' ? profileLocationLightIcon : profileLocationDarkIcon} 
+                  />
+                  <p className={css.profileLocationText}>{profile.climate.name}</p>
+                </div>
+ 
                 <div className={css.profileItemInfoModelDiv}>
                   <div className={css.profileCreatedInfoDiv}>
                     <p className={css.profileJoinedLabel}>Joined</p>
@@ -227,6 +290,15 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
                     <span className={css.profileRadioSliderSpan}></span>
                   </label>
                 </div>
+              </div>
+
+              <div className={css.profileSettingItemDiv}>
+                <div className={css.profileSettingItemChildDiv}>
+                  <p className={css.profileSettingItemLabel}>Plant Interests</p>
+                  <p className={css.profileSettingItemHint}>Update plants you're most interested in</p>
+                </div>
+
+                <button className={css.profileEditBtn} onClick={updatePlantInterests}>Update</button> 
               </div>
 
               <div className={css.profileSettingItemDiv}>
@@ -312,9 +384,27 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
                   <span className={css.profileEditUploadImgHint} >Allowed files .png, .jpg .jpeg</span>
                 </button>
               </div>
+ 
+              <div className={css.profileDesktopLocationDiv}> 
+                <LocationDropdown 
+                  theme        = {profile.displayTheme} 
+                  cities       = {cities} 
+                  selectedCity = {selectedCity} 
+                  onChange     = {setSelectedCity} 
+                />
+              </div>  
             </div>
   
             <div className={css.profileEditPairInputDiv}>
+              <div className={css.profileMobileLocationDiv}> 
+                <LocationDropdown 
+                  theme        = {profile.displayTheme} 
+                  cities       = {cities} 
+                  selectedCity = {selectedCity} 
+                  onChange     = {setSelectedCity} 
+                />
+              </div>  
+
               <div className={css.profileEditInputDiv}>
                 <span className={css.profileEditCardSpan}>Username</span>
                 <input 
@@ -357,7 +447,7 @@ const Profile: React.FC<ProfileProps> = ({ profile, updateProfile }) => {
                 />
               </div>
             </div>
-
+        
             <div className={css.profileEditFlexDiv}>
               <button className={css.profileEditSubmitBtn} onClick={handleProfileSubmit}>Save Changes</button>
             </div>

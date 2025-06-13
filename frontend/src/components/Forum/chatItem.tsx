@@ -1,6 +1,6 @@
 import moment from 'moment';
 import css from '../Forum/index.module.css';
-import { MessageProps, ProfileProps, GroupProps, getMessageFileFormat } from '../types/index';
+import { type MessageProps, type ProfileProps, type GroupProps, getMessageFileFormat } from '../types/index';
 
 
 interface ChatItemProps {
@@ -80,7 +80,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
 
             {/* Plant only */}
             {chat.plant && (chat.files.length === 0 && !chat.task) && (
-              <p className={css.forumChatMessage}>plant ~ {chat.plant.plantName}</p>
+              <p className={css.forumChatMessage}>plant ~ {chat.plant.commonName}</p>
             )}
 
             {/* Task */}

@@ -1,10 +1,11 @@
 import css from '../Home/index.module.css';
 import { useState, useEffect } from 'react';
-import taskShareLightIcon from '../assets/taskShareLight.svg';
+import { useAuth } from '../Auth/authContext';
 import taskShareDarkIcon from '../assets/taskShareDark.svg';
+import taskShareLightIcon from '../assets/taskShareLight.svg'; 
+import taskDeleteDarkIcon from '../assets/taskDeleteDark.svg'; 
 import taskDeleteLightIcon from '../assets/taskDeleteLight.svg';
-import taskDeleteDarkIcon from '../assets/taskDeleteDark.svg';
-import { TaskProps, formatDate, formatTaskDate } from '../types/index';
+import { type TaskProps, formatDate, formatTaskDate } from '../types/index';
 
 
 interface ClickedTaskProps {
@@ -21,16 +22,16 @@ const ClickedTask: React.FC<ClickedTaskProps> = ({
     theme, taskDetail, handleRemoveItemDetail, handleItemShareClick, handleTaskDeleteClick, fetchUserTasks
 }) => {
 
+    const { accessToken }                   = useAuth();
     const [taskCompleted, setTaskCompleted] = useState<boolean>(taskDetail?.completed || false);
 
     useEffect(() => { if (taskDetail) { setTaskCompleted(taskDetail.completed); } }, [taskDetail]); 
 
     const handleTaskComplete = async (taskId: number, taskCompletedVal: string) => {
-        try {
-          const token    = localStorage.getItem('token');
-          const response = await fetch(`http://127.0.0.1:8000/api/v1/tasks/${taskId}/${taskCompletedVal}/complete/`, {
+        try { 
+          const response = await fetch(`/api/v1/tasks/${taskId}/${taskCompletedVal}/complete/`, {
             method      : 'PATCH',
-            headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+            headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
             credentials : 'include'
           });
     

@@ -1,7 +1,6 @@
-from plants.models import Plants
+from .models import Tasks
 from profiles.models import Profile
 from rest_framework import serializers
-from .models import Tasks, TaskSuggestion
 
 
 class TaskProfileSeriazlier(serializers.ModelSerializer):
@@ -29,17 +28,3 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_owner(self, obj):
         return obj.owner.id
- 
-
-class TaskPlantSerializer(serializers.ModelSerializer):
-    class Meta:
-        model  = Plants
-        fields = ['id', 'plantName']
-
-
-class TaskSuggestionSerializer(serializers.ModelSerializer):
-    plant  = TaskPlantSerializer()
-
-    class Meta:
-        model  = TaskSuggestion
-        fields = ['id', 'plant', 'taskType', 'description']

@@ -1,14 +1,16 @@
 import css from '../Auth/index.module.css';
+import { useAuth } from '../Auth/authContext';
 import { useNavigate } from 'react-router-dom';
 import authDemoDarkSvg from '../assets/authDemoDark.svg';
 import authDemoLightSvg from '../assets/authDemoLight.svg';
 import authErrorIconDark from '../assets/taskErrorDark.svg';
-import { SyntheticEvent, useState, useEffect } from 'react';
 import authErrorIconLight from '../assets/taskErrorLight.svg';
+import { type SyntheticEvent, useState, useEffect } from 'react';
 
 
 const Login = () => {
   
+  const { setAccessToken }          = useAuth();
   const navigate                    = useNavigate();
   const [email, setEmail]           = useState('');
   const [password, setPassword]     = useState('');
@@ -41,7 +43,7 @@ const Login = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/v1/login/', {
+      const response = await fetch('/api/v1/login/', {
         method      : 'POST',
         headers     : { 'Content-Type': 'application/json' },
         credentials : 'include',
@@ -49,9 +51,8 @@ const Login = () => {
       });
   
       if (response.ok) {
-        const data  = await response.json();
-        const token = data.token;
-        localStorage.setItem('token', token);
+        const data = await response.json(); 
+        setAccessToken(data.token);
 
         if (data.guestMode) {
           navigate('/welcome/');  
@@ -89,7 +90,7 @@ const Login = () => {
  
 
   useEffect(() => {
-    const timer = setTimeout(() => { setGuestBoard(true); }, 2000); 
+    const timer = setTimeout(() => { setGuestBoard(true); }, 500); 
     return () => clearTimeout(timer);  
   }, []);
 

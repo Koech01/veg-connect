@@ -1,10 +1,8 @@
-import {ProfileProps } from '../types/index';
-import css from '../MediaModal/index.module.css';
+import css from '../MediaModal/index.module.css'; 
+import modalCss from "../Modal/index.module.css";
+import {type ProfileProps } from '../types/index';
 import closeDarkIcon from '../assets/closeDark.svg';
 import closeLightIcon from '../assets/closeLight.svg';
-
-
-import modalCss from "../Modal/index.module.css";
 
 
 interface ViewMediaModalProps {

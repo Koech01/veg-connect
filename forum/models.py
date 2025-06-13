@@ -1,6 +1,6 @@
 from django.db import models
 from tasks.models import Tasks
-from plants.models import Plants
+from plants.models import Plant
 from .imageUID import groupIconUID
 from profiles.models import Profile
 from .fileUID import messageFileUID
@@ -25,7 +25,7 @@ class Message(models.Model):
     sender    = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='sender')
     receiver  = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='receiver')
     task      = models.ForeignKey(Tasks, on_delete=models.CASCADE, related_name='messageTask', blank=True, null=True)
-    plant     = models.ForeignKey(Plants, on_delete=models.CASCADE, related_name='messagePlants', blank=True, null=True)
+    plant     = models.ForeignKey(Plant, on_delete=models.CASCADE, related_name='messagePlants', blank=True, null=True)
     deletedBy = models.ManyToManyField(Profile, blank=True, related_name="userDeletedMessage")
     text      = models.CharField(max_length=1000, blank=True)
     files     = models.ManyToManyField(MessageFile, blank=True)
@@ -60,7 +60,7 @@ class GroupMessage(models.Model):
     group     = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="groupMessage")
     sender    = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="groupSender")
     task      = models.ForeignKey(Tasks, on_delete=models.CASCADE, related_name='groupMessageTask', blank=True, null=True)
-    plant     = models.ForeignKey(Plants, on_delete=models.CASCADE, related_name='groupMessagePlant', blank=True, null=True)
+    plant     = models.ForeignKey(Plant, on_delete=models.CASCADE, related_name='groupMessagePlant', blank=True, null=True)
     deletedBy = models.ManyToManyField(Profile, blank=True, related_name="userDeletedGroupMessage")
     text      = models.CharField(max_length=1000, blank=True)
     files     = models.ManyToManyField(MessageFile, blank=True)    

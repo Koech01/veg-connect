@@ -1,12 +1,48 @@
-from .models import Plants
 from django.contrib import admin
+from .models import Plant, SoilType, LifeCycle, LightRequirement
 
 
-# Register your models here.
-class PlantsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'plantName',  'sunRequirements', 'growingDays', 'shortDescription', 'spreadDiameter', 'rowSpacing')
+@admin.register(SoilType)
+class SoilTypeAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
 
-    def shortDescription(self, obj):
-        return obj.sowingMethod[:50] + ' ...' if len(obj.sowingMethod) > 50 else obj.sowingMethod
-    shortDescription.short_description = 'Text'
-admin.site.register(Plants, PlantsAdmin)
+
+@admin.register(LifeCycle)
+class LifeCycleAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+
+
+@admin.register(LightRequirement)
+class LightRequirementAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+
+
+@admin.register(Plant)
+class PlantAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'commonName', 'scientificName', 'family', 'height',
+        'width', 'soilpH', 'usdaHardinessZone', 'waterRequirement',
+    )
+    
+    search_fields = ['commonName', 'scientificName', 'alternateNames']
+    list_filter = ['waterRequirement', 'lifeCycles', 'soilTypes', 'lightRequirements']
+    filter_horizontal = ['lifeCycles', 'soilTypes', 'lightRequirements']
+    fieldsets = (
+        ("Basic Info", {
+            "fields": (
+                "commonName", "scientificName", "family", "alternateNames", "utility"
+            )
+        }),
+        ("Growth Conditions", {
+            "fields": (
+                "height", "width", "soilpH", "usdaHardinessZone", "waterRequirement",
+                "lifeCycles", "soilTypes", "lightRequirements"
+            )
+        }),
+        ("Care & Tasks", {
+            "fields": ("taskRecommendations",)
+        }),
+    )

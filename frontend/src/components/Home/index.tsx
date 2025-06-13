@@ -1,32 +1,40 @@
 import ClickedTask from './task';
 import ClickedPlant from './plant';
 import css from '../Home/index.module.css';
-import HomeStats from './homeGraphAndForum';
-import { useEffect, useState } from 'react';
+import HomePlantPair from './homePlantPair'; 
+import { useAuth } from '../Auth/authContext';
+import { useEffect, useState, useRef } from 'react'; 
 import statusDarkSvg from '../assets/completedDark.svg';
 import calendarDarkSvg from '../assets/calendarDark.svg';
 import statusLightSvg from '../assets/completedLight.svg';
+import bookmarkDarkIcon from '../assets/bookmarkDark.svg'; 
 import calendarLightSvg from '../assets/calendarLight.svg';
+import bookmarkLightIcon from '../assets/bookmarkLight.svg';
+import homeSearchPlant from '../assets/homeSearchPlant.svg'; 
 import taskHeaderDarkSvg from '../assets/taskHeaderDark.svg'; 
 import arrowRightDarkSvg from '../assets/arrowRightDark.svg';
 import homeInfoDarkIcon from '../assets/infoCircledDark.svg';
+import unBookmarkDarkIcon from '../assets/unBookmarkDark.svg'; 
 import homeInfoLightIcon from '../assets/infoCircledLight.svg';
 import arrowRightLightSvg from '../assets/arrowRightLight.svg';
 import taskHeaderLightSvg from '../assets/taskHeaderLight.svg'; 
 import plantGrowthDarkSvg from '../assets/plantGrowthDark.svg';
+import unBookmarkLightIcon from '../assets/unBookmarkLight.svg';  
+import homeplantInfoDarkIcon from '../assets/plantInfoDark.svg';
 import plantGrowthLightSvg from '../assets/plantGrowthLight.svg'; 
+import homeplantInfoLightIcon from '../assets/plantInfoLight.svg';
 import taskUnfinishedDarkSvg from '../assets/taskUnfinishedDark.svg';
 import homeSearchTaskDarkSvg from '../assets/homeSearchTaskDark.svg'; 
 import homeSearchTaskLightSvg from '../assets/homeSearchTaskLight.svg';  
 import taskUnfinishedLightSvg from '../assets/taskUnfinishedLight.svg';
 import homeSearchIconLightSvg from '../assets/homeSearchIconLight.svg'; 
-import homeSearchPlantDarkSvg from '../assets/homeSearchPlantDark.svg';
-import homeSearchPlantLightSvg from '../assets/homeSearchPlantLight.svg';
-import { ProfileProps, PlantProps, TaskProps, GroupProps, TaskSuggestionProps, ShareProfile, formatDate, formatTaskDate } from '../types/index';
- 
+import { type ProfileProps, type PlantProps, type TaskProps, type GroupProps, type ShareProfile, type BookmarkPayload, formatDate, formatTaskDate, transformApiPlantData } from '../types/index';
+
 
 const Home: React.FC<ProfileProps> = ({ profile }) => {
 
+  const { accessToken }                         = useAuth();
+  const hasFetched                              = useRef(false);
   const [searchQuery, setSearchQuery]           = useState('');
   const [focusSearchInput, setFocusSearchInput] = useState(false);
   const [slideDown, setSlideDown]               = useState(false);
@@ -36,17 +44,13 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
   const [isTaskLoading, setTaskLoading]         = useState(true);
   const [searchTasks, setSearchTasks]           = useState<TaskProps[]>([]);
   const [searchPlants, setSearchPlants]         = useState<PlantProps[]>([]);
-  const [statsPlants, setStatsPlants]           = useState<PlantProps[]>([]);
-  const [maxGrowingDays, setMaxGrowingDays]     = useState(400);
   const currentDate                             = formatDate(new Date().toISOString());
-  const [suggestionTasks, setSuggestionTasks]   = useState<TaskSuggestionProps[]>([]);
-  const [groupSuggestion, setGroupSuggestion]   = useState<GroupProps | null>(null);
+  const [suggestionTasks, setSuggestionTasks]   = useState<PlantProps[]>([]);
   const [viewTasks, setViewTasks]               = useState(false);
   const [viewHintTasks, setViewHintTasks]       = useState(false);
   const [clickedItemType, setClickedItemType]   = useState<'task' | 'plant' | null>(null);
   const [clickedTask, setClickedTask]           = useState(false);
   const [clickedPlant, setClickedPlant]         = useState(false);
-  const [forumMessage, setForumMessage]         = useState('');
   const [taskDetail, setTaskDetail]             = useState<TaskProps | null>(null);
   const [plantDetail, setPlantDetail]           = useState<PlantProps | null>(null);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
@@ -57,6 +61,7 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
   const [shareUserIds, setShareUserIds]         = useState<number[]>([]);
   const [shareGroupIds, setShareGroupIds]       = useState<number[]>([]);
   const [shareTextMessage, setShareTextMessage] = useState('');
+  const [bookmarkedTitles, setBookmarkedTitles] = useState<Set<string>>(new Set());
 
 
   const handleSearchFocus = () => {  
@@ -73,33 +78,25 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
 
 
   useEffect(() => {
-    const timer = setTimeout(() => { 
-      setViewTasks(true); 
-      setViewHintTasks(true); 
-    }, 300);
+    const timer = setTimeout(() => { setViewTasks(true); }, 300);
     return () => clearTimeout(timer);
   }, []); 
  
-
   
   const fetchUserTasks = async () => {
-    try {
-      const token    = localStorage.getItem('token');
-      const response = await fetch('http://127.0.0.1:8000/api/v1/home/tasks/', {
+    try { 
+      const response = await fetch('/api/v1/home/tasks/', {
         method      : 'GET',
-        headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include',
       })
 
       if (response.ok) {
-        const data                                = await response.json();
-        const tasks: TaskProps[]                  = data.tasks;
-        const suggestions : TaskSuggestionProps[] = data.suggestions;
-        const completedTasks                      = tasks.filter(task => task.completed);
-        const inCompletedTasks                    = tasks.filter(task => !task.completed);
+        const tasks: TaskProps[] = await response.json(); 
+        const completedTasks     = tasks.filter(task => task.completed);
+        const inCompletedTasks   = tasks.filter(task => !task.completed);
         setCompletedTask(completedTasks);
         setIncompletedTask(inCompletedTasks);
-        setSuggestionTasks(suggestions);
         setTaskLoading(false);
       }
 
@@ -107,15 +104,9 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
         console.error('Failed to fetch tasks: ', response.status);
         setTaskLoading(false);
       }
-
-      await fetch('http://127.0.0.1:8000/api/v1/tasks/create/suggestions/', {
-        method      : 'POST',
-        headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-        credentials : 'include',
-      });
     }
     catch (error) { 
-      console.error('Error creating plant recommendations: ', error);
+      console.error('Error fetching tasks: ', error);
       setTaskLoading(false);
     }
   };
@@ -125,53 +116,42 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
 
 
   useEffect(() => {
+ 
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+
     (async () => {
+      setViewHintTasks(false);
       try {
-        const token    = localStorage.getItem('token');
-        const response = await fetch('http://127.0.0.1:8000/api/v1/plants/days/', {
-          method      : 'GET',
-          headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-          credentials : 'include',
-        })
+        const response = await fetch('/api/v1/home/recommendations/', {
+          method     : 'GET',
+          headers    : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}`, },
+          credentials: 'include',
+        });
 
         if (response.ok) {
           const data = await response.json();
-          setStatsPlants(data);
+          const contextualPlants: PlantProps[] = data.contextualPlants;
+          setSuggestionTasks(contextualPlants);
 
-          const maxDays = Math.max(...data.map((plant: PlantProps) => parseInt(plant.growingDays, 10)));
-          setMaxGrowingDays(Math.ceil(maxDays / 100) * 100);
+          if (contextualPlants.length === 0) { setViewHintTasks(true); }
+        } 
+        
+        else {
+          console.error('Failed to fetch plant recommendations:', response.status);
+          setViewHintTasks(true);
         }
 
-        else { console.error('Failed to fetch plants: ', response.status); }
-      }
-      catch (error) { console.error('Error fetching plants: ', error); }
+      } 
+      
+      catch (error) {
+        console.error('Error fetching plant recommendations:', error);
+        setViewHintTasks(true);
+      } 
+      
+      finally { setTaskLoading(false); }
     })();
   }, []);
-
-
-  const fetchForumSuggestion = async () => {
-    try {
-      const token    = localStorage.getItem('token');
-      const response = await fetch('http://127.0.0.1:8000/api/v1/groups/suggest/', {
-        method      : 'GET',
-        headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-        credentials : 'include',
-      })
-
-      if (response.ok) {
-        const data = await response.json();
-        if (data.message) { setForumMessage(data.message); } 
-        else              { setGroupSuggestion(data); }
-      }
-
-      else { console.error('Failed to fetch group suggestion: ', response.status) }
-    }
-
-    catch (error) { console.error('Error fetching group suggestion: ', error); }
-  };
-
-
-  useEffect(() => { fetchForumSuggestion(); }, []);
 
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => { setSearchQuery(event.target.value); };
@@ -179,18 +159,22 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
 
   useEffect(() => {
     const fetchSearchResults = async () => {
-      try {
-        const token    = localStorage.getItem('token');
-        const response = await fetch(`http://127.0.0.1:8000/api/v1/home/search/?search=${encodeURIComponent(searchQuery)}`, {
+      try { 
+        const response = await fetch(`/api/v1/home/search/?search=${encodeURIComponent(searchQuery)}`, {
           method      : 'GET',
-          headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
           credentials : 'include',
         });
 
         if (response.ok) {
-          const data = await response.json();
+          const data: { plants: PlantProps[], tasks: any[] } = await response.json();
+
+          const uniquePlants = Array.from(
+            new Map(data.plants.map(plant => [plant.id ?? plant.displayName, plant])).values()
+          );
+
           setSearchTasks(data.tasks);
-          setSearchPlants(data.plants);
+          setSearchPlants(uniquePlants); 
           setSearchLoading(false);
         }
 
@@ -215,12 +199,11 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
     setClickedTask(true);
     if (focusSearchInput !== false) { setFocusSearchInput(false); }
     if (clickedPlant !== false)     { setClickedPlant(false); }
- 
-    const token = localStorage.getItem('token');
+  
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/tasks/${taskId}/detail/ `, {
+      const response = await fetch(`/api/v1/tasks/${taskId}/detail/ `, {
         method      : 'GET',
-        headers     : { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include'
       });
 
@@ -234,37 +217,38 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
   };
   
 
-  const handleClickPlant = async(plantId: number) => {  
-    handleRemoveItemDetail();        
+  const handleClickPlant = async (plantName: string) => {
+    handleRemoveItemDetail();
     setClickedPlant(true);
-    if (focusSearchInput !== false) { setFocusSearchInput(false); }
-    if (clickedPlant !== false)     { setClickedTask(false); }
+    if (focusSearchInput !== false) setFocusSearchInput(false);
+    if (clickedPlant !== false) setClickedTask(false);
  
-    const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/plants/${plantId}/detail/`, {
+      const response = await fetch(`/api/v1/plants/detail/?query=${encodeURIComponent(plantName)}`, {
         method      : 'GET',
-        headers     : { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include'
       });
 
       if (response.ok) {
         const data = await response.json();
-        setPlantDetail(data);
+        setPlantDetail(data); 
+        setPlantDetail(transformApiPlantData(data)); 
+      } else {
+        console.error("Failed to fetch plant information: ", response.status);
       }
-      else { console.error('Failed to plant information: ', response.status) }
+    } catch (error) {
+      console.error("Error fetching plant information: ", error);
     }
-    catch (error) { console.error('Error fetching plant information: ', error) }
   };
 
 
   useEffect(() => {
     (async () => {
-      try {
-        const token    = localStorage.getItem('token');
-        const response = await fetch('http://127.0.0.1:8000/api/v1/tasks/users/groups/', {
+      try { 
+        const response = await fetch('/api/v1/tasks/users/groups/', {
           method      : 'GET',
-          headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
           credentials : 'include',
         })
 
@@ -291,11 +275,11 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
 
 
   const handleDeleteTask = async(taskId?: number) => {
-    const token = localStorage.getItem('token');
+ 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/tasks/${taskId}/delete/`, {
+      const response = await fetch(`/api/v1/tasks/${taskId}/delete/`, {
         method      : 'DELETE',
-        headers     : { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         credentials : 'include'
       });
   
@@ -325,22 +309,20 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
 
 
   const handleShareItem = async () => {
-    const token = localStorage.getItem('token');
-  
     let baseUrl;
     let itemId;
     let itemKey;
 
     if (clickedItemType === 'task')  { 
-      baseUrl = 'http://127.0.0.1:8000/api/v1/tasks/send/';
+      baseUrl = '/api/v1/tasks/send/';
       itemId  = taskDetail?.id;
       itemKey = 'taskId';
     } 
 
     else if (clickedItemType === 'plant') { 
-      baseUrl = 'http://127.0.0.1:8000/api/v1/plants/send/'; 
-      itemId  = plantDetail?.id; 
-      itemKey = 'plantId';
+      baseUrl = '/api/v1/plants/send/'; 
+      itemId  = plantDetail?.commonName;
+      itemKey = 'commonName';
     } 
 
     else { return; }
@@ -352,13 +334,13 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
     
     if (!itemId) {
       console.error('Item ID is missing.');
-      return;  
+      setShareModalOpen(false);  
     }
   
     try {
       const response = await fetch(baseUrl, {
         method      : 'POST',
-        headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         body        : JSON.stringify({ userGroupsIds, [itemKey]: itemId, textMessage: shareTextMessage }),
         credentials : 'include'
       });
@@ -377,15 +359,44 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
     catch (error) {  console.error('Error sharing item:', error);  }
   };
   
+
+  const toggleBookmark = async (bookmark: BookmarkPayload) => {
+    try {
+      const response = await fetch('/api/v1/home/bookmark/', {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}`, },
+      body   : JSON.stringify(bookmark),
+      });
+
+      if (response.ok) {  
+        setBookmarkedTitles((prev) => {
+          const updated = new Set(prev);
+          if (updated.has(bookmark.title)) {
+            updated.delete(bookmark.title);
+          } else {
+            updated.add(bookmark.title);
+          }
+          return updated;
+        });
+   
+      } 
+      
+      else { console.error('Failed to toggle bookmark:', response.status); }
+    } 
+    
+    catch (error) { console.error('Error toggling bookmark:', error); }
+  };
+
+
   const handleTaskDeleteClick = () => setDeleteModalOpen(true);
   const closeTaskDeleteClick  = () => setDeleteModalOpen(false);
   
-  const handleItemShareClick  = (type: 'task' | 'plant') => {
+  const handleItemShareClick = (type: 'task' | 'plant') => {
     setShareModalOpen(true);   
     setClickedItemType(type);
   };
   
-  const closeItemShareClick   = () => {
+  const closeItemShareClick = () => {
     setShareModalOpen(false);   
     setClickedItemType(null);
   };
@@ -400,13 +411,8 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
       <div className={css.homeParentChildDiv}>
         <div className={css.homeParentColumnDiv}>
           {/* Plant */}
-          <HomeStats
-            statsPlants    = {statsPlants}
-            maxGrowingDays = {maxGrowingDays}
-            groupDetail    = {groupSuggestion}
-            forumMessage   = {forumMessage} 
-            onGroupJoin    = {fetchForumSuggestion}
-            theme          = {profile.displayTheme} 
+          <HomePlantPair   
+            theme        = {profile.displayTheme} 
           />
         </div>
 
@@ -452,11 +458,11 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
 
                         <div className={css.homeSearchShimmerItemDiv}> 
                           <div className={css.homeSearchShimmerChildDiv}> 
-                            <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemOne}`}></div> 
+                            <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemOne}`}></div> 
                           </div> 
 
                           <div className={css.homeSearchShimmerChildDiv}> 
-                            <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemFour}`}></div> 
+                            <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemFour}`}></div> 
                           </div>
                         </div>
                       </div>
@@ -466,11 +472,11 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
 
                         <div className={css.homeSearchShimmerItemDiv}> 
                           <div className={css.homeSearchShimmerChildDiv}> 
-                            <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemThree}`}></div> 
+                            <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemThree}`}></div> 
                           </div> 
 
                           <div className={css.homeSearchShimmerChildDiv}> 
-                            <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemTwo}`}></div> 
+                            <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemTwo}`}></div> 
                           </div>
                         </div>
                       </div>
@@ -492,7 +498,7 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
                       {searchTasks.length > 0 && (
                         <div className={css.homeSearchResultFlexDiv}>
                           <p className={css.homeTaskDate}>Tasks</p>
-                          <div className={css.homeSearchResultListDiv}>
+                          <div className={css.homeSearchTaskListDiv}>
                             {searchTasks.map((task) => (
                               <button key={task.id} className={css.homeSearchResultItemDiv} onClick={() => handleClickTask(task.id)}>
                                 <div className={`${task.completed ? css.homeSearchCompletedIconDiv : css.homeSearchTaskIconDiv}`}>
@@ -522,20 +528,16 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
 
                         <div className={css.homeSearchResultFlexDiv}>
                           <p className={css.homeTaskDate}>Plants</p>
-                          <div className={css.homeSearchResultListDiv}>
+                          <div className={css.homeSearchPlantListDiv}>
                             {searchPlants.map((plant) => (
 
-                              <button key={plant.id} className={css.homeSearchResultItemDiv} onClick={() => handleClickPlant(plant.id)}>
-                                <div className={css.homeSearchTaskIconDiv}>
-                                  <img  
-                                    alt       = "home-search-plant-svg"
-                                    className = {css.homeSearchItemIcon}
-                                    src       = {profile.displayTheme === 'light' ? homeSearchPlantLightSvg : homeSearchPlantDarkSvg} 
-                                  />
+                              <button key={plant.id} className={css.homeSearchResultItemDiv} onClick={() => handleClickPlant(plant.displayName ?? plant.commonName)}>
+                                <div className={css.homeSearchPlantIconDiv}>
+                                  <img alt="home-search-plant-svg" className={css.homeSearchPlantIcon} src={homeSearchPlant}/>
                                 </div>
         
-                                <button className={css.homeSearchResultItemTextBtn} onClick={() => handleClickPlant(plant.id)}>
-                                  <p className={css.homeTaskDescription}>{plant.plantName}</p> 
+                                <button className={css.homeSearchResultItemTextBtn} onClick={() => handleClickPlant(plant.displayName ?? plant.commonName)}>
+                                  <p className={css.homeTaskDescription}>{plant.displayName ?? plant.commonName}</p> 
                                 </button>
                               </button>
 
@@ -596,36 +598,36 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
                   {isTaskLoading ? (
                     <div className={css.homeTaskListShimmerDiv}>
                       <div className={css.homeTaskListItemShimmerDiv}> 
-                        <div className={css.homeStatBarFlexShimmerDiv}> 
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemOne}`}></div> 
+                        <div className={css.homePlantsPairShimmerFlexDiv}> 
+                          <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemOne}`}></div> 
                         </div> 
 
-                        <div className={css.homeStatBarFlexShimmerDiv}>  
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarEndShimmerFour}`}></div>
+                        <div className={css.homePlantsPairShimmerFlexDiv}>  
+                          <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairEndShimmerFour}`}></div>
                         </div> 
 
-                        <div className={css.homeStatBarFlexShimmerDiv}> 
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemTwo}`}></div> 
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeTaskBtnShimmer}`}></div>
+                        <div className={css.homePlantsPairShimmerFlexDiv}> 
+                          <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemTwo}`}></div> 
+                          <div className={`${css.homePlantsPairShimmer} ${css.homeTaskBtnShimmer}`}></div>
                         </div>
                         
-                        <div className={css.homeStatBarFlexShimmerDiv}> 
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemThree}`}></div>
+                        <div className={css.homePlantsPairShimmerFlexDiv}> 
+                          <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemThree}`}></div>
                         </div> 
                       </div> 
 
                       <div className={css.homeTaskListItemShimmerDiv}> 
-                        <div className={css.homeStatBarFlexShimmerDiv}> 
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemOne}`}></div> 
+                        <div className={css.homePlantsPairShimmerFlexDiv}> 
+                          <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemOne}`}></div> 
                         </div> 
 
-                        <div className={css.homeStatBarFlexShimmerDiv}>  
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarEndShimmerThree}`}></div>
+                        <div className={css.homePlantsPairShimmerFlexDiv}>  
+                          <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairEndShimmerThree}`}></div>
                         </div> 
 
-                        <div className={css.homeStatBarFlexShimmerDiv}> 
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemTwo}`}></div> 
-                          <div className={`${css.homeStatBarItemShimmer} ${css.homeTaskBtnShimmer}`}></div>
+                        <div className={css.homePlantsPairShimmerFlexDiv}> 
+                          <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemTwo}`}></div> 
+                          <div className={`${css.homePlantsPairShimmer} ${css.homeTaskBtnShimmer}`}></div>
                         </div> 
                       </div> 
                     </div>
@@ -750,44 +752,44 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
             {isTaskLoading ? ( 
               <> 
                 <div className={css.homeSuggestionShimmerDivOne}>
-                  <div className={css.homeStatBarFlexShimmerDiv}>  
-                    <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarEndShimmerFour}`}></div>
+                  <div className={css.homePlantsPairShimmerFlexDiv}>  
+                    <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairEndShimmerFour}`}></div>
                   </div> 
 
-                  <div className={css.homeStatBarFlexShimmerDiv}> 
-                    <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemOne}`}></div> 
+                  <div className={css.homePlantsPairShimmerFlexDiv}> 
+                    <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemOne}`}></div> 
                   </div> 
  
-                  <div className={css.homeStatBarFlexShimmerDiv}> 
-                    <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemThree}`}></div>
+                  <div className={css.homePlantsPairShimmerFlexDiv}> 
+                    <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemThree}`}></div>
                   </div> 
 
-                  <div className={css.homeStatBarFlexShimmerDiv}> 
-                    <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarEndShimmerTwo}`}></div> 
+                  <div className={css.homePlantsPairShimmerFlexDiv}> 
+                    <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairEndShimmerTwo}`}></div> 
                   </div>
                 </div>
 
                 <div className={css.homeSuggestionShimmerDivOne}>
-                  <div className={css.homeStatBarFlexShimmerDiv}> 
-                    <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemOne}`}></div> 
+                  <div className={css.homePlantsPairShimmerFlexDiv}> 
+                    <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemOne}`}></div> 
                   </div> 
 
-                  <div className={css.homeStatBarFlexShimmerDiv}>  
-                    <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarEndShimmerFour}`}></div>
+                  <div className={css.homePlantsPairShimmerFlexDiv}>  
+                    <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairEndShimmerFour}`}></div>
                   </div> 
  
-                  <div className={css.homeStatBarFlexShimmerDiv}> 
-                    <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemThree}`}></div>
+                  <div className={css.homePlantsPairShimmerFlexDiv}> 
+                    <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemThree}`}></div>
                   </div> 
 
-                  <div className={css.homeStatBarFlexShimmerDiv}> 
-                    <div className={`${css.homeStatBarItemShimmer} ${css.homeStatBarItemTwo}`}></div>  
+                  <div className={css.homePlantsPairShimmerFlexDiv}> 
+                    <div className={`${css.homePlantsPairShimmer} ${css.homePlantsPairItemTwo}`}></div>  
                   </div>
                 </div>
               </>
                       
             ) : ( suggestionTasks.length > 0 || !viewHintTasks ? (
-              suggestionTasks.map((task) => (
+              suggestionTasks.map((plant) => (
                 <div className={`${css.homeTaskSuggestionItem}`}>
                   <div className={css.homeTaskSuggestionFlexDiv}>
                     <img  
@@ -795,26 +797,60 @@ const Home: React.FC<ProfileProps> = ({ profile }) => {
                       className = {css.homeTaskSuggestionIcon}
                       src       = {profile.displayTheme === 'light' ? plantGrowthLightSvg : plantGrowthDarkSvg} 
                     />
-                    <p className={css.homeTaskSuggestionPlantName}>{task.plant.plantName}</p>
+                    <p className={css.homeTaskSuggestionPlantName}>{plant.commonName}</p>
                   </div>
-                
-                  <p className={css.homeTaskSuggestionDescription}>{task.description}</p>
+
+                  <div className={css.homeTaskSuggestionBtnFlexDiv}> 
+                    <div  
+                      className = {css.homePlantTaskIndicatorDiv}
+                      onClick   = {() => handleClickPlant(plant.displayName ?? plant.commonName)}
+                    >
+                      <img  
+                        alt       = "home-plant-info"
+                        className = {css.homePlantTaskIndicatorIcon} 
+                        src       = {profile.displayTheme === 'light' ? homeplantInfoLightIcon : homeplantInfoDarkIcon}  
+                        />
+
+                      <p className={css.homePlantTaskIndicatorText}>Details</p>
+                    </div>
+
+                    <button
+                      className={css.homePlantsPairBookmarkBtn}
+                      onClick={() => toggleBookmark({ title: plant.commonName, context: plant.taskRecommendations, type: 'task', })}
+                    >
+                      <img 
+                        className={css.homeItemBookmarkBtnIcon} 
+                        src={
+                          bookmarkedTitles.has(plant.commonName)
+                            ? profile.displayTheme === 'light' ? bookmarkLightIcon : bookmarkDarkIcon
+                            : profile.displayTheme === 'light' ? unBookmarkLightIcon : unBookmarkDarkIcon
+                        } 
+                        alt="" 
+                      />
+                    </button>
+                  </div>
+ 
+                  <p className={css.homeTaskSuggestionDescription}>{plant.taskRecommendations}</p>
                 </div>
                ))
-              ) : (
-                <div className={`${css.homeTaskSuggestionItem}`}>
-                  <div className={css.homeTaskSuggestionFlexDiv}>
-                    <img 
-                      alt       = "home-task-suggestion-svg" 
-                      className = {css.homeTaskSuggestionIcon}
-                      src       = {profile.displayTheme === 'light' ? plantGrowthLightSvg : plantGrowthDarkSvg} 
-                    />
-                    <p className={css.homeTaskSuggestionPlantName}>Planting tips</p>
-                  </div>
-                
-                  <p className={css.homeTaskSuggestionDescription}>Tailored plant care tips appear here.</p>
+            ) : (
+              <div className={`${css.homeTaskSuggestionItem}`}>
+                <div className={css.homeTaskSuggestionFlexDiv}>
+                  <img 
+                    alt       = "home-task-suggestion-svg" 
+                    className = {css.homeTaskSuggestionIcon}
+                    src       = {profile.displayTheme === 'light' ? plantGrowthLightSvg : plantGrowthDarkSvg} 
+                  />
+                  <p className={css.homeTaskSuggestionPlantName}>Planting tips</p>
                 </div>
-             ))}
+              
+                <p className={css.homeTaskSuggestionDescription}>
+                  Find your personalized plant growing tips based on your recent searches, favorite plants, and local climate.
+                  If nothing shows up here, the recommendation feature might be temporarily unavailable.
+                  Make sure you’ve selected your location and added plant interests to get the best matches.
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

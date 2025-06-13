@@ -1,6 +1,6 @@
 import React from "react";
-import { ModalProps } from '../types/index';
 import css from "../Modal/index.module.css";
+import { type ModalProps } from '../types/index'; 
 import closeDarkIcon from '../assets/closeDark.svg';
 import closeLightIcon from '../assets/closeLight.svg';
 

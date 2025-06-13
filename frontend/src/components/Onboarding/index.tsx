@@ -1,5 +1,8 @@
 import {useState, useEffect } from 'react';
+import { LocationDropdown } from './dropdown';
+import { useAuth } from '../Auth/authContext';
 import { useNavigate } from 'react-router-dom'; 
+import type { CityProps } from '../types/index';
 import css from "../Onboarding/index.module.css";
 import onBoardingTaskImg from '../assets/onBoardingTaskImg.png';  
 import onBoardingPlantIcon from '../assets/onBoardingPlant.png';
@@ -7,11 +10,131 @@ import onBoardingUserIcon from '../assets/onBoardingUserIcon.jpg';
 
 
 const Onboarding = () => {
-    const navigate                      = useNavigate();
-    const [theme, setTheme]             = useState('light');
-    const [currentItem, setCurrentItem] = useState(0);
 
-    
+    const { accessToken }                 = useAuth();
+    const navigate                        = useNavigate();
+    const [theme, setTheme]               = useState('light');
+    const [currentItem, setCurrentItem]   = useState(0);
+    const [cities, setCities]             = useState<CityProps[]>([]);
+    const [selectedCity, setSelectedCity] = useState<CityProps | null>(null);
+    const [plants, setPlants]             = useState<string[]>([]);
+    const [selected, setSelected]         = useState<string[]>([]);
+
+
+    useEffect(() => {
+    const loadCSV = async () => {
+        try {
+        const response = await fetch('/static/assets/cities-precipitation.csv');
+        const text = await response.text();
+        const lines = text.trim().split('\n');
+
+        const parsed: CityProps[] = lines.slice(1).map(line => {
+            const values: string[] = [];
+            let current = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } 
+
+                else if (char === ',' && !inQuotes) {
+                    values.push(current.trim());
+                    current = '';
+                } 
+                
+                else { current += char; }
+            }
+            values.push(current.trim()); 
+
+            return { country: values[0], name: values[1], precipitationClass: values[3] };
+        });
+
+        setCities(parsed);
+        } catch (error) {
+        console.error("Error loading city CSV:", error);
+        }
+    };
+
+    loadCSV();
+    }, []);
+
+
+    const handleUserClimate = async () => {
+        if (!selectedCity) {
+        alert('Please select a city');
+        return;
+        }
+ 
+        try { 
+            const response = await fetch('/api/v1/profiles/climate/', {
+                method  : 'PATCH',
+                headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
+                body    : JSON.stringify({ 
+                    countryName: selectedCity.country, 
+                    cityName: selectedCity.name, 
+                    precipitation: selectedCity.precipitationClass 
+                })
+               
+            });
+
+            if (!response.ok) {
+              const errorData = await response.json();
+                console.error('Failed to update location:', errorData);
+            } 
+        } 
+        catch (error) { console.error('An error occurred while saving city:', error); }
+    };
+
+
+    useEffect(() => {
+        const fetchPlantInterests = async () => {
+
+            try {
+                const response = await fetch('/api/v1/profiles/plants/interests/', {
+                    method  : 'GET',
+                    headers : {'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Failed to fetch plants list:', errorData);
+                    return;
+                }
+
+                const data = await response.json();
+                setPlants(data); 
+            } 
+            catch (error) { console.error('Error fetching plants:', error); }
+        };
+
+    fetchPlantInterests();
+    }, []);
+
+
+    const togglePlant = (name: string) => {
+        setSelected(prev =>
+            prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name]
+        );
+    }
+
+
+    const updateUserPlantInterests = async () => { 
+  
+        try {
+            await fetch('/api/v1/profiles/plants/choice/', {
+                method      : 'PATCH',
+                headers     : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
+                credentials : 'include',
+                body        : JSON.stringify({ selectedPlants: selected })
+            }) 
+        }
+
+        catch (error) { console.error('Failed to update user plant interests: ', error) } 
+    }
+
+
     useEffect(() => {
         const savedTheme = localStorage.getItem('themePreference');
         if (savedTheme) { setTheme(savedTheme); }
@@ -30,38 +153,19 @@ const Onboarding = () => {
     }, [theme]);
 
 
-    useEffect(() => {
-        (async () => {
-        try {
-            const token    = localStorage.getItem('token');
-            await fetch('http://127.0.0.1:8000/api/v1/home/plants/', {
-            method      : 'POST',
-            headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-            credentials : 'include',
-            })
-        }
-        catch (error) { console.error('Error fetching plants: ', error); }
-        })();
-    }, []);
-
-
-    useEffect(() => {
-        (async () => {
-        try {
-            const token    = localStorage.getItem('token');
-            await fetch('http://127.0.0.1:8000/api/v1/tasks/create/suggestions/', {
-                method      : 'POST',
-                headers     : { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-                credentials : 'include',
-            });
-        }
-        catch (error) { console.error('Error creating plant recommendations: ', error); }
-        })();
-    }, [currentItem]);
-
-
-    const handleNextClick = () => {
-        if   (currentItem === 3) { navigate('/'); } 
+    const handleNextClick = async() => {
+        if (currentItem === 3) { 
+           if (!selectedCity || selected.length === 0) return;
+           
+           try {
+            await handleUserClimate();
+            await updateUserPlantInterests()
+            navigate('/');
+           }
+        
+           catch(error) { console.error('Failed to complete onboarding:', error); }
+        
+        } 
         else { setCurrentItem((prevIndex) => (prevIndex + 1) % 4); }
     };
 
@@ -121,34 +225,24 @@ const Onboarding = () => {
                                     </div>
                                 )}
 
-                                {currentItem === 3 && (
-                                    <div className={`${css.onboardingInboxDiv} ${css.fadeIn}`}>
-                                        <div className={css.onboardingGraphDiv}>
-                                            <div className={css.onboardingGraphBarDiv}>
-                                                <div className={`${css.onboardingGraphLevel} ${css.levelOne}`}></div>
+                                {currentItem === 3 && ( 
+                                    <div className={css.onboardingPreference}>
+                                        <LocationDropdown theme={theme} cities={cities} selectedCity={selectedCity} onChange={setSelectedCity} />
+                                      
+                                        <div className={css.onboardingPlantGridDiv}>
+                                            <div className={css.onboardingPlantGrid}>
+                                                {plants.map((plant, index) => (
+                                                    <div 
+                                                        key       = {index}
+                                                        onClick   = {() => togglePlant(plant)}
+                                                        className = {`${css.onboardingPlantItemDiv} ${selected.includes(plant) ? css.selectedPlant : ''}`}
+                                                    >
+                                                        {plant}
+                                                    </div>
+                                                ))}
                                             </div>
-                                            <div className={css.onboardingGraphBarDiv}>
-                                            <div className={`${css.onboardingGraphLevel} ${css.levelTwo}`}></div>
-                                            </div>
-                                            <div className={css.onboardingGraphBarDiv}>
-                                                <div className={`${css.onboardingGraphLevel} ${css.levelThree}`}></div>
-                                            </div>
-                                            <div className={css.onboardingGraphBarDiv}>
-                                                <div className={`${css.onboardingGraphLevel} ${css.levelFour}`}></div>
-                                            </div>
-                                        </div>
-                                
-                                        <div className={css.onboardingInboxContentDiv}>
-                                            <div className={css.onboardingGraphTextDiv}>
-                                                <p className={css.onboardingInboxPect}>30 days</p>
-                                                <p className={css.onboardingInboxTime}>lettuce</p>
-                                            </div>
-                                            <div className={css.onboardingGraphTextDiv}>
-                                                <p className={css.onboardingInboxPect}>100 days</p>
-                                                <p className={css.onboardingInboxTime}>lemon cucumbers</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        </div> 
+                                    </div> 
                                 )}
                             </div>
                         </div>
@@ -159,7 +253,7 @@ const Onboarding = () => {
                             {currentItem === 0 && (
                                 <div className={`${css.onboardingComponentTextDiv} ${css.fadeIn}`}>
                                     <p className={css.onboardingTitle}>Connect & Grow</p>
-                                    <p className={css.onboardingDescription}>Join niche groups for pest control, irrigation hacks, and more — connect, share, and grow!</p>
+                                    <p className={css.onboardingDescription}>Join niche groups for pest control, irrigation hacks, and more - connect, share, and grow!</p>
                                 </div>
                             )}
 
@@ -172,20 +266,26 @@ const Onboarding = () => {
 
                             {currentItem ===2 && (
                                 <div className={`${css.onboardingComponentTextDiv} ${css.fadeIn}`}>
-                                    <p className={css.onboardingTitle}>Green Tips</p>
-                                    <p className={css.onboardingDescription}>Curated planting tips to enhance your farming experience.</p>
+                                    <p className={css.onboardingTitle}>Personalized planting tips</p>
+                                    <p className={css.onboardingDescription}>Get smart planting tips curated from your favorite plants, climate zone, and search history.</p>
                                 </div>
                             )}
 
                             {currentItem === 3 && (
                                 <div className={`${css.onboardingComponentTextDiv} ${css.fadeIn}`}>
-                                    <p className={css.onboardingTitle}>Growth Visuals</p>
-                                    <p className={css.onboardingDescription}>Explore the growth journey of diverse crops.</p>
+                                    <p className={css.onboardingTitle}>Where Are You Growing?</p>
+                                    <p className={css.onboardingDescription}>Start by selecting your growing region and a few plants you care about.</p>
                                 </div>
                             )}
                         </div>
 
-                        <button className={css.onboardingNextBtn} onClick={handleNextClick}>Next</button>
+                        <button 
+                            className= {css.onboardingNextBtn} 
+                            onClick  = {handleNextClick}
+                            disabled = {currentItem === 3 && (!selectedCity || selected.length === 0)} 
+                        >
+                        Next
+                        </button>
                     </div>
                 </div>
             </div>

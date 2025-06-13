@@ -1,9 +1,9 @@
 import Modal from '../Modal';
 import { useState } from 'react';
 import css from '../MediaModal/index.module.css';
-import { MediaModalProps } from '../types/index'; 
 import fileDarkSvg from '../assets/fileDark.svg'; 
 import fileLightSvg from '../assets/fileLight.svg';
+import type { MediaModalProps } from '../types/index';  
 import closeLightIcon from '../assets/closeLight.svg';
 
 

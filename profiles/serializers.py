@@ -1,3 +1,4 @@
+from home.serializers import CitySerializer
 from .models import Profile
 from rest_framework import serializers
 from django.core.validators import EmailValidator
@@ -38,7 +39,9 @@ class ProfileSerializer(serializers.ModelSerializer):
             'password_entirely_alpha'  : 'Password cannot be entirely alphabetic.',
         }
     )
-    
+
+    climate = CitySerializer(required=False, allow_null=True)
+
     class Meta:
         model  = Profile
         fields = [
@@ -53,7 +56,10 @@ class ProfileSerializer(serializers.ModelSerializer):
             'newChat', 
             'visibility', 
             'guestMode', 
-            'receiveMails', 
+            'receiveMails',  
+            'climate', 
+            'plantInterests', 
+            'plantHistory',  
             'created'
         ]
         extra_kwargs = { 'password' : {'write_only' : True} }
@@ -68,7 +74,6 @@ class ProfileSerializer(serializers.ModelSerializer):
             if Profile.objects.filter(email=value).exists():
                 raise serializers.ValidationError('This email is already taken.')
         return value
-
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)

@@ -1238,6 +1238,50 @@
     background: linear-gradient(209deg, #111111 0%, #0A0A0A 50%, #0A0A0A 100%);
 }
 
+.forumPlantSectionDiv {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin: 0px;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 10px 0px 10px 0px; 
+}
+
+.lightTheme .forumPlantSectionDiv {
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
+.darkTheme .forumPlantSectionDiv {
+    background: #0A0A0A;
+    border: 1px solid #151515;
+}
+
+.forumPlantSectionTextDiv {
+    display: flex; 
+    gap: 10px;
+    padding: 0px; 
+    width: fit-content;
+    align-items: center;
+    margin: 0px 10px 0px 10px;   
+    justify-content: flex-start; 
+}
+
+.lightTheme .forumPlantSectionValue { 
+    all: unset; 
+    color: #424242; 
+    margin: 0px 0px 0px 10px;
+}
+
+.darkTheme .forumPlantSectionValue { 
+    all: unset; 
+    color: #757575; 
+    margin: 0px 0px 0px 10px;
+}
+
+.forumMessagePlantListItem { all: unset; }
+
 .forumMessageReceiverTaskDiv { margin: 5px 0px 5px 40px; }
 
 .forumMessageProfileTaskDiv { margin: 0px 0px 5px 0px; }
@@ -1252,7 +1296,7 @@
     border: 1px solid #202020;
 }
  
-.forumMessageTaskHeader, .forumMessageTaskDate, .forumMessageTaskText {
+.forumMessageTaskHeader, .forumMessageTaskDate, .forumMessageTaskText, .forumMessagePlantListItem {
     margin: 0px;
     width: 100%; 
     padding: 0px;
@@ -1261,13 +1305,14 @@
     font-weight: 400;
     line-height: 20px;
     font-style: normal;
-    border-radius: 8px; 
-    margin: 0px 0px 0px 0px;
+    border-radius: 8px;  
 }
 
-.lightTheme .forumMessageTaskHeader { color: #424242; }
+.forumMessagePlantListItem { margin: 0px 0px 0px 10px; }
+ 
+.lightTheme .forumMessageTaskHeader, .lightTheme .forumMessagePlantListItem { color: #424242; }
 
-.darkTheme .forumMessageTaskHeader { color: #757575; }
+.darkTheme .forumMessageTaskHeader, .darkTheme .forumMessagePlantListItem { color: #757575; }
 
 .lightTheme .forumMessageTaskDate { color: #9E9E9E; }
 
