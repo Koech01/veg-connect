@@ -5,7 +5,6 @@ from rest_framework import status
 from django.db import transaction
 from dateutil.parser import parse
 from profiles.models import Profile
-from django.utils.timezone import now
 from .serializers import TaskSerializer 
 from rest_framework.views import APIView
 from profiles.auth import JWTAuthentication
@@ -13,6 +12,7 @@ from rest_framework.response import Response
 from forum.serializers import GroupSerializer
 from forum.models import Message, GroupMessage
 from profiles.serializers import ProfileSerializer
+from django.utils.timezone import now, make_aware, is_naive
 
 
 # Create your views here.
@@ -43,9 +43,15 @@ class CreateTaskView(APIView):
  
             try:
                 scheduledDate = parse(taskScheduledTime)
-                currentTime   = now()
-                if not (currentTime <= scheduledDate <= currentTime + timedelta(days=365)):  
+ 
+                if is_naive(scheduledDate):
+                    scheduledDate = make_aware(scheduledDate)
+
+                currentTime = now()
+
+                if not (currentTime <= scheduledDate <= currentTime + timedelta(days=365)):
                     return Response({'error': 'Scheduled time cannot be in the past.'}, status=status.HTTP_400_BAD_REQUEST)
+                
             except Exception:
                 return Response({'error': 'Invalid scheduled time format.'}, status=status.HTTP_400_BAD_REQUEST)
 

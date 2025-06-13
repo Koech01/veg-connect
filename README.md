@@ -63,13 +63,13 @@ npm run build
 cd ..
 ```
 
-# Database Migrations.
+<!-- # Database Migrations.
 
 1. Run Django migrations:
 ```bash
 python manage.py makemigrations
 python manage.py migrate 
-``` 
+```  -->
 
 # Running the Application.
 
