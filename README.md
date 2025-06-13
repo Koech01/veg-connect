@@ -1,5 +1,5 @@
 # Veg-Connect Setup Guide
-A data-driven React-Django app that fetches plant data from OpenFarm’s API, allowing users to schedule and share farming tasks in topic-specific communities while accessing plant growth insights and growing tips through features like bar graphs. Additionally, it incorporates a robust real-time chat system utilizing WebSocket technology for instantaneous communication and seamless collaboration among community members.
+A data-driven React-Django app that delivers a content-based recommendation system responsible for suggesting plant pairings that work well together; such as combining nitrogen fixers with nitrogen feeders and tailored planting tasks with instructions for each suggested crop, allowing users to schedule and share farming tasks in topic-specific communities. 
 
 # Table of Contents
     - Prerequisites.
