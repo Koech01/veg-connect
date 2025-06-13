@@ -1,5 +1,5 @@
 # Veg-Connect Setup Guide
-A data-driven React-Django app that delivers a content-based recommendation system responsible for suggesting plant pairings that work well together; such as combining nitrogen fixers with nitrogen feeders and tailored planting tasks with instructions for each suggested crop, allowing users to schedule and share farming tasks in topic-specific communities. 
+A data-driven React-Django app that delivers a content-based recommendation system responsible for suggesting plant pairings that work well together, such as combining nitrogen fixers with nitrogen feeders and tailored planting tasks with instructions for each suggested crop. It allows users to manage and share farming tasks in topic-specific communities via a WebSocket chat. 
 
 # Table of Contents
     - Prerequisites.
