@@ -10,6 +10,7 @@ from forum.models import GroupMessage
 from plants.utils import searchPlants
 from rest_framework.views import APIView 
 from profiles.auth import JWTAuthentication
+from .serializers import BookmarkSerializer
 from rest_framework.response import Response
 from tasks.serializers import TaskSerializer 
 from django.utils.timezone import now, timedelta
@@ -19,8 +20,6 @@ from rest_framework.permissions import IsAuthenticated
 from verdant.companionContext import generateCompanionDescription
 from verdant.recommendations import getPersonalizedSimilarPlants, recommendCompanionPair
 
-
-from .serializers import BookmarkSerializer
 
 # Create your views here.
 class HomeView(APIView):

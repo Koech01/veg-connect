@@ -1,6 +1,6 @@
-from home.serializers import CitySerializer
 from .models import Profile
 from rest_framework import serializers
+from home.serializers import CitySerializer
 from django.core.validators import EmailValidator
 from rest_framework.validators import UniqueValidator
 from django.core.validators import MinLengthValidator
@@ -75,10 +75,19 @@ class ProfileSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('This email is already taken.')
         return value
 
-    def create(self, validated_data):
+    def create(self, validated_data): 
+        plantInterests = validated_data.pop('plantInterests', [])
+        plantHistory   = validated_data.pop('plantHistory', [])
+
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)
-        if password is not None:
+
+        if password:
             instance.set_password(password)
         instance.save()
+ 
+        if plantInterests:
+            instance.plantInterests.set(plantInterests)
+        if plantHistory:
+            instance.plantHistory.set(plantHistory) 
         return instance

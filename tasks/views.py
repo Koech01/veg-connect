@@ -4,7 +4,7 @@ from forum.models import Group
 from rest_framework import status
 from django.db import transaction
 from dateutil.parser import parse
-from profiles.models import Profile
+from profiles.models import Profile 
 from .serializers import TaskSerializer 
 from rest_framework.views import APIView
 from profiles.auth import JWTAuthentication

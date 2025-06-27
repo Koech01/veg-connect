@@ -199,31 +199,32 @@ class ProfileUpdatePlantInterestsView(APIView):
             profile = request.user
             for plant_name in selectedPlants:
                 plantRow = plantDf[
-                    (plantDf['Common name'].str.strip().str.lower() == plant_name.strip().lower()) |
-                    (plantDf['Scientific name'].str.strip().str.lower() == plant_name.strip().lower()) |
-                    (plantDf['Alternate name'].str.lower().str.contains(plant_name.strip().lower()))
+                    (plantDf['Common name'].astype(str).str.strip().str.lower() == plant_name.strip().lower()) |
+                    (plantDf['Scientific name'].astype(str).str.strip().str.lower() == plant_name.strip().lower()) |
+                    (plantDf['Alternate name'].astype(str).str.lower().str.contains(plant_name.strip().lower(), na=False))
                 ]
-                
+
                 if plantRow.empty:
-                    continue  
+                    continue
 
                 row = plantRow.iloc[0]
+
                 plantObj, created = Plant.objects.get_or_create(
-                    commonName=row['Common name'].strip(),
-                    scientificName=row['Scientific name'].strip(),
+                    commonName=str(row.get('Common name', '')).strip(),
+                    scientificName=str(row.get('Scientific name', '')).strip(),
                     defaults={
-                        'family': row.get('Family', 'Unknown').strip(),
-                        'width': float(row.get('Width', 0.0)),
-                        'height': float(row.get('Height', 0.0)),
-                        'soilpH': row.get('Soil pH', '6.0 - 7.0').strip(),
-                        'usdaHardinessZone': row.get('USDA Hardiness Zone', 'Unknown').strip(),
-                        'waterRequirement': row.get('Water Requirement', 'Moist').strip(),
-                        'utility': row.get('Utility', '').strip(),
-                        'alternateNames': row.get('Alternate name', '').strip(),
-                        'taskRecommendations': row.get('Task Recommendations.', '').strip(),
+                        'family': str(row.get('Family', 'Unknown')).strip(),
+                        'width': float(row.get('Width', 0.0) or 0.0),
+                        'height': float(row.get('Height', 0.0) or 0.0),
+                        'soilpH': str(row.get('Soil pH', '6.0 - 7.0')).strip(),
+                        'usdaHardinessZone': str(row.get('USDA Hardiness Zone', 'Unknown')).strip(),
+                        'waterRequirement': str(row.get('Water Requirement', 'Moist')).strip(),
+                        'utility': str(row.get('Utility', '')).strip(),
+                        'alternateNames': str(row.get('Alternate name', '')).strip(),
+                        'taskRecommendations': str(row.get('Task Recommendations.', '')).strip(),
                     }
                 )
- 
+
                 for lCycle in str(row.get('Life cycle', '')).split(','):
                     name = lCycle.strip()
                     if name:

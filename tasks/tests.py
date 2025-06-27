@@ -1,11 +1,10 @@
 import json
+from tasks.models import Tasks 
 from forum.models import Group
 from django.urls import reverse
-from plants.models import Plants
 from django.utils import timezone
 from rest_framework import status 
 from rest_framework.test import APITestCase
-from tasks.models import Tasks, TaskSuggestion 
 from profiles.models import Profile, ProfileToken
 from profiles.auth import generateAccessToken, generateRefreshToken 
 
@@ -35,66 +34,6 @@ class AuthenticationTestCase(APITestCase):
             title='Test title.',
             description='A test task description.',
             scheduledTime=timezone.now() + timezone.timedelta(days=2)
-        )
-
-        self.plant1 = Plants.objects.create( 
-            plantName="Tomato",
-            binomialName=f"Binomial Tomato",
-            description=f"Description Tomato",
-            sunRequirements="Full sun",
-            growingDays="110 days",
-            sowingMethod="Direct sow",
-            spreadDiameter="20cm",
-            rowSpacing="30cm",
-            height="50cm" 
-        )
-
-        self.plant2 = Plants.objects.create(
-            plantName="Cucumber", 
-            binomialName=f"Binomial Cucumber",
-            description=f"Description Cucumber",
-            sunRequirements="Partial sun",
-            growingDays="90 days",
-            sowingMethod="Plogh",
-            spreadDiameter="25cm",
-            rowSpacing="35cm",
-            height="55cm"  
-        )
-
-        self.plant3 = Plants.objects.create(
-            plantName="Carrot",
-            binomialName="Daucus carota",
-            description="Root vegetable, usually orange in color.",
-            sunRequirements="Full sun",
-            growingDays="70 days",
-            sowingMethod="Direct sow",
-            spreadDiameter="5cm",
-            rowSpacing="10cm",
-            height="30cm"
-        )
-
-        self.suggestion1 = TaskSuggestion.objects.create(
-            plant=self.plant1,
-            taskType='Watering',
-            description='Water tomatoes in the evening.'
-        )
-
-        self.suggestion2 = TaskSuggestion.objects.create(
-            plant=self.plant2,
-            taskType='Harvesting',
-            description='Harvesting Cucumbers.'
-        )
-
-        self.suggestion3 = TaskSuggestion.objects.create(
-            plant=self.plant3,
-            taskType='Weeding',
-            description='Spraying pesticides on carrot nursery.'
-        )
-
-        self.suggestionDuplicate = TaskSuggestion.objects.create(
-            plant=self.plant1,
-            taskType='Watering',
-            description='Water tomatoes in the evening.'
         )
 
         self.user2 = Profile.objects.create(
@@ -130,32 +69,6 @@ class AuthenticationTestCase(APITestCase):
 
         self.group2.admins.set([self.user2.id, self.user3.id])
         self.group2.members.set([self.user.id, self.user2.id, self.user3.id])
-
-
-class CreateTaskSuggestionViewTestCase(AuthenticationTestCase):
-    def setUp(self):
-        super().setUp()
-        self.url = reverse('createTaskSuggestion')
-
-    def test_create_task_suggestions(self): 
-        response = self.client.post(self.url)
-
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        expectedTaskProps = {"Growing Days", "Full Sun", "Partial Sun", "Row Spacing", "Spread Diameter", "Height"}
-        taskTypes = TaskSuggestion.objects.exclude(
-            id__in=[self.suggestion1.id, self.suggestion2.id, self.suggestion3.id, self.suggestionDuplicate.id]
-        ).values_list('taskType', flat=True)
-        self.assertTrue(set(taskTypes).issubset(expectedTaskProps))
-
-        for plant in [self.plant1, self.plant2]:
-            for taskType in taskTypes:
-                count = TaskSuggestion.objects.filter(plant=plant, taskType=taskType).count()
-                self.assertLessEqual(count, 1)
-
-    def test_create_task_suggestions_unauthenticated(self):
-        self.client.credentials() 
-        response = self.client.post(self.url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
 class CreateTaskViewTestCase(AuthenticationTestCase):
@@ -233,28 +146,50 @@ class ProfileTasksViewTestCase(AuthenticationTestCase):
     def setUp(self):
         super().setUp()
         self.url = reverse('allTasksView')
+        self.now = timezone.now()
 
-    def test_auth_user_gets_tasks_and_unique_suggestions(self):
+        Tasks.objects.all().delete()
+ 
+        self.task1 = Tasks.objects.create(
+            owner=self.user,
+            title='Water Plants',
+            description='Daily watering routine.',
+            scheduledTime=self.now + timezone.timedelta(days=1)
+        )
+        self.task2 = Tasks.objects.create(
+            owner=self.user,
+            title='Fertilize Soil',
+            description='Monthly soil fertilization.',
+            recurring=True,
+            recurringType='monthly',
+            scheduledTime=self.now + timezone.timedelta(days=30)
+        )
+ 
+        Tasks.objects.create(
+            owner=self.user2,
+            title='User2 Task',
+            description='Should not be visible to self.user.',
+            scheduledTime=self.now + timezone.timedelta(days=2)
+        )   
+
+    def test_get_tasks_success_authenticated(self):
         response = self.client.get(self.url)
-
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('tasks', response.data)
-        self.assertIn('suggestions', response.data)
+        self.assertEqual(len(response.data), 2)
 
-        self.assertEqual(len(response.data['tasks']), 1)
-        self.assertEqual(response.data['tasks'][0]['title'], self.task.title)
+        taskTitles = {task['title'] for task in response.data}
+        self.assertIn('Water Plants', taskTitles)
+        self.assertIn('Fertilize Soil', taskTitles)
+        self.assertNotIn('User2 Task', taskTitles)
 
-        suggestions = response.data['suggestions']
-        self.assertLessEqual(len(suggestions), 2)
+    def test_get_empty_tasks(self):
+        Tasks.objects.filter(owner=self.user).delete()
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, [])
 
-        seen = set()
-        for suggestion in suggestions:
-            key = (suggestion['plant']['plantName'], suggestion['taskType'])
-            self.assertNotIn(key, seen)
-            seen.add(key)
-
-    def test_unauth_user_cannot_access_endpoint(self):
-        self.client.credentials()  # Remove auth 
+    def test_get_tasks_unauthenticated(self):
+        self.client.credentials()
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
@@ -279,30 +214,12 @@ class ClickedTaskViewTestCase(AuthenticationTestCase):
         self.assertEqual(response.data['error'], 'Task not found.')
 
     def test_unauth_user_cannot_access_endpoint(self):
-        self.client.credentials()  # Remove auth
+        self.client.credentials()  
         url = reverse('clickedTaskView', kwargs={'taskId': self.task.id})
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-
-class MobileTaskInsightViewTestCase(AuthenticationTestCase):
-    def setUp(self):
-        super().setUp()
-        self.url = reverse('mobileTasksView')
-
-    def test_get_task_insight(self):
-        response = self.client.get(self.url)
-
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('suggestions', response.data)
-        self.assertEqual(len(response.data['suggestions']), 3)
-
-    def test_unauth_user_cannot_access_endpoint(self):
-        self.client.credentials()
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-
+ 
 class TaskCompleteToggleViewTestCase(AuthenticationTestCase):
     def setUp(self):
         super().setUp()

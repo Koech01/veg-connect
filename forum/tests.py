@@ -33,7 +33,6 @@ class AuthTestCase(APITestCase):
 
 
 class UserChatsViewTestCase(APITestCase):
-
     def setUp(self):
         self.user = Profile.objects.create_user(
             username='testuser',
@@ -97,7 +96,6 @@ class UserChatsViewTestCase(APITestCase):
 
 
 class CreateGroupViewTestCase(AuthTestCase):
-
     def setUp(self):
         super().setUp()
         self.url = reverse('createGroupView')
@@ -205,7 +203,100 @@ class JoinGroupViewTestCase(AuthTestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
-class GroupUpdateViewTestCase(AuthTestCase):
+class GroupRequestViewTestCase(AuthTestCase):
+    def setUp(self):
+        super().setUp()
+
+        self.firstUser = Profile.objects.create_user(
+            username='firstUser',
+            email='firstUser@example.com',
+            password='Testpass@123'
+        )
+        self.group = Group.objects.create(name='RequestedGroup')
+        self.group.admins.add(self.user)
+        self.group.members.add(self.user) 
+
+    def test_accept_request(self):
+        self.group.request.add(self.firstUser)
+
+        url = reverse('groupRequestView', kwargs={ 'requestType': 'accept', 'groupId': self.group.id, 'profileId': self.firstUser.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn(self.firstUser, self.group.members.all())
+        self.assertNotIn(self.firstUser, self.group.request.all())
+
+    def test_decline_request(self):
+        self.group.request.add(self.firstUser)
+
+        url = reverse('groupRequestView', kwargs={'requestType': 'decline', 'groupId': self.group.id, 'profileId' : self.firstUser.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotIn(self.firstUser, self.group.request.all())
+
+    def test_elevate_member_to_admin(self):
+        self.group.members.add(self.firstUser)
+
+        url = reverse('groupRequestView', kwargs={'requestType': 'elevate', 'groupId': self.group.id, 'profileId' : self.firstUser.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn(self.firstUser, self.group.admins.all())
+    
+    def test_remove_user_as_member_and_admin(self):
+        self.group.members.add(self.firstUser)
+        self.group.admins.add(self.firstUser)
+
+        url = reverse('groupRequestView', kwargs={'requestType': 'remove', 'groupId': self.group.id, 'profileId' : self.firstUser.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotIn(self.firstUser, self.group.members.all())
+        self.assertNotIn(self.firstUser, self.group.admins.all())
+
+    def test_admin_exit_assign_new(self):
+        self.group.members.add(self.firstUser)
+
+        url = reverse('groupRequestView', kwargs={'requestType': 'exit', 'groupId': self.group.id, 'profileId' : self.user.id })
+
+        response = self.client.patch(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.group.refresh_from_db()
+
+        self.assertNotIn(self.user, self.group.members.all())
+        self.assertIn(self.firstUser, self.group.members.all())
+        self.assertIn(self.firstUser, self.group.admins.all())
+
+    def test_demote_admin(self):
+        self.group.members.add(self.firstUser)
+        self.group.admins.add(self.firstUser)
+
+        url = reverse('groupRequestView', kwargs={ 'requestType': 'demote', 'groupId': self.group.id, 'profileId' : self.firstUser.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotIn(self.firstUser, self.group.admins.all())
+
+    def test_group_not_found(self):
+        self.group.request.add(self.firstUser)
+
+        url = reverse('groupRequestView', kwargs={'requestType': 'accept', 'groupId': 999, 'profileId' : self.firstUser.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_group_unauth_request(self):
+        self.group.request.add(self.firstUser)
+        self.client.credentials()
+
+        url = reverse('groupRequestView', kwargs={'requestType': 'accept', 'groupId': self.group.id, 'profileId' : self.firstUser.id})
+
+        response = self.client.patch(url)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+
+class GroupUpdateAutoJoinViewTestCase(AuthTestCase):
     def generatePhotoFile(self):
         img = Image.new('RGB', (100, 100), color='red')
         tempFile = io.BytesIO()
@@ -258,4 +349,84 @@ class GroupUpdateViewTestCase(AuthTestCase):
         self.client.credentials()
         payload = {'groupName' : 'NoAuthGroup'}
         response = self.client.patch(self.url, payload)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+
+class ClearChatTestCaseView(AuthTestCase):
+    def setUp(self):
+        super().setUp()
+
+        self.group = Group.objects.create(name='MessagesGroup')
+        self.otherUser = Profile.objects.create_user(
+            username='otherUser',
+            email='otherUser@example.com',
+            password='Testpass@123'
+        )
+
+        self.group.members.add(self.user)
+        self.group.admins.add(self.user)
+
+        self.groupMessage = GroupMessage.objects.create(
+            group=self.group,
+            sender=self.user,
+            text='Hello everyone.'
+        )
+
+        self.chatMessage = Message.objects.create(
+            user=self.user,
+            sender=self.otherUser,
+            receiver=self.user,
+            text=f"Hey {self.user}."
+        )
+
+    def test_clear_user_chat_successfully(self):
+        url = reverse('clearChatMessagesView', kwargs={'chatType': 'user', 'chatId': self.otherUser.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['message'], 'Chat cleared.')
+        self.assertIn(self.user, Message.objects.first().deletedBy.all())
+
+    def test_clear_user_chat_with_no_messages(self):
+        Message.objects.all().delete()
+
+        url = reverse('clearChatMessagesView', kwargs={'chatType': 'user', 'chatId': self.otherUser.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.data['error'], 'No messages found.')
+
+    def test_clear_user_chat_user_not_found(self):
+        url = reverse('clearChatMessagesView', kwargs={'chatType': 'user', 'chatId': 999})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_clear_group_chat_successfully(self):
+        url = reverse('clearChatMessagesView', kwargs={'chatType': 'group', 'chatId': self.group.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['message'], 'Group chat cleared.')
+        self.assertIn(self.user, GroupMessage.objects.first().deletedBy.all())
+
+    def  test_clear_group_chat_not_found(self):
+        url = reverse('clearChatMessagesView', kwargs={'chatType': 'group', 'chatId': 999})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_clear_group_chat_with_no_messages(self):
+        GroupMessage.objects.all().delete()
+
+        url = reverse('clearChatMessagesView', kwargs={'chatType': 'group', 'chatId': self.group.id})
+        response = self.client.patch(url)
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.data['error'], 'No messages found.')
+
+    def test_unauth_user_cannot_clear_chat(self):
+        self.client.credentials()
+        url = reverse('clearChatMessagesView', kwargs={'chatType': 'user', 'chatId': self.otherUser.id})
+        response = self.client.patch(url)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
