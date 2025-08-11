@@ -156,7 +156,7 @@ const Login = () => {
               src       = {theme === 'dark' ? authDemoDarkSvg : authDemoLightSvg}
               alt       = "auth-demo-icon"
             />
-            <p className={css.authDemoText}>Guest account ~ <strong>guest@vegconnect.com</strong> &nbsp;|&nbsp; password ~ <strong>!justlooking#</strong></p>
+            <p className={css.authDemoText}>Guest account <strong>&nbsp;guest@vegconnect.com</strong> &nbsp;|&nbsp; password <strong>&nbsp;!justlooking#</strong></p>
             <p className={css.authDemoText} onClick={toggleDemoVisibility}>Hide</p>
           </div>
         )}
