@@ -1,0 +1,223 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+ 
+    .bookmarkLeftChildDiv { padding: 0px 0px 0px 2%; }
+
+    .bookmarkRightChildDiv { padding: 0px 4% 0px 0px; }
+
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+   
+    .bookmarkLeftChildDiv { padding: 0px 0px 0px 2%; }
+
+    .bookmarkRightChildDiv { padding: 0px 3% 0px 0px; }
+
+}
+
+
+.bookmarkParentDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    height: 100%; 
+    border: none;
+    padding: 0px;
+    overflow: hidden;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.lightTheme .bookmarkParentDiv { background-color: #FCFCFC; }
+
+.darkTheme .bookmarkParentDiv { background-color: #000000; }
+  
+.bookmarkLeftChildDiv, .bookmarkRightChildDiv {
+    display: flex;
+    gap: 15px; 
+    width: 50%;
+    margin: 0px;
+    height: 85vh;
+    overflow-y: auto; 
+    scrollbar-width: none;  
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: flex-start;   
+}
+  
+.bookmarkLeftChildDiv::-webkit-scrollbar, .bookmarkRightChildDiv::-webkit-scrollbar { display: none; }
+ 
+.homePlantsPairShimmerParentDiv {
+    display: flex;
+    gap: 5%;
+    width: 100%;
+    height: 90%;
+    margin: 0px;
+    padding: 0px;
+    flex-direction: column; 
+}
+
+.homePlantsPairShimmerDiv {
+    display: flex;
+    gap: 10%;
+    width: 90%; 
+    margin: 0px;
+    height: 25%; 
+    border: none;
+    padding: 10px;
+    border-radius: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; 
+}
+
+.lightTheme .homePlantsPairShimmerDiv {  
+    border: 1px solid #EEEEEE;  
+    background-color: #FFFFFF;
+}
+
+.darkTheme .homePlantsPairShimmerDiv {  
+    border: 1px solid #161616;
+    background-color: #0A0A0A;
+}
+  
+.homeSuggestionShimmerDivOne {
+    display: flex;
+    gap: 10px;
+    width: 90%; 
+    height: 20vh;  
+    margin: 0px; 
+    padding: 0px;   
+    border-radius: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; 
+}
+  
+.lightTheme .homePlantsPairShimmerDiv, 
+.lightTheme .homeSuggestionShimmerDivOne {  
+    border: 1px solid #EEEEEE;  
+    background-color: #FFFFFF;
+}
+
+.darkTheme .homePlantsPairShimmerDiv, 
+.darkTheme .homeSuggestionShimmerDivOne {  
+    border: 1px solid #161616;
+    background-color: #0A0A0A;
+}
+ 
+.homePlantsPairChildDiv {
+    display: flex;
+    gap: 10px;
+    width: 92%;
+    margin: 0px;
+    transition: .3s;
+    padding: 15px 10px;
+    border-radius: 15px;
+    height: fit-content; 
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;  
+}
+ 
+.homeTaskSuggestionItem {
+    display: flex;
+    gap: 10px; 
+    width: 98%;
+    margin: 0px;  
+    padding: 15px; 
+    transition: .3s;
+    border-radius: 15px;
+    height: fit-content;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;  
+}
+
+.homeMobileTaskSuggestionItem {
+    display: flex;
+    gap: 10px; 
+    width: 85%;
+    margin: 0px;  
+    padding: 15px; 
+    transition: .3s;
+    border-radius: 15px;
+    height: fit-content;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;   
+}
+
+.lightTheme .homeTaskSuggestionItem, .lightTheme .homePlantsPairChildDiv, .lightTheme .homeMobileTaskSuggestionItem { 
+    background: #EFFEF4;
+    border: 1px solid #EEEEEE;
+    background: -webkit-linear-gradient(209deg, #EFFEF4 0%, #FFFFFF 50%, #FFFFFF 100%);
+    background: linear-gradient(209deg, #EFFEF4 0%, #FFFFFF 50%, #FFFFFF 100%);
+}
+
+.darkTheme .homeTaskSuggestionItem, .darkTheme .homePlantsPairChildDiv, .darkTheme .homeMobileTaskSuggestionItem { 
+    background: #0A0A0A;
+    border: 1px solid #161616;
+    background: -webkit-linear-gradient(209deg, #111111 0%, #0A0A0A 50%, #0A0A0A 100%);
+    background: linear-gradient(209deg, #111111 0%, #0A0A0A 50%, #0A0A0A 100%);
+}
+
+.homePlantsPairHeaderDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: space-between;  
+}
+
+.homePlantsPairPlaceholderDiv {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: flex-start;  
+}
+
+.homeTaskSuggestionFlexDiv {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: flex-start; 
+}
+
+.homeTaskSuggestionPlantName {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    font-style: normal;
+    white-space: nowrap; 
+}
+
+.lightTheme .homeTaskSuggestionPlantName { color: #171717; }
+
+.darkTheme .homeTaskSuggestionPlantName { color: #BDBDBD; }
+
+.homeTaskSuggestionPlantName { 
+    width: 35vw;  
+    overflow: hidden;  
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}

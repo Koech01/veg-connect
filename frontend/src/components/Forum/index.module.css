@@ -1,0 +1,2446 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+
+    .forumChildDiv { 
+        display: flex; 
+        width: 100%;
+        height: 84vh;
+        border: none;
+        overflow: none;
+        border-radius: 0px; 
+        align-items: center; 
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .forumChatListDiv { 
+        display: flex; 
+        width: 100%;
+        margin: 0px; 
+        height: 100%;
+        border: none;
+        align-items: center;
+        flex-direction: column;
+        padding: 7px 0px 0px 0px;
+        justify-content: space-between;
+    }
+
+    .lightTheme .forumChatListDiv { background-color: #FFFFFF; }
+    
+    .darkTheme .forumChatListDiv { background-color: #000000; }
+
+    .forumChatListItemDiv { height: 77vh; }
+
+    .forumChatListShimmerDiv {   height: 80vh;  }
+
+    .forumCreateParentDiv { width: 94%; }
+
+    .forumChatSearchDiv, .forumNoChatParentDiv   { width: 90%; }
+
+    .forumChatItemDiv { 
+        width: 98%;  
+        padding: 8px;
+    }
+
+    .forumGroupInfoParentDiv {  
+        gap: 20px;
+        height: 78vh;
+        padding: 10px; 
+    }
+
+    .forumGroupInfoUsername { 
+        min-width: 30vw; 
+        max-width: 30vw;  
+    }
+
+    .forumEditGroupInput, .forumEditGroupTextarea { width: 90%; }
+
+    .forumChatMessage { max-width: 87%; }
+
+    .forumChatUserIcon { 
+        width: 55px; 
+        height: 55px; 
+    }
+
+    .forumInboxDiv {
+        display: flex;  
+        width: 100%;
+        margin: 0px; 
+        height: 92vh;
+        padding: 0px; 
+        border: none;
+        overflow: none;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .forumMobileHideInboxDiv { display: none; }
+
+    .forumBarUserDiv {
+        display: flex;
+        width: 100%; 
+        margin: 0px;
+        border: none;
+        padding: 10px;
+        height: fit-content;
+        align-items: center;
+        box-sizing: border-box;
+        justify-content: flex-end;
+    }
+
+    .forumBarBackBtn {
+        display: flex;
+        margin: 0px;
+        padding: 2px;
+        border: none;
+        transition: .3s;
+        cursor: pointer;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .forumInboxMessagesDiv {
+        display: flex;
+        gap: 25px;
+        margin: 0px;
+        border: none;
+        width: 95%;
+        height: 68vh;
+        padding: 10px; 
+        overflow-y: auto;
+        overflow-x: hidden;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start; 
+    }
+
+    .forumReceiverMsgMediaDiv { width: 50%; }
+
+    .forumPeerSingleImageDiv, 
+    .forumPeerMsgDoubleImageDiv, 
+    .forumPeerMultiImageDiv, 
+    .forumAuthorMsgSingleImageDiv,
+    .forumAuthorMsgDoubleImageDiv,
+    .forumAuthorMsgMultiImageDiv,
+    .forumPeerMsgTripleImageDiv  {
+        width: 50%;  
+        min-height: 20vh;   
+    }
+
+    .forumPeerMsgQuotedText {  margin: 0px; }
+     
+    .forumShimmerMessagesDiv { height: 76vh; }
+
+    .forumShimmerTextDiv { width: 70%; }
+
+    .forumShimmerImageDiv { width: 45%; }
+
+    .forumInboxSubmitParentDiv {
+        gap: 10px;
+        padding: 10px 10px 0px 10px;
+    }
+
+    .forumModalClearChatModalParentDiv { height: 111%; }
+
+    .forumModalClearChatDiv {  
+        width: 80%; 
+        margin: 35% 0% 0% 0%;
+    }
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    
+    .forumChildDiv { 
+        display: flex; 
+        width: 90%;
+        height: 84%;
+        border-radius: 25px;
+    }
+
+    .forumChatListDiv {
+        display: flex;
+        width: 35%;
+        margin: 0px;
+        align-items: center;
+        flex-direction: column;
+        padding: 7px 0px 7px 0px;
+        justify-content: flex-start;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 0px;  
+        border-bottom-left-radius: 25px; 
+        border-bottom-right-radius: 0px; 
+    }
+    
+    .lightTheme .forumChatListDiv { border: 1px solid #E0E0E0;}
+    
+    .darkTheme .forumChatListDiv { border: 1px solid #111111; }
+
+    .forumChatListItemDiv { 
+        max-height: 70vh;  
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;  
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 0px; 
+    }
+
+    .forumChatSearchDiv { width: 100%; }
+
+    .forumCreateParentDiv{ width: 95%; }
+
+    .forumNoChatParentDiv { width: 94%; }
+
+    .forumGroupInfoParentDiv {  
+        flex: 1;
+        gap: 10px;
+        padding: 0px;  
+        max-height: 65vh; 
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;  
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 15px; 
+    }
+
+    .forumGroupInfoUsername { 
+        min-width: 8vw; 
+        max-width: 8vw; 
+    }
+
+    .forumEditGroupInput, .forumEditGroupTextarea { width: 85%; }
+
+    .forumChatItemDiv { 
+        width: 100%;  
+        padding: 5px 8px 5px 5px;
+    }
+
+    .forumChatMessage { max-width: 85%; }
+
+    .forumChatUserIcon { 
+        width: 45px; 
+        height: 45px; 
+    }
+
+    .forumInboxDiv {
+        display: flex;
+        flex: 1;
+        margin: 0px;
+        padding: 10px;
+        overflow: none;
+        align-items: center;
+        flex-direction: column;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 25px;  
+        border-bottom-left-radius: 0px; 
+        border-bottom-right-radius: 25px; 
+    }
+    
+    .lightTheme .forumInboxDiv {  
+        border-left: none;
+        border-top: 1px solid #E0E0E0;
+        border-right: 1px solid #E0E0E0;
+        border-bottom: 1px solid #E0E0E0;
+    }
+    
+    .darkTheme .forumInboxDiv {   
+        border-left: none;
+        border-top: 1px solid #111111;
+        border-right: 1px solid #111111;
+        border-bottom: 1px solid #111111;
+    }
+
+    .forumBarUserDiv {
+        display: flex;
+        width: 100%; 
+        margin: 0px;
+        border: none;
+        padding: 10px;
+        height: fit-content;
+        align-items: center;
+        box-sizing: border-box;
+        justify-content: flex-end;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;  
+        border-bottom-left-radius: 0px; 
+        border-bottom-right-radius: 0px; 
+    }
+ 
+    .forumBarBackBtn { display: none; }
+
+    .forumInboxMessagesDiv {
+        position: relative;
+        display: flex;
+        gap: 25px;
+        margin: 0px;
+        height: 100%;
+        border: none;
+        padding: 10px;
+        max-height: 60vh;
+        min-width: 97.5%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start; 
+    }
+
+    .forumReceiverMsgMediaDiv { width: 45%; }
+
+    .forumPeerSingleImageDiv, 
+    .forumPeerMsgDoubleImageDiv, 
+    .forumPeerMultiImageDiv, 
+    .forumAuthorMsgSingleImageDiv,
+    .forumAuthorMsgDoubleImageDiv,
+    .forumAuthorMsgMultiImageDiv  {
+        width: 45%;  
+        min-height: 25vh;   
+    }
+
+    .forumPeerMsgTripleImageDiv, .forumAuthorMsgTripleImageDiv {
+        width: 45%;  
+        min-height: 23vh;  
+    }
+
+    .forumPeerMsgQuotedText {  margin: 0px; }
+     
+    .forumShimmerMessagesDiv { height: 76vh; }
+
+    .forumShimmerTextDiv { width: 50%; }
+
+    .forumShimmerImageDiv { width: 25%; }
+
+    .forumInboxSubmitParentDiv {
+        gap: 20px;
+        padding: 10px 15px 10px 15px; 
+        border-top-left-radius: 0px; 
+        border-top-right-radius: 0px;  
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 15px; 
+    }
+
+    .forumModalClearChatModalParentDiv { height: 92.5%; }
+
+    .forumModalClearChatDiv {  
+        width: 40%; 
+        margin: 0px;
+    }
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+    .forumChildDiv { 
+        display: flex; 
+        width: 80%;
+        height: 84%;
+        border-radius: 25px;
+    }
+
+    .forumChatListDiv {
+        display: flex;
+        width: 28%;
+        margin: 0px;
+        align-items: center;
+        flex-direction: column;
+        padding: 7px 0px 7px 0px;
+        justify-content: flex-start;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 0px;  
+        border-bottom-left-radius: 25px; 
+        border-bottom-right-radius: 0px; 
+    }
+    
+    .lightTheme .forumChatListDiv { border: 1px solid #E0E0E0;}
+    
+    .darkTheme .forumChatListDiv { border: 1px solid #111111; }
+
+    .forumChatListItemDiv { 
+        max-height: 70vh;  
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;  
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 0px; 
+    }
+
+    .forumChatSearchDiv { width: 100%; }
+
+    .forumCreateParentDiv{ width: 95%; }
+
+    .forumNoChatParentDiv { width: 94%; }
+
+    .forumChatItemDiv { 
+        width: 100%;  
+        padding: 5px 8px 5px 5px;
+    }
+
+    .forumGroupInfoParentDiv { 
+        flex: 1; 
+        gap: 10px;
+        padding: 0px;  
+        max-height: 65vh; 
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;  
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 15px; 
+    }
+
+    .forumEditGroupInput, .forumEditGroupTextarea { width: 60%; }
+
+    .forumGroupInfoUsername { 
+        min-width: 8vw; 
+        max-width: 8vw; 
+    }
+
+    .forumChatMessage { max-width: 85%; }
+
+    .forumChatUserIcon { 
+        width: 45px; 
+        height: 45px; 
+    }
+
+    .forumInboxDiv {
+        display: flex;
+        flex: 1;
+        margin: 0px;
+        padding: 10px;
+        overflow: none;
+        align-items: center;
+        flex-direction: column;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 25px;  
+        border-bottom-left-radius: 0px; 
+        border-bottom-right-radius: 25px; 
+    }
+    
+    .lightTheme .forumInboxDiv {  
+        border-left: none;
+        border-top: 1px solid #E0E0E0;
+        border-right: 1px solid #E0E0E0;
+        border-bottom: 1px solid #E0E0E0;
+    }
+    
+    .darkTheme .forumInboxDiv {   
+        border-left: none;
+        border-top: 1px solid #111111;
+        border-right: 1px solid #111111;
+        border-bottom: 1px solid #111111;
+    }
+
+    .forumBarUserDiv {
+        display: flex;
+        width: 100%; 
+        margin: 0px;
+        border: none;
+        padding: 10px;
+        height: fit-content;
+        align-items: center;
+        box-sizing: border-box;
+        justify-content: flex-end;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;  
+        border-bottom-left-radius: 0px; 
+        border-bottom-right-radius: 0px; 
+    }
+ 
+    .forumBarBackBtn { display: none; }
+
+    .forumInboxMessagesDiv {
+        position: relative;
+        display: flex;
+        gap: 25px;
+        margin: 0px;
+        height: 100%;
+        border: none;
+        padding: 10px;
+        max-height: 60vh;
+        min-width: 97.5%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start; 
+    }
+
+    .forumReceiverMsgMediaDiv { width: 30%; }
+
+    .forumPeerSingleImageDiv, 
+    .forumPeerMsgDoubleImageDiv, 
+    .forumPeerMultiImageDiv, 
+    .forumAuthorMsgSingleImageDiv,
+    .forumAuthorMsgDoubleImageDiv,
+    .forumAuthorMsgMultiImageDiv  {
+        width: 35%;  
+        min-height: 25vh;   
+    }
+
+    .forumPeerMsgTripleImageDiv, .forumAuthorMsgTripleImageDiv {
+        width: 35%;  
+        min-height: 23vh;  
+    }
+
+    .forumPeerMsgQuotedText {  margin: 0px; }
+
+    .forumShimmerMessagesDiv { height: 76vh; }
+
+    .forumShimmerTextDiv { width: 50%; }
+ 
+    .forumShimmerImageDiv { width: 25%; }
+ 
+    .forumInboxSubmitParentDiv {
+        gap: 20px;
+        padding: 10px 15px 10px 15px; 
+        border-top-left-radius: 0px; 
+        border-top-right-radius: 0px;  
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 15px; 
+    }
+
+    .forumModalClearChatModalParentDiv { height: 92.5%; }
+
+    .forumModalClearChatDiv { 
+        width: 20%; 
+        margin: 0px;
+    }
+}
+
+.forumParentDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    padding: 0px;
+    border: none;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightTheme .forumParentDiv { background-color: #FCFCFC; }
+
+.darkTheme .forumParentDiv { background-color: #000000; }
+
+.forumChildDiv {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.lightTheme .forumChildDiv { background-color: #FFFFFF; }
+
+.darkTheme .forumChildDiv { background-color: #0A0A0A; }
+
+.forumChatSearchDiv {
+    position: relative;
+    display: flex;
+    gap: 10px; 
+    margin: 0px;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    height: fit-content;
+    align-items: center;
+    box-sizing: border-box; 
+}
+
+.forumChatListItemDiv {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    width: 100%; 
+    border: none;
+    padding: 5px;
+    overflow: auto; 
+    align-items: center;
+    scrollbar-width: none; 
+    box-sizing: border-box; 
+    flex-direction: column;
+}
+
+.forumChatListItemDiv::-webkit-scrollbar { display: none; }
+
+.forumChatListShimmerDiv {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    width: 100%; 
+    border: none;
+    padding: 0px;
+    overflow: auto; 
+    align-items: center;
+    scrollbar-width: none; 
+    box-sizing: border-box; 
+    flex-direction: column;
+}
+
+.forumChatItemShimmerDiv {
+    display: flex;
+    gap: 10px;
+    width: 95%; 
+    margin: 5px; 
+    cursor: pointer; 
+    border-radius: 10px;
+    height: fit-content;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 5px 8px 5px 5px;
+}
+
+.lightTheme .forumChatItemShimmerDiv { border: 1px solid #F5F5F5; }
+
+.darkTheme .forumChatItemShimmerDiv { border: 1px solid #161616; }
+
+.forumChatUserShimmerIcon {
+    margin: 0px;
+    width: 45px;
+    padding: 0px;
+    height: 45px;
+    border: none;
+    object-fit: cover;
+    border-radius: 50%; 
+}
+
+.forumChatFlexShimmerDiv {
+    display: flex;
+    flex: 1;
+    gap: 10%;
+    margin: 0px;
+    height: 100%;
+    padding: 0px; 
+    border: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; 
+}
+
+.forumChatUserShimmerItem {
+    display: flex; 
+    height: 30%;
+    padding: 0px; 
+    border: none;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 0px 0px 5px; 
+    justify-content: center; 
+} 
+
+.forumChatNameShimmerOne { width: 20%; }
+
+.forumChatNameShimmerTwo { width: 85%; }
+
+.lightTheme .forumChatUserShimmerItem, .lightTheme .forumChatUserShimmerIcon, .lightTheme .forumMessageShimmer { 
+    border: 1px solid #F5F5F5; 
+    background: linear-gradient(90deg, #FCFCFC 40%, #FAFAFA 50%, #FCFCFC 60%);
+    background-size: 300%;
+    background-position-x: 100%;
+    animation: shimmer 1s infinite linear;
+}
+
+.darkTheme .forumChatUserShimmerItem, .darkTheme .forumChatUserShimmerIcon, .darkTheme .forumMessageShimmer { 
+    border: 1px solid #161616; 
+    background: linear-gradient(90deg, #111111 40%, #191919 50%, #111111 60%);
+    background-size: 300%;
+    background-position-x: 100%;
+    animation: shimmer 1s infinite linear;
+}
+
+.forumNoChatParentDiv {
+    display: flex;
+    gap: 15px; 
+    margin: 0px;
+    border-radius: 10px;
+    height: fit-content;
+    align-items: center;
+    box-sizing: border-box; 
+    padding: 8px 15px 8px 15px;
+}
+
+.lightTheme .forumNoChatParentDiv {   
+    background: #E4FDED; 
+    border: 1px solid #F5F5F5; 
+    background: -webkit-linear-gradient(209deg, #E4FDED 0%, #FFFFFF 50%, #FFFFFF 100%);
+    background: linear-gradient(209deg, #E4FDED 0%, #FFFFFF 50%, #FFFFFF 100%); 
+}
+
+.darkTheme .forumNoChatParentDiv { 
+    background: #0A0A0A;
+    border: 1px solid #161616;
+    background: -webkit-linear-gradient(209deg, #111111 0%, #0A0A0A 50%, #0A0A0A 100%);
+    background: linear-gradient(209deg, #111111 0%, #0A0A0A 50%, #0A0A0A 100%);
+}
+
+.forumNoChatIconDiv {
+    display: flex;
+    margin: 0px;
+    padding: 5px;
+    border: none;
+    border-radius: 6px;
+}
+
+.lightTheme .forumNoChatIconDiv { 
+    background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; 
+}
+
+.darkTheme .forumNoChatIconDiv { 
+    background-color: #0A0A0A;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; 
+}
+
+.forumNoChatIcon {
+    width: 20px;
+    margin: 0px;
+    height: auto;
+    padding: 0px;
+}
+
+.forumNoChatTextDiv {
+    display: flex;
+    flex: 1;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    flex-direction: column;
+}
+
+.forumNoChatLabel {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 14.5px; 
+    line-height: 24px;
+    font-style: normal;
+    white-space: nowrap;
+}
+
+.lightTheme .forumNoChatLabel { color: #212121; }
+
+.darkTheme .forumNoChatLabel { color: #BDBDBD; }
+
+.forumNoChatInfo {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    overflow: hidden; 
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+}
+
+.lightTheme .forumNoChatInfo { color: #757575; }
+
+.darkTheme .forumNoChatInfo { color: #424242; }
+
+.forumChatItemDiv {
+    display: flex;
+    gap: 10px; 
+    margin: 0px; 
+    cursor: pointer;
+    transition: .3s;
+    border-radius: 10px;
+    height: fit-content;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.forumChatItemDiv:active { transform: scale(0.98); }
+
+.lightTheme .forumChatItemDiv { border: 1px solid #F5F5F5; }
+
+.darkTheme .forumChatItemDiv { border: 1px solid #161616; }
+
+.lightTheme .forumChatItemDiv:hover { border: 1px solid #F5F5F5; }
+
+.darkTheme .forumChatItemDiv:hover { border: 1px solid #424242; }
+ 
+.lightTheme .forumSelectedChat { 
+    background-color: #FBFBFB;
+    border: 1px solid #F5F5F5;
+}
+
+.forumChatSearchUserInput {
+    display: flex;
+    flex: 1;
+    margin: 0px;
+    outline: none;
+    border-radius: 15px;
+    padding: 7px 15px 7px 15px;
+}
+
+.lightTheme .forumChatSearchUserInput { 
+    color: #000000;
+    caret-color: #000000;
+    background-color: #FFFFFF;
+    border: 1px solid #F5F5F5; 
+}
+
+.darkTheme .forumChatSearchUserInput {
+    color: #EDEDED;
+    caret-color: #FAFAFA;
+    background-color: #0A0A0A;
+    border: 1px solid #161616; 
+}
+
+.lightTheme .forumChatSearchUserInput::placeholder { color: #BDBDBD; }
+
+.darkTheme .forumChatSearchUserInput::placeholder { color: #515151; }
+ 
+.forumChatUserIcon {
+    margin: 0px; 
+    padding: 0px; 
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.forumChatInfoDiv {
+    display: flex;
+    flex: 1;
+    gap: 5px;
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    overflow: hidden; 
+    flex-direction: column;
+}
+
+.forumChatInfoChildDiv {
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    justify-content: space-between;
+}
+
+.forumChatLastMsgBadgeDiv {
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forumChatUsername {
+    margin: 0px;
+    padding: 0px;
+    max-width: 50%; 
+    overflow: hidden;
+    font-size: 14px; 
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .forumChatUsername { color: #171717; }
+
+.darkTheme .forumChatUsername { color: #E0E0E0; }
+
+.forumChatTimestamp {
+    margin: 0px;
+    padding: 0px;
+    max-width: 50%; 
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .forumChatTimestamp { color: #9E9E9E; }
+
+.darkTheme .forumChatTimestamp { color: #616161; }
+
+.forumChatMessage {
+    margin: 0px;
+    padding: 0px; 
+    font-size: 14px;
+    overflow: hidden; 
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .forumChatMessage { color: #666666; }
+
+.darkTheme .forumChatMessage { color: #757575; }
+
+.forumChatUnreadBadge {
+    display: flex;
+    margin: 0px;
+    width: 20px;
+    height: 20px;
+    padding: 1px;
+    border: none;
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal;
+    border-radius: 50%;
+    white-space: nowrap;
+    align-items: center; 
+    justify-content: center;
+}
+
+.lightTheme .forumChatUnreadBadge { 
+    color: #FFFFFF;
+    background-color: #15C182; 
+}
+
+.darkTheme .forumChatUnreadBadge {     
+    color: #FAFAFA;
+    background-color: #03594A; 
+}
+ 
+.lightTheme .forumBarUserDiv { background-color: #FCFCFC; }
+    
+.darkTheme .forumBarUserDiv { background-color: #0A0A0A; }
+
+.forumBarUserIconDiv {
+    display: flex;
+    flex: 1;
+    gap: 15px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.forumBarUserIcon {
+    margin: 0px;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.forumBarGroupIcon { transition: .3s; }
+
+.forumBarGroupInfo {
+    display: flex;
+    flex: 1;
+    gap: 4px;
+    margin: 0px;
+    padding: 0px;
+    height: fit-content;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.forumBarUsername {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .forumBarUsername { color: #171717; }
+
+.darkTheme .forumBarUsername { color: #BDBDBD; }
+
+.forumBarGroupUserCount {
+    margin: 0px;
+    padding: 0px;
+    max-width: 90%; 
+    font-size: 14px;
+    overflow: hidden;
+    color: #666666;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.forumChatOptionBtn {
+    display: flex;
+    margin: 0px;
+    padding: 5px;
+    border: none;
+    transition: .3s;
+    cursor: pointer;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.forumChatOptionIcon {
+    margin: 0px;
+    width: auto;
+    padding: 0px;
+    height: 16px;
+}
+
+.forumInboxMessagesDiv::-webkit-scrollbar-track { border-radius: 8px; }
+
+.lightTheme .forumInboxMessagesDiv::-webkit-scrollbar-track { background-color: #FAFAFA; }
+
+.darkTheme .forumInboxMessagesDiv::-webkit-scrollbar-track  { background-color: #0A0A0A; }
+
+.forumInboxMessagesDiv::-webkit-scrollbar { width: 8px; }
+
+.lightTheme .forumInboxMessagesDiv::-webkit-scrollbar { background-color: #FAFAFA; }
+
+.darkTheme .forumInboxMessagesDiv::-webkit-scrollbar  { background-color: #0A0A0A; }
+
+.forumInboxMessagesDiv::-webkit-scrollbar-thumb { border-radius: 8px; }
+
+.lightTheme .forumInboxMessagesDiv::-webkit-scrollbar-thumb { background-color: #E0E0E0; }
+
+.darkTheme .forumInboxMessagesDiv::-webkit-scrollbar-thumb  { background-color: #212121; }
+
+.lightTheme .forumInboxMessagesDiv, .lightTheme .forumShimmerMessagesDiv { background-color: #FCFCFC; }
+
+.darkTheme .forumInboxMessagesDiv { background-color: #0A0A0A; }
+
+.darkTheme .forumShimmerMessagesDiv { background-color: #0A0A0A; }
+
+.forumShimmerMessagesDiv {
+    display: flex;
+    gap: 0px;
+    margin: 0px;
+    height: 100%;
+    border: none;
+    padding: 0px; 
+    min-width: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.forumShimmerMessageItemDiv {
+    display: flex;
+    gap: 10%;
+    width: 100%;
+    height: 45%;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+ 
+.forumShimmerMessageProfileDiv {
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.forumShimmerMessageUserDiv {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center; 
+}
+ 
+.forumShimmerFlexUserDiv {
+    display: flex;
+    gap: 10px;
+    width: 90%; 
+    padding: 0px; 
+    border: none;
+    align-items: center;
+    margin: 0px 0px 0px 10px; 
+    justify-content: flex-start; 
+}
+
+.forumShimmerTextDiv {
+    display: flex; 
+    height: 55%;
+    padding: 0px;
+    border: none;
+    border-radius: 10px;
+    margin: 0px 10px 0px 0px;  
+}
+
+.forumShimmerTimeDiv {
+    display: flex;
+    width: 15%;
+    height: 10%;
+    padding: 0px;
+    border: none;
+    border-radius: 10px;
+    margin: 0px 10px 0px 0px; 
+}
+
+.forumShimmerIconDiv {
+    display: flex;
+    margin: 0px;
+    width: 30px; 
+    padding: 0px;
+    height: 30px;
+    border: none;
+    border-radius: 50%; 
+}
+
+.forumShimmerNameDiv, .forumShimmerUserTimeDiv {
+    display: flex;
+    width: 18%;
+    height: 40%;
+    padding: 0px;
+    border: none;
+    border-radius: 10px;
+    margin: 0px 10px 0px 0px; 
+}
+
+.forumShimmerNameDiv { width: 8%; }
+
+.forumShimmerUserTimeDiv { width: 18%; }
+
+.forumShimmerImageDiv {
+    display: flex; 
+    height: 55%;
+    padding: 0px;
+    border: none;
+    border-radius: 10px;
+    margin: 0px 0px 0px 10px;  
+}
+
+.forumNoMessagesDiv {
+    display: flex;
+    flex: 1;
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    flex-direction: column;
+}
+
+.lightTheme .forumNoMessagesDiv { background-color: #FCFCFC; }
+
+.darkTheme .forumNoMessagesDiv { background-color: #0A0A0A; }
+
+.forumMsgReceiverDiv {
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    width: 100%; 
+    padding: 0px;
+    border: none;
+    transition: .3s;
+    height: fit-content;
+    box-sizing: border-box; 
+    flex-direction: column;
+}
+
+.forumMsgPeerIcon {
+    margin: 0px;
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.forumMsgPeerChildDiv {
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    width: fit-content;
+    align-items: center;
+    box-sizing: border-box; 
+}
+
+.forumMsgPeerUsername {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .forumMsgPeerUsername { color: #757575; }
+
+.darkTheme .forumMsgPeerUsername { color: #9E9E9E; }
+
+.forumMsgPeerCreated {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    overflow: hidden; 
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .forumMsgPeerCreated { color: #9E9E9E; }
+
+.darkTheme .forumMsgPeerCreated { color: #424242; }
+
+.forumMsgPeerContentDiv {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    height: fit-content;
+    align-items: center;
+    box-sizing: border-box; 
+}
+
+.forumMessageTaskDiv {
+    display: flex;
+    gap: 10px; 
+    padding: 12px;
+    max-width: 70%;
+    width: fit-content;
+    border-radius: 15px;
+    height: fit-content;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.lightTheme .forumMessageTaskDiv { 
+    background: #EFFEF4;
+    border: 1px solid #E0E0E0;
+    background: -webkit-linear-gradient(209deg, #EFFEF4 0%, #FFFFFF 50%, #FFFFFF 100%);
+    background: linear-gradient(209deg, #EFFEF4 0%, #FFFFFF 50%, #FFFFFF 100%);
+}
+
+.darkTheme .forumMessageTaskDiv { 
+    background: #0A0A0A;
+    border: 1px solid #161616;
+    background: -webkit-linear-gradient(209deg, #111111 0%, #0A0A0A 50%, #0A0A0A 100%);
+    background: linear-gradient(209deg, #111111 0%, #0A0A0A 50%, #0A0A0A 100%);
+}
+
+.forumPlantSectionDiv {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin: 0px;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 10px 0px 10px 0px; 
+}
+
+.lightTheme .forumPlantSectionDiv {
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
+.darkTheme .forumPlantSectionDiv {
+    background: #0A0A0A;
+    border: 1px solid #151515;
+}
+
+.forumPlantSectionTextDiv {
+    display: flex; 
+    gap: 10px;
+    padding: 0px; 
+    width: fit-content;
+    align-items: center;
+    margin: 0px 10px 0px 10px;   
+    justify-content: flex-start; 
+}
+
+.lightTheme .forumPlantSectionValue { 
+    all: unset; 
+    color: #424242; 
+    margin: 0px 0px 0px 10px;
+}
+
+.darkTheme .forumPlantSectionValue { 
+    all: unset; 
+    color: #757575; 
+    margin: 0px 0px 0px 10px;
+}
+
+.forumMessagePlantListItem { all: unset; }
+
+.forumMessageReceiverTaskDiv { margin: 5px 0px 5px 40px; }
+
+.forumMessageProfileTaskDiv { margin: 0px 0px 5px 0px; }
+ 
+.darkTheme .forumMessageReceiverTaskDiv { 
+    background-color: #121212;
+    border: 1px solid #121212;  
+}
+
+.darkTheme .forumMessageProfileTaskDiv { 
+    background-color: #0A0A0A;
+    border: 1px solid #202020;
+}
+ 
+.forumMessageTaskHeader, .forumMessageTaskDate, .forumMessageTaskText, .forumMessagePlantListItem {
+    margin: 0px;
+    width: 100%; 
+    padding: 0px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    border-radius: 8px;  
+}
+
+.forumMessagePlantListItem { margin: 0px 0px 0px 10px; }
+ 
+.lightTheme .forumMessageTaskHeader, .lightTheme .forumMessagePlantListItem { color: #424242; }
+
+.darkTheme .forumMessageTaskHeader, .darkTheme .forumMessagePlantListItem { color: #757575; }
+
+.lightTheme .forumMessageTaskDate { color: #9E9E9E; }
+
+.darkTheme .forumMessageTaskDate { color: #9E9E9E; }
+
+.lightTheme .forumMessageTaskText { color: #666; }
+
+.darkTheme .forumMessageTaskText { color: #BDBDBD; }
+
+.forumPeerMsgText, .forumPeerMsgQuotedText {
+    max-width: 70%; 
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    border-radius: 8px;  
+    padding: 5px 12px 5px 12px;
+}
+
+.forumPeerMsgQuotedText { margin: 0px; }
+.forumPeerMsgText { margin: 0px 0px 0px 40px; }
+
+.lightTheme .forumPeerMsgText, .lightTheme .forumPeerMsgQuotedText { 
+    color: #424242;
+    background-color: #FFFFFF;
+    border: 1px solid #F5F5F5; 
+}
+
+.darkTheme .forumPeerMsgText, .darkTheme .forumPeerMsgQuotedText { 
+    color: #BDBDBD;
+    background-color: #121212;
+    border: 1px solid #121212; 
+}
+
+.forumPeerMsgImageDiv {
+    display: flex;
+    margin: 0px;
+    width: 100%; 
+    border: none;
+    transition: .3s;
+    box-sizing: border-box; 
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 5px 0px 40px;
+}
+
+.forumPeerSingleImageDiv {
+    position: relative;   
+    display: flex;  
+    margin: 0px;  
+    padding: 0px;   
+    border: none;     
+    align-items: flex-end;  
+    justify-content: flex-start;
+}
+
+.peerSingle {
+    position: absolute;   
+    top: 0%;     
+    left: 0%;    
+    width: auto;   
+    max-height: 90%;      
+    max-width: 100%;  
+    object-fit: cover;
+}
+
+.forumPeerMsgDoubleImageDiv {
+    position: relative;
+    display: flex; 
+    margin: 0px;   
+    padding: 0px;  
+    border: none;   
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.forumReceiverMsgMediaDiv {
+    display: flex;
+    gap: 10px;
+    margin: 0px;   
+    padding: 0px;  
+    border: none;  
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.userMediaClickedImg, .userMediaClickedVid {
+    width: 100%;  
+    height: auto;  
+    max-height: 78%;   
+    border-radius: 8px;
+}
+
+.peerDoubleOne {
+    position: absolute;
+    top: 0%; 
+    left: 0%;  
+    width: 90%;  
+    height: auto;  
+    max-height: 78%;   
+    transform: rotate(-3deg);
+}
+
+.peerDoubleTwo {
+    position: absolute;
+    right: 0%; 
+    bottom: 10%;   
+    z-index: 1;
+    width: 90%; 
+    height: auto; 
+    max-height: 78%;  
+    transform: rotate(6deg);
+}
+
+.forumPeerMsgTripleImageDiv {
+    position: relative;   
+    display: flex;    
+    margin: 0px;   
+    padding: 0px;   
+    border: none;   
+    align-items: flex-start;   
+    justify-content: flex-end; 
+}
+
+.peerTripleOne {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    width: 80%; 
+    height: auto;
+    max-height: 75%;
+    transform: translate(0%, -50%) rotate(10deg);
+}
+
+.peerTripleTwo {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    z-index: 1;
+    width: 80%; 
+    height: auto;
+    max-height: 75%;
+    transform: translate(0%, -50%) rotate(-10deg);
+}
+
+.peerTripleThree {
+    position: absolute;    
+    top: 50%;   
+    left: 50%;  
+    z-index: 2;  
+    width: 55%; 
+    height: auto;
+    max-height: 75%;
+    transform: translate(-50%, -50%);
+}
+ 
+.forumPeerMultiImageDiv {
+    position: relative;   
+    display: flex;   
+    margin: 0px;  
+    padding: 0px;   
+    border: none;   
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.forumPeerStackedImage {
+    position: absolute; 
+    margin: 0px;  
+    padding: 0px;  
+    border: none;   
+    cursor: pointer;
+    object-fit: cover;  
+    border-radius: 8px;
+}
+
+.forumPeerStackedImage:nth-child(1) { 
+    top: 0%; 
+    left: 6%;
+    width: 74%;
+    height: 92%;
+}
+
+.forumPeerStackedImage:nth-child(2) { 
+    top: 4%;
+    left: 4%;
+    width: 78%;
+    height: 88%;
+}
+
+.forumPeerStackedImage:nth-child(3) {  
+    top: 8%;
+    left: 2%;
+    width: 82%;
+    height: 84%;
+}
+
+.forumPeerStackedImage:nth-child(4) { 
+    top: 12%;
+    left: 0%;
+    width: 86%;
+    height: 80%;
+}
+
+.forumAuthorTextMsgDiv, .forumAuthorTextAndMediaMsgDiv {
+    display: flex;
+    gap: 3px;
+    width: 100%; 
+    padding: 0px;
+    border: none;
+    transition: .3s;
+    align-items: flex-end;
+    box-sizing: border-box; 
+    flex-direction: column;
+}
+
+.forumAuthorTextMsgDiv { margin: 0px; }
+
+.forumAuthorTextAndMediaMsgDiv { margin: 10px 0px 0px 0px; }
+
+.forumAuthorMsgImageDiv {
+    display: flex;
+    gap: 3px;
+    margin: 0px;
+    width: 100%; 
+    padding: 0px;
+    border: none;
+    transition: .3s;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.forumAuthorMsgSingleImageDiv {
+    position: relative;
+    display: flex; 
+    margin: 0px;   
+    padding: 0px;  
+    border: none;    
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.singleImage {
+    position: absolute; 
+    right: 0%; 
+    bottom: 0%;   
+    width: auto; 
+    max-height: 90%;      
+    max-width: 100%;   
+    object-fit: cover;
+}
+
+.forumAuthorMsgDoubleImageDiv {
+    position: relative;
+    display: flex; 
+    margin: 0px;   
+    padding: 0px;  
+    border: none;    
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.authorDoubleOne {
+    position: absolute; 
+    top: 0%;   
+    right: 0%;   
+    width: 90%;    
+    height: auto;   
+    max-height: 78%;    
+    transform: rotate(3deg);
+}
+
+.authorDoubleTwo {
+    position: absolute;  
+    left: 0%;    
+    bottom: 0%;    
+    z-index: 1; 
+    width: 90%; 
+    height: auto;   
+    max-height: 78%;   
+    transform: rotate(-6deg);
+}
+
+.forumAuthorMsgTripleImageDiv {
+    position: relative;    
+    display: flex;     
+    margin: 0px;    
+    padding: 0px;    
+    border: none;        
+    align-items: flex-start;    
+    justify-content: flex-end;
+}
+
+.authorTripleOne {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    width: 80%; 
+    height: auto;
+    max-height: 75%;
+    transform: translate(0%, -50%) rotate(10deg);
+}
+
+.authorTripleTwo {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    z-index: 1;
+    width: 80%;
+    height: auto;
+    max-height: 75%;
+    transform: translate(0%, -50%) rotate(-10deg);
+}
+
+.authorTripleThree {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    width: 55%;
+    height: auto;
+    max-height: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.forumAuthorMsgMultiImageDiv {
+    position: relative;
+    display: flex; 
+    margin: 0px;   
+    padding: 0px;  
+    border: none;   
+    justify-content: flex-end;
+}
+
+.forumAuthorStackedImage {
+    position: absolute;
+    bottom: 0px;
+    margin: 0px;
+    padding: 0px;
+    border: none; 
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 8px;
+}
+  
+.forumAuthorStackedImage:nth-child(1) { 
+    right: 6%; 
+    width: 74%;
+    height: 86%;
+}
+
+.forumAuthorStackedImage:nth-child(2) { 
+    right: 4%;
+    width: 78%;
+    height: 82%;
+}
+
+.forumAuthorStackedImage:nth-child(3) {  
+    right: 2%;
+    width: 82%;
+    height: 78%;
+}
+
+.forumAuthorStackedImage:nth-child(4) { 
+    right: 0%;
+    width: 86%;
+    height: 74%;
+}
+
+.forumAuthorMsgImg {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.forumInboxMsgVid {
+    overflow: hidden; 
+    border-radius: 8px;
+}
+
+.forumInboxMsgVid::-webkit-media-controls { display: none; }
+
+.forumAuthorImageMsgCreated {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    overflow: hidden; 
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .forumAuthorImageMsgCreated { color: #9E9E9E; }
+
+.darkTheme .forumAuthorImageMsgCreated { color: #424242; }
+
+.forumAuthorTextMsgText, .forumAuthorMediaMsgText {
+    margin: 0px;
+    max-width: 70%; 
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 500;
+    line-height: 20px;
+    font-style: normal;
+    border-radius: 8px;
+    padding: 5px 12px 5px 12px;
+}
+
+.forumAuthorTextMsgText { margin: 0px; }
+
+.forumAuthorMediaMsgText { margin: 5px 0px 0px 0px; }
+
+.lightTheme .forumAuthorTextMsgText, .lightTheme .forumAuthorMediaMsgText { 
+    color: #424242;
+    background-color: #FFFFFF;
+    border: 1px solid #B2EBF2; 
+}
+
+.darkTheme .forumAuthorTextMsgText, .darkTheme .forumAuthorMediaMsgText { 
+    color: #BDBDBD;
+    background-color: #0A0A0A;
+    border: 1px solid #191919;
+}
+
+.forumAuthorTextMsgCreated {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .forumAuthorTextMsgCreated { color: #9E9E9E; }
+
+.darkTheme .forumAuthorTextMsgCreated { color: #424242; }
+ 
+.forumInboxSubmitParentDiv {
+    display: flex; 
+    width: 100%; 
+    margin: 0px;
+    border: none;
+    height: fit-content;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.lightTheme .forumInboxSubmitParentDiv { background-color: #FCFCFC; }
+
+.darkTheme .forumInboxSubmitParentDiv  { background-color: #0A0A0A; }
+
+.forumGroupInfoParentDiv {
+   display: flex;
+    width: 100%; 
+    margin: 0px;
+    border: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; 
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+ 
+.forumGroupInfoParentDiv::-webkit-scrollbar { display: none; }
+
+.lightTheme .forumGroupInfoParentDiv { background-color: #FCFCFC; }
+
+.darkTheme .forumGroupInfoParentDiv  { background-color: #0A0A0A; }
+
+.forumGroupInfoAboutDiv {
+    display: flex;
+    gap: 20px;
+    margin: 0px;
+    width: 100%;
+    border: none;
+    height: fit-content;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5px 10px 5px 10px;
+}
+
+.forumGroupInfoAboutHeaderDiv {
+    display: flex; 
+    width: 95%;
+    margin: 0px;
+    padding: 0px;
+    border: none; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forumGroupInfoAboutHeader, .forumGroupInfoError {
+    margin: 0px;
+    padding: 0px;
+    max-width: 50%; 
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px; 
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+ 
+.lightTheme .forumGroupInfoAboutHeader { color: #171717; }
+
+.darkTheme .forumGroupInfoAboutHeader  { color: #E0E0E0; }
+
+.lightTheme .forumGroupInfoError { color: #B71C1C; }
+
+.darkTheme .forumGroupInfoError  { color: #E53935; }
+
+.forumGroupInfoAboutText {
+    margin: 0px;
+    padding: 0px;
+    max-width: 85%; 
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+}
+
+.lightTheme .forumGroupInfoAboutText { color: #666666; }
+
+.darkTheme .forumGroupInfoAboutText  { color: #9E9E9E; }
+
+.forumEditGroupInfoBtn { 
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    font-style: normal;
+    width: fit-content; 
+    border-radius: 50px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px 6px 16px;
+}
+
+.lightTheme .forumEditGroupInfoBtn { 
+    color: #666666; 
+    border: 1px solid #EEEEEE;
+    background-color: #FFFFFF; 
+}
+
+.darkTheme .forumEditGroupInfoBtn { 
+    color: #111111;
+    border: 1px solid #F5F5F5;
+    background-color: #F5F5F5;
+}
+
+.forumEditGroupInfoDiv {
+    display: flex;
+    gap: 10px;
+    width: 98%;
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    flex-direction: column;
+}
+
+.forumEditGroupInput { 
+    margin: 0px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal;
+    border-radius: 8px; 
+    height: fit-content;
+    border-radius: 25px;
+    transition: .3s ease;
+    padding: 8px 15px 8px 15px;
+}
+
+.forumEditGroupTextarea { 
+    display: flex; 
+    resize: none;
+    outline: none;
+    overflow: hidden; 
+    padding: 8px 12px;
+    border-radius: 15px;
+    white-space: normal;
+}
+ 
+.forumEditGroupInput, 
+.forumEditGroupInput::placeholder, 
+.forumEditGroupTextarea, 
+.forumEditGroupTextarea::placeholder {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    font-style: normal;
+    font-family: 'Geist' !important;
+}
+ 
+.lightTheme .forumEditGroupInput, .lightTheme .forumEditGroupTextarea { 
+    color: #000000;
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
+.darkTheme .forumEditGroupInput, .darkTheme .forumEditGroupTextarea { 
+    color: #BDBDBD;
+    caret-color: #FAFAFA;
+    background-color: #0A0A0A;
+    border: 1px solid #161616;
+}
+
+.darkTheme .forumEditGroupInput::placeholder, .darkTheme .forumEditGroupTextarea::placeholder { color: #515151; }
+
+.forumEditGroupSaveBtn {  
+    display: flex;
+    border: none;
+    transition: .3s;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    font-style: normal;
+    width: fit-content; 
+    border-radius: 50px;
+    height: fit-content;
+    padding: 8px 20px 8px 20px;
+}
+
+.lightTheme .forumEditGroupSaveBtn { color: #F5F5F5; background-color: #000000; }
+.darkTheme .forumEditGroupSaveBtn { color: #000000; background-color: #F5F5F5; } 
+ 
+.homeClickedItemRadioBtnDiv {
+    display: flex;
+    height: 19px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.forumGroupRadioBtnDiv { 
+    height: 18px; 
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.forumGroupRadioSpan {
+    display: inline-block;
+    width: 34px;
+    height: 19px; 
+    position: relative;
+    border-radius: calc(18px / 2); 
+    transition: 0.3s all ease-in-out; 
+}
+
+.lightTheme .forumGroupRadioSpan { background-color: #EEEEEE; }
+
+.darkTheme .forumGroupRadioSpan { background-color: #212121; }
+
+.forumGroupRadioSpan::after {
+    position: absolute;
+    top: 2px; 
+    width: 15px;
+    content: "";
+    height: 15px;
+    display: inline-block;
+    transform: translateX(2px); 
+    background-color: #FFFFFF;
+    border-radius: calc(15px / 2); 
+    transition: 0.3s all ease-in-out;
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.lightTheme .forumGroupRadioLabel input[type="checkbox"]:checked + .forumGroupRadioSpan { background-color: #15C182; }
+
+.darkTheme .forumGroupRadioLabel input[type="checkbox"]:checked + .forumGroupRadioSpan { background-color: #004D40; }
+
+.forumGroupRadioLabel input[type="checkbox"]:checked + .forumGroupRadioSpan::after {
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1); 
+    transform: translateX(calc(30px - 10px - 3px));
+}
+
+.forumGroupRadioLabel input[type="checkbox"] { display: none; }
+
+.forumGroupRadioLabel input[type="checkbox"]:active + .forumGroupRadioSpan::after { width: 48px; }
+
+.forumGroupRadioLabel input[type="checkbox"]:checked:active + .forumGroupRadioSpan::after {
+    transform: translateX(calc(30px - 48px - 2px)); 
+}
+ 
+.forumGroupInfoListDiv {
+    display: flex;
+    margin: 0px;
+    width: 100%;
+    border: none;
+    height: fit-content;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5px 0px 0px 5px;
+}
+
+.forumGroupInfoListHeader { margin: 0px 0px 5px 5px; }
+
+.forumGroupInfoItemDiv {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    margin: 0px;
+    padding: 5px;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.forumGroupInfoAdminPin {
+    margin: 0px;
+    width: auto;
+    padding: 0px;
+    height: 17px;
+    cursor: pointer;
+}
+
+.forumGroupInfoUserIcon {
+    margin: 0px;
+    width: 28px;
+    padding: 0px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.forumGroupInfoListHeader, .forumGroupInfoUsername {
+    padding: 0px;
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.forumGroupInfoUsername { margin: 0px; }
+
+.lightTheme .forumGroupInfoListHeader { color: #9E9E9E; }
+
+.darkTheme .forumGroupInfoListHeader { color: #616161; }
+
+.lightTheme .forumGroupInfoUsername { color: #171717; }
+
+.darkTheme .forumGroupInfoUsername { color: #BDBDBD; }
+
+.forumGroupInfoBtn, .forumGroupInfoPositiveBtn { 
+    display: flex;
+    margin: 0px;
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;    
+    line-height: 14px;   
+    width: fit-content; 
+    font-style: normal;
+    border-radius: 50px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px 6px 16px;
+}
+
+.lightTheme .forumGroupInfoBtn { 
+    color: #666666; 
+    border: 1px solid #E0E0E0;
+    background-color: #FFFFFF; 
+}
+
+.lightTheme .forumGroupInfoPositiveBtn {
+    color: #F5F5F5;
+    border: 1px solid #000000;
+    background-color: #000000;
+}
+
+.darkTheme .forumGroupInfoBtn { 
+    color: #F5F5F5;
+    border: 1px solid #000000;
+    background-color: #000000;
+}
+
+.darkTheme .forumGroupInfoPositiveBtn {
+    color: #111111;
+    border: 1px solid #F5F5F5;
+    background-color: #F5F5F5;
+}
+
+.hideGroupInfoBtn {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+  
+.forumGroupInfoItemDiv:hover .hideGroupInfoBtn {
+    opacity: 1;
+    visibility: visible;
+}
+
+.forumInboxInput {
+    display: flex;
+    flex: 1;
+    margin: 0px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    border-radius: 18px;
+    padding: 8px 15px 8px 15px;
+}
+ 
+.lightTheme .forumInboxInput::placeholder { color: #BDBDBD; }
+
+.darkTheme .forumInboxInput::placeholder { color: #515151; }
+
+.lightTheme .forumInboxInput {  
+    color: #171717;
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
+.darkTheme .forumInboxInput {
+    color: #FFFFFF;
+    caret-color: #FAFAFA;
+    background-color: #0A0A0A;
+    border: 1px solid #161616;
+}
+
+.forumSendMsgIconBtn {
+    display: flex;
+    margin: 0px;
+    padding: 6px;
+    border: none;
+    transition: .3s;
+    cursor: pointer;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.forumSendMsgIconBtn:active, .forumChatOptionBtn:active, .forumBarBackBtn:active { transform: scale(0.9); }
+
+.lightTheme .forumSendMsgIconBtn, .lightTheme .forumChatOptionBtn, .lightTheme .forumBarBackBtn { 
+    background-color: #FFFFFF; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.01) 0px 1px 2px 0px;
+}
+
+.darkTheme .forumSendMsgIconBtn, .darkTheme .forumChatOptionBtn, .darkTheme .forumBarBackBtn {  background-color: #141414; }
+
+.forumSendMsgIcon {
+    margin: 0px;
+    width: 20px;
+    padding: 0px;
+    height: 20px;
+}
+
+.forumModalEmojiDiv { 
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    width: fit-content;
+}
+
+.forumModalClearChatModalParentDiv { 
+    position: fixed; 
+    display: flex;
+    z-index: 4;
+    width: 100%; 
+    padding: 0px;
+    border: none;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightTheme .forumModalClearChatModalParentDiv { background-color: rgba(0,0,0,0.2); }
+
+.darkTheme .forumModalClearChatModalParentDiv  { background-color: rgba(0,0,0,0.9); }
+
+.forumModalClearChatDiv { 
+    display: flex;
+    gap: 10px; 
+    padding: 8px;
+    transition: .3s;
+    border-radius: 20px;
+    flex-direction: column;
+}
+
+.lightTheme .forumModalClearChatDiv { 
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+}
+
+.darkTheme .forumModalClearChatDiv { 
+    background-color: #111111;
+    border: 1px solid #111111;
+}
+
+.forumModalClearChatChildDiv { 
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forumModalClearChatIconDiv { 
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    width: fit-content;
+}
+
+.forumModalClearChatIcon {
+    width: 30px;
+    padding: 0px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.forumModalClearChatIcon:nth-child(1) {
+    margin: 0px;
+    z-index: 1;
+}
+
+.forumModalClearChatIcon:nth-child(2) {
+    margin: 0px 0px 0px -12px;
+    z-index: 1;
+}
+
+.forumModalClearChatCount, .forumModalClearChatText {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+}
+
+.lightTheme .forumModalClearChatCount  { color: #9E9E9E; }
+.darkTheme .forumModalClearChatCount  { color: #616161; }
+
+.lightTheme .forumModalClearChatText  { color: #171717; }
+.darkTheme .forumModalClearChatText  { color: #E0E0E0; }
+
+.forumModalChatBtnDiv { 
+    display: flex;
+    gap: 20px;
+    width: 100%; 
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forumModalChatCancelBtn { 
+    display: flex;
+    width: 50%; 
+    margin: 0px;
+    border: none;
+    font-size: 14px;
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 14px;
+    font-style: normal;
+    border-radius: 50px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px 8px 20px;
+}
+
+.lightTheme .forumModalChatCancelBtn { color: #F5F5F5; background-color: #000000; }
+.darkTheme .forumModalChatCancelBtn { color: #000000; background-color: #F5F5F5; }
+
+.forumModalChatConfirmBtn { 
+    display: flex;
+    width: 50%; 
+    margin: 0px;
+    border: none;
+    font-size: 14px;
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal;
+    border-radius: 50px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px 8px 20px;
+}
+
+.lightTheme .forumModalChatConfirmBtn { 
+    color: #171717;
+    background-color: #FFFFFF;
+    box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+}
+
+.darkTheme .forumModalChatConfirmBtn { 
+    color: #E8E8E8; 
+    background-color: #222222;
+}
+
+.forumCreateParentDiv{
+    display: flex; 
+    padding: 0px;
+    border-radius: 10px;
+    height: fit-content;
+    align-items: center;
+    flex-direction: column;
+    margin: 5px 0px 5px 0px;
+    justify-content: center;
+}
+
+.lightTheme .forumCreateParentDiv { border: 1px solid #F5F5F5; }
+.darkTheme .forumCreateParentDiv  { border: 1px solid #161616; }
+
+.forumCreateNameInput{
+    display: flex;
+    width: 94%;
+    margin: 0px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 9px 7px 9px 7px;
+}
+
+.lightTheme .forumCreateNameInput { background-color: #FFFFFF; }
+.darkTheme .forumCreateNameInput  { 
+    color: #EDEDED;
+    caret-color: #F5F5F5; 
+    background-color: #0A0A0A; 
+}
+
+.darkTheme .forumCreateNameInput::placeholder  { color: #515151; }
+
+.lightTheme .forumCreateNameError::placeholder { color: #B71C1C; }
+.darkTheme .forumCreateNameError::placeholder { color: #E53935; }
+ 
+.forumCreateChildDiv{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin: 0px;
+    border: none;
+    height: fit-content;
+    align-items: center;
+    padding: 7px 0px 7px 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    justify-content: space-between;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius: 10px;
+}
+
+.lightTheme .forumCreateChildDiv { background-color: #FCFCFC; }
+.darkTheme .forumCreateChildDiv { background-color: #111111; }
+
+.forumCreateIconDiv{
+    display: flex;
+    gap: 10px;
+    padding: 0px;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    margin: 0px 0px 0px 5px;
+    justify-content: flex-start;
+}
+
+.forumCreateIcon {
+    margin: 0px;
+    width: 20px;
+    padding: 0px;
+    height: 20px;
+}
+
+.forumCreateIconBtn {
+    display: flex;
+    padding: 0px;
+    border: none;
+    color: inherit; 
+    transition: .3s;
+    align-items: center;
+    margin: 0px 5px 0px 0px;
+    justify-content: center;
+    background-color: transparent; 
+}
+
+.forumCreateIconBtn:active { transform: scale(0.7); }
+.forumGroupInfoBtn:active, .forumGroupInfoPositiveBtn:active, .forumEditGroupInfoBtn:active,
+.forumBarGroupIcon:active, .forumModalChatCancelBtn:active, .forumModalChatConfirmBtn:active { transform: scale(0.95); }
+
+@keyframes shimmer { to { background-position-x: 0% } }
+ 
+@keyframes fadeIn {
+    from {  opacity: 0; }
+    to   { opacity: 1; }
+}
+   
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+}

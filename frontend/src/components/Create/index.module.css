@@ -1,0 +1,952 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+    .createTaskChildDiv { 
+        gap: 7%; 
+        width: 100%; 
+        height: 100%;  
+        border-radius: 0px;
+        align-items: center;  
+        padding: 5% 0% 5% 0%;  
+        justify-content: flex-start; 
+    }
+    
+    .calendarTaskDefaultDiv { min-width: 80%; }
+
+    .createTaskItemDescription { 
+        display: -webkit-box;
+        margin: 0px;
+        padding: 0px;
+        line-clamp: 3;  
+        max-width: 75vw;
+        font-size: 14px;
+        font-weight: 400; 
+        overflow: hidden;
+        line-height: 21px;
+        white-space: normal;
+        box-orient: vertical;  
+        -webkit-line-clamp: 3;  
+        word-break: break-word; 
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;  
+    }
+
+    .createTaskCalendarDiv {
+        gap: 0px;    
+        flex: 1;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between; 
+    }
+ 
+    .createMobileTaskCalendarChildDiv { 
+        display: flex; 
+        gap: 10px;
+        width: 80%; 
+        margin: 0px; 
+        border-radius: 23px; 
+        flex-direction: column;
+        padding: 15px 12px 10px 12px; 
+    }
+
+    .lightTheme .createMobileTaskCalendarChildDiv { 
+        background-color: #FFFFFF; 
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    }
+    
+    .darkTheme .createMobileTaskCalendarChildDiv { 
+        border: 1px solid #161616;
+        background-color: #0A0A0A; 
+    }
+
+
+    .createMobileTaskCalendarFlexDiv, .createMobileTaskCalendarBtnDiv { 
+        display: flex;  
+        flex: 1; 
+        margin: 0px;
+        padding: 0px;  
+        border: none; 
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .createMobileTaskCalendarFlexDiv { align-items: flex-start; }
+
+    .createMobileTaskCalendarBtnDiv { 
+        gap: 10px;  
+        align-items: center;
+    }
+
+    .createMobileTaskCalendarBtn { 
+        display: flex; 
+        flex: 1;  
+        gap: 10px; 
+        margin: 0px; 
+        font-size: 14px;    
+        transition: .3s;
+        cursor: pointer;
+        font-weight: 500;
+        line-height: 14px;  
+        border-radius: 50px;
+        font-style: normal;
+        height: fit-content;
+        align-items: center; 
+        justify-content: center;
+        background: transparent; 
+        padding: 5px 0px 5px 0px; 
+    }
+
+    .lightTheme .createMobileTaskCalendarBtn { 
+        border: none;
+        color: #666666; 
+        border: 1px solid #F5F5F5;
+        background-color: #FFFFFF; 
+    }
+    
+    .darkTheme .createMobileTaskCalendarBtn {    
+        color: #E8E8E8; 
+        border: 1px solid #121212;
+        background-color: #000000; 
+    }
+
+    .createMobileDateBtn { position: relative; }
+
+    .createMobileDateLabel {
+        display: flex;
+        gap: 10px; 
+        width: 100%; 
+        margin: 0px;
+        height: 100%;
+        padding: 0px; 
+        border: none; 
+        align-items: center; 
+        justify-content: center; 
+    }
+    
+    .createMobileDateInput {
+        position: absolute;
+        display: flex;
+        gap: 10px; 
+        width: 100%; 
+        margin: 0px;
+        height: 100%;
+        padding: 0px; 
+        border: none;
+        outline: none;
+        color: transparent;  
+        align-self: center;
+        pointer-events: none; 
+        justify-content: center;
+        background: transparent; 
+    }
+
+    .createMobileTimeInput {
+        position: absolute;
+        display: flex;
+        gap: 10px; 
+        margin: 0px;
+        padding: 0px;
+        width: 100%; 
+        height: 100%;
+        border: none; 
+        outline: none;
+        color: transparent; 
+        background: transparent;  
+    }
+
+    .createMobileTaskHint, .createMobileRecurringText {
+        margin: 0px;
+        padding: 0px;
+        max-width: 85%; 
+        font-size: 14px;
+        overflow: hidden; 
+        font-weight: 400;
+        line-height: 20px;
+        font-style: normal; 
+    }
+
+    .createTaskInputsDiv { 
+        gap: 15px;
+        width: 80%;  
+        padding: 12px;
+    }
+
+    .darkTheme .createTaskInputsDiv, 
+    .darkTheme .createTaskDiscardBtn,
+    .darkTheme .createRecurringMenu, 
+    .darkTheme .calendarTaskDefaultDiv { border: 1px solid #161616; }
+
+    .createTaskRadioText, 
+    .createRecurringTablet, 
+    .createTaskCalendarChildDiv, 
+    .createTaskTextareaInput,
+    .createRecurringDiv {  display: none !important; }
+
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .createTaskChildDiv { 
+        gap: 30px; 
+        padding: 20px; 
+        min-width: 85%;
+        max-width: 85%;
+        height: fit-content; 
+        border-radius: 30px;
+        align-items: flex-start; 
+        justify-content: center;
+    }
+
+    .createTaskCalendarDiv {
+        gap: 30px;  
+        height: fit-content; 
+        justify-content: center;
+    }
+
+    .calendarTaskDefaultDiv { min-width: 50%; }
+
+    .darkTheme .calendarTaskDefaultDiv { border: 1px solid #0A0A0A; }
+
+    .createTaskItemDescription { 
+        margin: 0px;
+        padding: 0px; 
+        max-width: 42vw;
+        font-size: 14px;
+        overflow: hidden; 
+        font-weight: 400;
+        line-height: 20px;
+        font-style: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis; 
+    }
+
+    .createTaskInputsDiv { 
+        flex: 1;  
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .darkTheme .createTaskInputsDiv  { border: 1px solid #0A0A0A; }
+
+    .darkTheme .createTaskDiscardBtn { border: 1px solid #000000; }
+
+    .darkTheme .createRecurringMenu { border: 1px solid #0A0A0A; }
+
+    .createRecurringDiv { display: flex; }
+
+    .createTaskItemSvg, .createMobileTaskCalendarChildDiv, .createMobileTaskTextarea {  display: none !important; }
+
+    .createTaskCalendarChildDiv {
+        display: flex; 
+        gap: 15px;
+        width: fit-content;
+        padding: 15px 20px 15px 20px;
+    }
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+    .createTaskChildDiv { 
+        gap: 30px; 
+        padding: 20px; 
+        min-width: 65%;
+        max-width: 70%;  
+        height: fit-content;
+        border-radius: 30px;
+        align-items: flex-start; 
+        justify-content: center;
+    }
+
+    .createTaskCalendarDiv { 
+        gap: 30px;  
+        height: fit-content; 
+        justify-content: center;
+    }
+
+    .calendarTaskDefaultDiv { min-width: 50%; }
+
+    .darkTheme .calendarTaskDefaultDiv { border: 1px solid #0A0A0A; }
+
+    .createTaskItemDescription { 
+        margin: 0px;
+        padding: 0px; 
+        max-width: 42vw;
+        font-size: 14px;
+        overflow: hidden; 
+        font-weight: 400;
+        line-height: 20px;
+        font-style: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis; 
+    }
+
+    .createTaskInputsDiv { 
+        flex: 1;  
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .darkTheme .createTaskInputsDiv  { border: 1px solid #0A0A0A; }
+
+    .darkTheme .createTaskDiscardBtn { border: 1px solid #000000; }
+
+    .darkTheme .createRecurringMenu { border: 1px solid #0A0A0A; }
+ 
+    .createRecurringDiv { display: flex; }
+
+    .createTaskItemSvg, .createMobileTaskCalendarChildDiv, .createMobileTaskTextarea {  display: none !important; }
+
+    .createTaskCalendarChildDiv { 
+        display: flex; 
+        gap: 15px;
+        width: fit-content;
+        padding: 15px 20px 15px 20px;
+    }
+}
+
+
+.createTaskParentDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    padding: 0px;
+    border: none;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lightTheme .createTaskParentDiv { background-color: #FCFCFC; }
+
+.darkTheme .createTaskParentDiv { background-color: #000000; }
+
+.createTaskChildDiv {
+    display: flex;
+    margin: 0px;
+    border: none;
+    flex-direction: column;
+}
+
+.createTaskShowDiv {
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    border: none;
+    width: fit-content;
+    align-items: center;
+    height: fit-content;
+    border-radius: 10px;
+    justify-content: center;
+    padding: 8px 18px 8px 18px;
+}
+
+.lightTheme .createTaskShowDiv { 
+    background-color: #FFFFFF; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.darkTheme .createTaskShowDiv { background-color: #0A0A0A; }
+
+.createTaskShowIconDiv {
+    display: flex;
+    margin: 0px;
+    padding: 5px;
+    border: none;
+    border-radius: 50%;
+}
+
+.lightTheme .createTaskShowIconDiv { background-color: #E8F5E9; }
+
+.darkTheme .createTaskShowIconDiv { background-color: #222222; }
+
+.createTaskShowItemDiv {
+    display: flex;
+    gap: 3px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    transition: .3s;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.createTaskItemHeaderDiv {
+    display: flex;
+    gap: 8px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+}
+
+.createTaskItemTitle {
+    margin: 0px;
+    padding: 0px;
+    max-width: 35vw; 
+    font-size: 14px;
+    font-weight: 600;
+    overflow: hidden;
+    line-height: 14px;
+    font-style: normal;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+
+.lightTheme .createTaskItemTitle { color: #171717; }
+.darkTheme .createTaskItemTitle  { color: #BDBDBD; }
+
+.createTaskShowSvg {
+    width: 23px;
+    margin: 0px;
+    height: auto;
+    padding: 0px;
+    border: none;
+}
+
+.createTaskItemSvg {
+    width: 18px;
+    margin: 0px;
+    height: 18px;
+    padding: 0px;
+    border: none;
+}
+
+.createTaskItemDate {
+    margin: 0px;
+    padding: 0px;
+    max-width: 40vw; 
+    font-size: 14px;
+    overflow: hidden; 
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+ 
+.lightTheme .createTaskItemDate, 
+.lightTheme .createMobileTaskHint, 
+.lightTheme .createMobileDateLabel, 
+.lightTheme .createMobileDateBtn { color: #9E9E9E; }
+.darkTheme .createTaskItemDate, 
+.darkTheme .createMobileTaskHint, 
+.darkTheme .createMobileDateLabel, 
+.darkTheme .createMobileDateBtn{ color: #515151; }
+ 
+.lightTheme .createTaskItemDescription { color: #666666; }
+.darkTheme .createTaskItemDescription  { color: #BDBDBD; }
+
+.lightTheme .createMobileRecurringText { color: #666666; }
+.darkTheme .createMobileRecurringText  { color: #BDBDBD; }
+
+.calendarTaskDefaultDiv {
+    display: flex;
+    gap: 3px;
+    margin: 0px;
+    padding: 10px; 
+    transition: .3s;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.lightTheme .calendarTaskDefaultDiv {  
+    border: none;
+    background-color: #FFFFFF; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.darkTheme .calendarTaskDefaultDiv { background-color: #0A0A0A; }
+
+.calendarTaskItemTextDiv {
+    display: flex;
+    gap: 3px;
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+}
+
+.calendarTaskTitle {
+    margin: 0px;
+    padding: 0px;
+    max-width: 45vw; 
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.calendarTaskDescription {
+    margin: 0px;
+    padding: 0px;
+    max-width: 45vw; 
+    font-size: 14px;
+    color: #666666;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.createTaskCalendarDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.createTaskCalendarChildDiv {
+    margin: 0px;
+    border: none; 
+    border-radius: 23px;
+    height: fit-content;
+    flex-direction: column; 
+}
+
+.lightTheme .createTaskCalendarChildDiv { 
+    background-color: #FFFFFF; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.darkTheme .createTaskCalendarChildDiv { background-color: #0A0A0A; }
+
+.createTaskCalendarHeaderDiv {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.createTaskMonthSpan {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px; 
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+}
+
+.lightTheme .createTaskMonthSpan { color: #171717;}
+
+.darkTheme .createTaskMonthSpan { color: #9F9F9F; }
+ 
+.createTaskTimeInput[type=time] {
+    width: 33%;
+    margin: 0px;
+    padding: 0px;
+    border: none; 
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px; 
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .createTaskTimeInput[type=time] { 
+    color: #666666;
+    background-color: #FFFFFF;
+}
+
+.darkTheme .createTaskTimeInput[type=time] { 
+    color: #BDBDBD; 
+    background-color: #0A0A0A;
+}
+ 
+.createTaskTimeInput[type=time]::-webkit-datetime-edit-fields-wrapper { display: flex; }
+ 
+.createTaskTimeInput[type=time]::-webkit-datetime-edit-text { padding: 0px; }
+ 
+.createTaskTimeInput[type=time]::-webkit-datetime-edit-hour-field { padding: 2px; }
+   
+.createTaskTimeInput[type=time]::-webkit-datetime-edit-minute-field { padding: 2px; }
+ 
+.createTaskTimeInput[type=time]::-webkit-clear-button { display: none; }
+   
+.createTaskTimeInput[type=time]::-webkit-inner-spin-button { display: none; }
+
+.createTaskTimeInput[type=time]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    background-size: contain;
+}
+
+.lightTheme .createTaskTimeInput[type=time]::-webkit-calendar-picker-indicator  { 
+    background: url('../assets/clockLight.svg') no-repeat center;
+}
+
+.darkTheme .createTaskTimeInput[type=time]::-webkit-calendar-picker-indicator  { 
+    background: url('../assets/clockDark.svg') no-repeat center;
+}
+  
+.createTaskCalendarBtnDiv {
+    display: flex;   
+    gap: 5px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    width: fit-content;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.createTaskCalendarBtn {
+    display: flex;  
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    width: fit-content;
+    border-radius: 4px;
+}
+
+.lightTheme .createTaskCalendarBtn  { 
+    background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.darkTheme .createTaskCalendarBtn  { background-color: #191919; }
+
+.createTaskCalendarBtnSrc {
+    width: 18px;
+    margin: 0px;
+    height: 18px;
+    padding: 0px;
+    border: none;
+    background-color: none;
+}
+
+.createTaskWeekDayList, .createTaskDaysList {
+    display: grid;
+    gap: 5px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    list-style: none;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.createTaskWeekDayList li, .createTaskDaysList li {
+    margin: 0px; 
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    text-align: center; 
+}
+
+.lightTheme .createTaskWeekDayList li, .lightTheme .createTaskDaysList li { color: #666666; }
+
+.darkTheme .createTaskWeekDayList li, .darkTheme .createTaskDaysList li { color: #515151; }
+
+.createTaskCurrentDate {
+    margin: 0px;
+    padding: 5px;
+    transition: .3s;
+    border-radius: 5px;
+}
+
+.lightTheme .createTaskCurrentDate { 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.darkTheme .createTaskCurrentDate { background-color: #141414; }
+
+.createTaskInputsDiv {
+    display: flex; 
+    margin: 0px;
+    border: none;
+    border-radius: 23px;
+    flex-direction: column;
+}
+
+.lightTheme .createTaskInputsDiv { 
+    background-color: #FFFFFF; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.darkTheme .createTaskInputsDiv  { background-color: #0A0A0A; }
+
+.createTaskTitleInput { 
+    border: none;
+    padding: 0px; 
+    outline: none;
+    font-size: 14px; 
+    font-weight: 400;
+    line-height: 18px;
+    font-style: normal; 
+    white-space: normal;
+    text-overflow: ellipsis;  
+    margin: 5px 5px 0px 5px;
+}
+
+.createTaskTitleInput::placeholder, .createMobileTaskTextarea::placeholder, .createTaskTextareaInput::placeholder {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: 'Geist' !important;
+}
+
+.lightTheme .createTaskTitleInput::placeholder, 
+.lightTheme .createMobileTaskTextarea::placeholder,  
+.lightTheme .createTaskTextareaInput::placeholder { color: #999; }
+
+.darkTheme .createTaskTitleInput::placeholder, 
+.darkTheme .createMobileTaskTextarea::placeholder, 
+.darkTheme .createTaskTextareaInput::placeholder  { color: #515151; }
+
+.createTaskTextareaInput, .createMobileTaskTextarea { 
+    display: flex;
+    flex: 1;
+    border: none;
+    resize: none;
+    outline: none; 
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 18px;
+    font-style: normal;
+    border-radius: 8px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    padding: 10px 5px 10px 5px;
+    font-family: 'Geist' !important;
+}
+
+.lightTheme .createTaskTitleInput, 
+.lightTheme .createMobileTaskTextarea, 
+.lightTheme .createTaskTextareaInput { 
+    color: #000000;
+    background-color: #FFFFFF; 
+}
+
+.darkTheme .createTaskTitleInput, 
+.darkTheme .createMobileTaskTextarea, 
+.darkTheme .createTaskTextareaInput  { 
+    color: #BDBDBD;
+    caret-color: #BDBDBD;
+    background-color: #0A0A0A; 
+}
+
+.createTaskBtnsDiv { 
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.createRecurringDiv {  
+    flex: 1;
+    gap: 10px; 
+    padding: 0px;
+    border: none;
+    align-items: center;
+    margin: 0px 0px 0px 10px;
+    justify-content: flex-start;
+}
+ 
+.createRecurringMenu {
+    position: -webkit-sticky;
+    position: sticky;
+    display: flex;
+    gap: 5px;
+    top: 0px;
+    padding: 4px; 
+    transition: .3s;
+    width: fit-content;
+    border-radius: 17px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightTheme .createRecurringMenu { border: 1px solid #F5F5F5; }
+
+.darkTheme .createRecurringMenu { background-color: #000000; }
+
+.createRecurringMenuItem {
+    margin: 0px; 
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal;
+    border-radius: 13px;
+    text-decoration: none;
+    padding: 4px 12px 4px 12px;
+    transition: background-color 0.5s ease; 
+}
+
+.createRecurringMenuItem:hover { cursor: pointer; }
+
+.lightTheme .createRecurringMenuItem { color: #757575; }
+.darkTheme .createRecurringMenuItem { color: #515151; }
+
+.lightTheme .createRecurringMenuItem:hover, .lightTheme .createRecurringMenuItem.active { 
+    color: #171717;
+    box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+}
+
+.darkTheme .createRecurringMenuItem:hover, .darkTheme .createRecurringMenuItem.active { 
+    color: #E0E0E0; 
+    background-color: #141414;
+}
+
+.createTaskRadioBtnDiv {
+    display: flex;
+    gap: 20px;
+    margin: 0px;
+    height: 19px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.createTaskRadioText {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    font-style: normal;
+}
+ 
+.lightTheme .createTaskRadioText { color: #999; }
+
+.darkTheme .createTaskRadioText { color: #515151; }
+ 
+.createTaskRadioSpan {
+    display: flex;
+    width: 34px;
+    height: 19px; 
+    position: relative;
+    border-radius: calc(18px / 2); 
+    transition: 0.3s all ease-in-out; 
+}
+
+.lightTheme .createTaskRadioSpan { background-color: #EEEEEE; }
+
+.darkTheme .createTaskRadioSpan { background-color: #212121; }
+
+.createTaskRadioSpan::after {
+    position: absolute;
+    top: 2px; 
+    width: 15px;
+    content: "";
+    height: 15px; 
+    display: inline-block; 
+    transform: translateX(2px); 
+    background-color: #FFFFFF; 
+    border-radius: calc(15px / 2); 
+    transition: 0.3s all ease-in-out;
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.lightTheme .createTaskRadioLabel input[type="checkbox"]:checked + .createTaskRadioSpan { background-color: #15C182; }
+
+.darkTheme .createTaskRadioLabel input[type="checkbox"]:checked + .createTaskRadioSpan { background-color: #004D40; }
+
+.createTaskRadioLabel input[type="checkbox"]:checked + .createTaskRadioSpan::after {
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1); 
+    transform: translateX(calc(30px - 10px - 3px));
+}
+
+.createTaskRadioLabel input[type="checkbox"] { display: none; }
+
+.createTaskRadioLabel input[type="checkbox"]:active + .createTaskRadioSpan::after { width: 48px; }
+
+.createTaskRadioLabel input[type="checkbox"]:checked:active + .createTaskRadioSpan::after {
+    transform: translateX(calc(30px - 48px - 2px)); 
+}
+ 
+.createTaskDiscardBtn, .createTaskSaveBtn { 
+    display: flex;
+    margin: 0px; 
+    font-size: 14px;    
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 14px;
+    width: fit-content; 
+    font-style: normal;
+    border-radius: 50px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px 8px 20px;
+}
+
+.lightTheme .createTaskDiscardBtn {  
+    color: #666666; 
+    border: 1px solid #E0E0E0;
+    background-color: #FFFFFF; 
+}
+
+.darkTheme .createTaskDiscardBtn {    
+    color: #E8E8E8;
+    background-color: #000000; 
+}
+
+.lightTheme .createTaskSaveBtn {
+    border: none;
+    color: #F5F5F5;
+    background-color: #000000;
+}
+
+.darkTheme .createTaskSaveBtn { 
+    color: #000000; 
+    border: 1px solid #F5F5F5;
+    background-color: #F5F5F5; 
+}
+
+.createTaskCalendarBtn:active, 
+.createTaskDiscardBtn:active, 
+.createTaskSaveBtn:active, 
+.createMobileTaskCalendarBtn:active  { transform: scale(0.95); }
+
+@keyframes fadeIn {
+    from {  opacity: 0; }
+    to   { opacity: 1; }
+}
+  
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+  
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+}
+  
+.fadeOut {
+    animation-name: fadeOut;
+    animation-duration: 0.3s;
+}

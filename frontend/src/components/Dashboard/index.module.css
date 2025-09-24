@@ -1,0 +1,210 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px) {
+
+    .dashboardParentDiv { flex-direction: column-reverse; }
+
+    .dashboardMenuDiv { display: none; }
+ 
+    .dashboardMobileMenuDiv {
+        display: flex;
+        width: 100%;
+        margin: 0px; 
+        border: none;
+        height: fit-content;
+        align-items: center;
+        justify-content: center; 
+        padding: 4px 0px 4px 0px; 
+    }
+
+    .dashboardMobileChildDiv {
+        display: flex; 
+        width: 90%;
+        margin: 0px;
+        padding: 5px; 
+        height: fit-content;
+        align-items: center;
+        border-radius: 30px; 
+        justify-content: space-between;  
+    }
+
+    .lightTheme .dashboardMobileChildDiv { 
+        border: 1px solid transparent; 
+        box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+    }
+
+    .darkTheme .dashboardMobileChildDiv { 
+        background-color: #121212;
+        border: 1px solid transparent; 
+    }
+ 
+    .dashboardMobileBtn {
+        display: flex; 
+        margin: 0px;
+        padding: 5px;
+        transition: .2s;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;  
+    }
+
+    .lightTheme .dashboardMobileBtn {  
+        background-color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+    }
+
+    .darkTheme .dashboardMobileBtn { 
+        background-color: #121212;
+        border: 1px solid #121212;
+    }
+ 
+    .dashboardMobileBtn:active { transform: scale(0.9); }
+
+    .lightTheme .dashboardMobileBtn.active { 
+        background-color: #E0F2F1;
+        border: 1px solid #E0F2F1;
+    }
+ 
+    .darkTheme .dashboardMobileBtn.active { 
+        background-color: #202020;
+        border: 1px solid #202020;
+    }
+
+    .dashboardMobileIcon {
+        width: 20px;
+        height: 20px;
+    }
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .dashboardParentDiv { flex-direction: column; }
+
+    .dashboardMenuDiv { display: flex; }
+
+    .dashboardMobileMenuDiv { display: none; }
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+    .dashboardParentDiv { flex-direction: column; }
+
+    .dashboardMenuDiv { display: flex; }
+
+    .dashboardMobileMenuDiv { display: none; }
+}
+
+.dashboardParentDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    border: none;
+    padding: 0px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    align-items: center; 
+    justify-content: flex-start; 
+}
+
+.lightTheme .dashboardParentDiv { background-color: #FFFFFF; }
+.darkTheme .dashboardParentDiv  { background-color: #000000; }
+
+.dashboardMenuDiv {
+    position: -webkit-sticky;
+    position: sticky; 
+    gap: 15px;
+    top: 0px;
+    width: 100%;
+    padding: 0px; 
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    height: fit-content;
+    align-items: center;
+    justify-content: center; 
+}
+
+.lightTheme .dashboardMenuDiv { border-bottom: 1px solid #E0E0E0; }
+
+.darkTheme .dashboardMenuDiv {
+    background-color: #0A0A0A;
+    border-bottom: 1px solid #161616; 
+}
+
+.dashboardMenuItem {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal;
+    border-radius: 13px;
+    text-decoration: none;
+    margin: 10px 0px 10px 0px; 
+    padding: 6px 12px 6px 12px;
+    transition: background-color 0.5s ease; 
+}
+
+.dashboardMenuItem:hover { cursor: pointer; }
+
+.lightTheme .dashboardMenuItem { 
+    border: none;
+    color: #757575; 
+    background-color: #FFFFFF;
+}
+.darkTheme .dashboardMenuItem {  
+    border: none;
+    color: #616161; 
+    background-color: #0A0A0A;
+}
+
+.lightTheme .dashboardMenuItem:hover, .lightTheme .dashboardMenuItem.active { 
+    color: #171717;
+    box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+}
+
+.darkTheme .dashboardMenuItem:hover, .darkTheme .dashboardMenuItem.active { 
+    color: #E0E0E0; 
+    background-color: #121212;
+}
+ 
+.dashboardMenuItemDiv {
+    position: relative;
+    display: flex;
+    gap: 0px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboardMenuChatIndicator {
+    position: absolute;
+    display: flex;
+    top: 16px;
+    right: 6px;
+    width: 5px;
+    height: 5px;
+    margin: 0px;
+    padding: 0px; 
+    border: none;
+    border-radius: 50%;
+}
+
+.lightTheme .dashboardMenuChatIndicator { background-color: #15C182; }
+ 
+.darkTheme .dashboardMenuChatIndicator { background-color: #004D40; }
+
+.dashboardContentDiv {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    justify-content: center;
+    align-items: flex-start;
+}

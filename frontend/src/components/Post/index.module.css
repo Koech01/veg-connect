@@ -1,0 +1,311 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+
+    .postCardDiv { 
+        width: 84%;
+        padding: 20px 0px 20px 0px;
+    }
+    
+    .postCardHeader {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .postCardInputTagDiv { width: 100%; }
+
+    .postFlexDiv, .postCardInputDiv, .postCardFlexInputDiv{ width: 90%; }
+
+    .postCardFlexInputDiv {
+        gap: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .postCardSelectDiv { width: 100%; }
+
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .postCardDiv { 
+        width: 60%;
+        padding: 20px 0px 20px 0px;
+    }
+    
+    .postCardHeader {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .postCardInputTagDiv { width: 70%; }
+
+    .postFlexDiv, .postCardInputDiv, .postCardFlexInputDiv { width: 94%; }
+
+    .postCardFlexInputDiv {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .postCardSelectDiv { flex: 1; }
+
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+    .postCardDiv { 
+        width: 40%;
+        padding: 20px 0px 20px 0px;
+    }
+
+    .postCardHeader {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .postCardInputTagDiv { width: 70%; }
+
+    .postFlexDiv, .postCardInputDiv, .postCardFlexInputDiv{ width: 94%; }
+
+    .postCardFlexInputDiv {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .postCardSelectDiv { flex: 1; }
+
+}
+
+.postParentDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    padding: 0px;
+    border: none;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lightTheme .postParentDiv { background-color: #FCFCFC; }
+
+.darkTheme .postParentDiv { background-color: #FCFCFC; }
+
+.postCardDiv {
+    display: flex;
+    gap: 20px;
+    margin: 0px;
+    border-radius: 15px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+} 
+
+.lightTheme .postCardDiv { 
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE; 
+}
+
+.darkTheme .postCardDiv { 
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE; 
+}
+
+.postFlexDiv {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    align-items: center;
+}
+
+.postCardHeader {
+    margin: 0px;
+    padding: 0px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lightTheme .postCardHeader { color: #171717; }
+
+.darkTheme  .postCardHeader { color: #F5F5F5; }
+
+.postCardInputDiv {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    flex-direction: column;
+}
+
+.postCardInputTagDiv {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    flex-direction: column;
+}
+
+.postCardFlexInputDiv {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    justify-content:space-between;
+}
+
+.postCardSpan {
+    margin: 0px;
+    padding: 0px;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lightTheme .postCardSpan { color: #666666; }
+
+.darkTheme  .postCardSpan { color: #666666; }
+
+.postCardInput, .postTextarea {
+    margin: 0px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal;
+    border-radius: 8px; 
+    height: fit-content;
+    transition: .3s ease;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid transparent;
+}
+
+.postCardInput { border-radius: 25px; }
+
+.postTextarea { border-radius: 8px; }
+ 
+.postTextarea { resize: none; }
+
+.lightTheme .postCardInput, .lightTheme .postTextarea { 
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
+.darkTheme .postCardInput, .darkTheme .postTextarea {
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
+.lightTheme .postCardInput::placeholder, .lightTheme .postTextarea::placeholder { color: #9E9EA7; }
+
+.darkTheme .postCardInput::placeholder, .darkTheme .postTextarea::placeholder { color: #9E9EA7; }
+
+.postCardSelectDiv {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.postCardSelect {
+    display: flex;
+    flex: 1;
+    margin: 0px;
+    outline: none;
+    font-size: 14px;
+    appearance: none; 
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal;
+    border-radius: 8px; 
+    height: fit-content;
+    transition: .3s ease;
+    -moz-appearance: none; 
+    -webkit-appearance: none; 
+    padding: 8px 10px 8px 10px;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-image: var(--chevronIcon);
+    background-position: right 8px center;
+}
+
+.lightTheme .postCardSelect { 
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
+.darkTheme .postCardSelect{
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
+.postUploadImgBtn { 
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px dashed #EEEEEE;
+}
+
+.lightTheme .postUploadImgBtn { background-color: #FFFFFF; }
+.darkTheme  .postUploadImgBtn { background-color: #FFFFFF; }
+
+.postUploadImgBtn span:nth-child(1) {
+    border-radius: 15px;
+    padding: 5px 12px 5px 12px;
+    border: 1px solid #EEEEEE;
+}
+
+.postUploadImgBtn span:nth-child(1), .postUploadImgBtn span:nth-child(2) {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lightTheme .postUploadImgBtn span:nth-child(1) { 
+    color: #666666; 
+    background-color: #FFFFFF; 
+}
+
+.lightTheme .postUploadImgBtn span:nth-child(2) { 
+    color: #9E9EA7; 
+    background-color: #FFFFFF; 
+}
+
+.postSubmitBtn { 
+    display: flex;
+    border: none; 
+    font-size: 14px;
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 14px;
+    font-style: normal;
+    width: fit-content;  
+    border-radius: 50px;
+    height: fit-content;
+    padding: 8px 20px 8px 20px;
+}
+
+.lightTheme .postSubmitBtn { color: #F5F5F5; background-color: #000000; }
+.darkTheme .postSubmitBtn { color: #000000; background-color: #F5F5F5; } 
+
+.postSubmitBtn:active { transform: scale(0.95); }

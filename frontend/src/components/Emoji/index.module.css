@@ -1,0 +1,26 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+
+
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+
+}
+
+.emojiParentDiv {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}

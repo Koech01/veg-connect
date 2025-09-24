@@ -1,0 +1,552 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+
+    .onboardingContentDiv {
+        gap: 5%;
+        width: 90%;
+        height: 60%;
+    }
+
+    .onboardingComponentItemDiv:nth-child(1) { 
+        width: 66%;
+        height: 15%; 
+        margin: 0% 0% -12% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(2) {
+        width: 74%;
+        height: 15%; 
+        margin: 0% 0% -8% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(3) {
+    
+        width: 82%;
+        height: 15%;  
+        margin: 0% 0% -4% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(4) {
+        width: 90%;
+        height: fit-content; 
+        margin: 0% 0% 0% 0%; 
+    }
+  
+    .onboardingComponentTextDiv { width: 96%; }
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .onboardingContentDiv {
+        gap: 5%;
+        width: 75%;
+        height: 60%;
+    }
+
+    .onboardingComponentItemDiv:nth-child(1) { 
+        width: 58%;
+        height: 15%; 
+        margin: 0% 0% -8% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(2) {
+        width: 62%;
+        height: 15%; 
+        margin: 0% 0% -6% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(3) {
+    
+        width: 66%;
+        height: 15%;  
+        margin: 0% 0% -4% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(4) {
+        width: 70%;
+        height: fit-content; 
+        margin: 0% 0% 0% 0%; 
+    }
+
+    .onboardingComponentTextDiv { width: 100%; }
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+    .onboardingContentDiv {
+        gap: 5%;
+        width: 50%;
+        height: 60%;
+    }
+
+    .onboardingComponentItemDiv:nth-child(1) { 
+        width: 38%;
+        height: 15%; 
+        margin: 0% 0% -8% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(2) {
+        width: 42%;
+        height: 15%; 
+        margin: 0% 0% -6% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(3) {
+    
+        width: 46%;
+        height: 15%;  
+        margin: 0% 0% -4% 0%; 
+    }
+    
+    .onboardingComponentItemDiv:nth-child(4) {
+        width: 50%;
+        height: fit-content; 
+        margin: 0% 0% 0% 0%; 
+    }
+
+    .onboardingComponentTextDiv { width: 100%; }
+}
+
+.onboardingParentDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    padding: 0px;
+    border: none;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center; 
+}
+
+.lightTheme .onboardingParentDiv { background-color: #FCFCFC; }
+.darkTheme .onboardingParentDiv  { background-color: #000000; }
+
+.onboardingContentDiv {
+    display: flex;  
+    margin: 0px;
+    padding: 0px;
+    border-radius: 25px; 
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.lightTheme .onboardingContentDiv { 
+    background-color: #FFFFFF;
+    border: 2px solid #EEEEEE;
+}
+
+.darkTheme .onboardingContentDiv {
+    background-color: #0A0A0A;
+    border: 2px solid #161616;
+}
+ 
+.onboardingFeaturesDiv {
+    width: 98%;
+    height: 70%; 
+    margin: 0px;  
+    border: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.lightTheme .onboardingFeaturesDiv { 
+    background: #FFFFFF radial-gradient(#E0E0E0 10%, transparent 1%);
+    background-size: 12px 12px;
+}
+
+.darkTheme .onboardingFeaturesDiv { 
+    background: #0A0A0A radial-gradient(#2B2B2B 10%, transparent 1%);
+    background-size: 12px 12px;
+}
+
+.onboardingComponentListDiv {
+    position: relative;
+    display: flex;  
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;  
+    border: none;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;  
+}
+
+.onboardingComponentItemDiv {
+    position: absolute; 
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.lightTheme .onboardingComponentItemDiv { 
+    border: 1px solid #EEEEEE;
+    background-color: #FFFFFF;
+}
+
+.darkTheme .onboardingComponentItemDiv { 
+    border: 1px solid #1C1C1C;
+    background-color: #121212;
+}
+
+.onboardingInboxDiv {
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    border: none;
+    transition: .2s;
+    align-items: center;
+    padding: 4px 10px 4px 10px;  
+    justify-content: flex-start; 
+}
+
+.onboardingInboxHeaderDiv {
+    display: flex;
+    gap: 10px;
+    width: 95%;
+    margin: 0px;
+    border: none;
+    padding: 0px; 
+    height: fit-content;
+    align-items: center;
+    justify-content: flex-start; 
+}
+
+.onboardingInboxContentDiv {
+    display: flex; 
+    width: 90%;
+    margin: 0px;
+    border: none;
+    padding: 0px; 
+    height: fit-content; 
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; 
+}
+
+.onboardingUserIcon {
+    margin: 0px;
+    padding: 0px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.onboardingInboxName, .onboardingInboxTime, .onboardingInboxText {
+    margin: 0px;
+    padding: 0px; 
+    font-size: 14px; 
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.onboardingInboxPect {
+    margin: 0px;
+    padding: 0px; 
+    font-size: 15px; 
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.onboardingInboxText { max-width: 95%; } 
+
+.lightTheme .onboardingInboxName { color: #171717; }
+
+.darkTheme .onboardingInboxName { color: #BDBDBD; }
+
+.lightTheme .onboardingInboxTime { color: #9E9E9E; }
+
+.darkTheme .onboardingInboxTime { color: #757575; }
+
+.lightTheme .onboardingInboxText, .lightTheme .onboardingInboxPect { color: #37474F; }
+
+.darkTheme .onboardingInboxText, .darkTheme .onboardingInboxPect { color: #9E9E9E; }
+
+.onboardingTaskIcon {
+    margin: 0px;
+    width: auto;  
+    padding: 0px;
+    height: 28px;
+    object-fit: cover;
+}
+
+.onboardingPlantIcon {
+    margin: 0px; 
+    width: 30px;  
+    padding: 0px;
+    height: 30px;
+    object-fit: cover;
+}
+
+.onboardingPreference {
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    padding: 7px; 
+    border: none;
+    transition: .2s;
+    border-radius: 8px;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: flex-start;  
+}
+
+.onboardingDropdownParent {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;  
+}
+
+.onboardingDropdownDiv { 
+    display: flex;
+    gap: 10px;
+    width: 93%;
+    margin: 0px;
+    cursor: pointer; 
+    font-size: 15px; 
+    font-weight: 400;
+    line-height: 15px;
+    user-select: none;
+    text-align: center; 
+    font-style: normal; 
+    border-radius: 4px;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;  
+    padding: 5px 10px 5px 10px;
+    justify-content: flex-start;  
+}
+
+.lightTheme .onboardingDropdownDiv { 
+    color: #424242;
+    border: 1px solid #EEEEEE;
+    background-color: #FFFFFF;
+}
+
+.darkTheme .onboardingDropdownDiv { 
+    color: #BDBDBD;
+    border: 1px solid #1C1C1C;
+    background-color: #121212;
+}
+
+.onboardingDropdownListDiv {  
+    position: absolute;
+    display: flex;
+    gap: 5px;
+    top: 35px;
+    width: 93%;
+    margin: 0px; 
+    cursor: pointer; 
+    font-size: 15px; 
+    font-weight: 400;
+    line-height: 15px;
+    max-height: 25vh;
+    overflow-y: auto;
+    user-select: none; 
+    border-radius: 6px;  
+    font-style: normal;   
+    white-space: nowrap;
+    scrollbar-width: none; 
+    flex-direction: column; 
+    text-overflow: ellipsis;    
+    padding: 5px 10px 5px 10px;
+}
+
+.onboardingDropdownListDiv::-webkit-scrollbar { display: none; }
+
+.lightTheme .onboardingDropdownListDiv { 
+    color: #616161;
+    border: 1px solid #EEEEEE;
+    background-color: #FFFFFF;
+}
+
+.darkTheme .onboardingDropdownListDiv { 
+    color: #9E9E9E;
+    border: 1px solid #1C1C1C;
+    background-color: #121212;
+}
+
+.onboardingPlantGridDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: center;  
+}
+
+.onboardingPlantGrid {
+    display: flex; 
+    gap: 8px;  
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+}
+
+.onboardingPlantItemDiv, .selectedPlant {  
+    margin: 0px;
+    cursor: pointer; 
+    font-size: 14px; 
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 14px;
+    user-select: none;
+    text-align: center; 
+    font-style: normal;
+    border-radius: 15px;   
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    padding: 6px 10px 6px 10px; 
+    transition: background-color 0.2s ease, border-color 0.2s ease; 
+}
+
+.lightTheme .onboardingPlantItemDiv { 
+    color: #212121;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.darkTheme .onboardingPlantItemDiv { 
+    color: #FFFFFF;
+    background-color: #2F2F2F;
+    border: 1px solid #2F2F2F; 
+}
+
+.lightTheme .selectedPlant { 
+    color: #F5F5F5;
+    background-color: #000000; 
+}
+
+.darkTheme .selectedPlant { 
+    color: #212121;
+    background-color: #FFFFFF;
+}
+
+.onboardingComponentInfoDiv {
+    display: flex;
+    width: 98%;
+    height: 20%; 
+    margin: 0px;
+    border: none;
+    align-items: center;
+    padding: 0px 5px 0px 10px;  
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    justify-content: space-between; 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.onboardingComponentChildDiv {
+    display: flex;
+    width: 80%;
+    margin: 0px;
+    border: none;
+    flex-direction: column;  
+    align-items: flex-start; 
+    justify-content: center;  
+    padding: 0px 0px 0px 10px;
+}
+
+.onboardingComponentTextDiv {
+    display: flex;
+    gap: 5px; 
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    transition: .2s;
+    flex-direction: column;  
+    align-items: flex-start; 
+    justify-content: center;  
+}
+
+.onboardingTitle {
+    margin: 0px;
+    padding: 0px; 
+    font-size: 16px; 
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.onboardingDescription {
+    margin: 0px;
+    padding: 0px; 
+    max-width: 100%; 
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal; 
+}
+ 
+.lightTheme .onboardingTitle, .lightTheme .onboardingDescription { color: #37474F; }
+
+.darkTheme .onboardingTitle { color: #BDBDBD; }
+
+.darkTheme .onboardingDescription { color: #757575; }
+
+.onboardingNextBtn { 
+    display: flex;   
+    border: none;
+    font-size: 14px;    
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 14px;
+    width: fit-content; 
+    font-style: normal;
+    border-radius: 50px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 10px 0px 0px;
+    padding: 8px 20px 8px 20px;
+}
+ 
+.lightTheme .onboardingNextBtn {
+    color: #F5F5F5;
+    background-color: #000000;
+}
+
+.darkTheme .onboardingNextBtn { 
+    color: #000000; 
+    background-color: #F5F5F5; 
+}
+
+.onboardingNextBtn:active  { transform: scale(0.95); }
+ 
+@keyframes fadeIn {
+    from {  opacity: 0; }
+    to   { opacity: 1; }
+}
+ 
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+}

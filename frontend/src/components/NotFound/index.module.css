@@ -1,0 +1,140 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+    .notFoundHeaderDiv { 
+        border: none; 
+        width: 16%;
+        align-items: flex-end; 
+    }
+    
+    .notFoundTextDiv { 
+        gap: 15px; 
+        flex: 1;
+        align-items: flex-start; 
+    }
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .notFoundHeaderDiv { 
+        border: none; 
+        width: 25%;
+        align-items: flex-end; 
+    }
+    
+    .notFoundTextDiv { 
+        gap: 15px; 
+        width: 40%;
+        align-items: flex-start; 
+    }
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+    .notFoundHeaderDiv { 
+        border: none; 
+        width: 30%;
+        align-items: flex-end; 
+    }
+    
+    .notFoundTextDiv { 
+        gap: 15px; 
+        width: 35%;
+        align-items: flex-start; 
+    }
+    
+}
+
+.notFoundParentDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    padding: 0px;
+    border: none;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center; 
+}
+
+.lightTheme .notFoundParentDiv { background-color: #FCFCFC; }
+.darkTheme .notFoundParentDiv  { background-color: #000000; }
+
+.notFoundChildDiv {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    border: none; 
+    align-items: center;
+    justify-content: center;
+}
+
+.notFoundHeaderDiv, .notFoundTextDiv {
+    display: flex;
+    margin: 0px;
+    height: fit-content;
+    flex-direction: column; 
+    justify-content: center; 
+    padding: 0px 15px 0px 15px;
+}
+
+.lightTheme .notFoundTextDiv { border-left: 2px solid #EEEEEE; } 
+
+.darkTheme .notFoundTextDiv { border-left: 2px solid #121212; } 
+ 
+.notFoundHeader, .notFoundHint {
+    margin: 0px;
+    padding: 0px;   
+}
+
+.lightTheme .notFoundHeader, .lightTheme .notFoundHint { color: #212121; }
+
+.darkTheme .notFoundHeader, .darkTheme .notFoundHint { color: #E0E0E0; } 
+
+.notFoundText {
+    margin: 0px;
+    padding: 0px;  
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    font-style: normal; 
+}
+ 
+.lightTheme .notFoundText { color: #78909C; }
+
+.darkTheme .notFoundText { color: #757575; } 
+ 
+.notFoundBtn { 
+    display: flex; 
+    font-size: 14px;    
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 14px;
+    width: fit-content; 
+    font-style: normal;
+    border-radius: 50px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 10px 0px 0px;
+    padding: 8px 20px 8px 20px;
+}
+ 
+.lightTheme .notFoundBtn { 
+    color: #F5F5F5;
+    border: 1px solid #000000; 
+    background-color: #000000;
+}
+
+.darkTheme .notFoundBtn { 
+    color: #000000; 
+    border: 1px solid #F5F5F5; 
+    background-color: #F5F5F5; 
+}
+
+.notFoundBtn:active  { transform: scale(0.95); }

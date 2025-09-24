@@ -1,0 +1,410 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+
+    .mediaModalParentDiv { width: 75vw; }
+
+    .mediaModalDisplayDiv { max-width: 96%; }
+    
+    .viewMediaImageDiv {  
+        width: 84vw; 
+        height: auto; 
+    }
+    
+    .viewMediaVideoDiv {
+        width: 84vw; 
+        height: auto; 
+    }
+
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .mediaModalParentDiv { width: 75vw; }
+
+    .mediaModalDisplayDiv { max-width: 70vw; }
+
+    .viewMediaImageDiv {  
+        width: auto; 
+        height: 55vh; 
+    }
+    
+    .viewMediaVideoDiv {
+        width: auto; 
+        height: 55vh; 
+    }
+
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+    .mediaModalParentDiv { width: 60vw; }
+
+    .mediaModalDisplayDiv { max-width: 45vw; }
+
+    .viewMediaImageDiv {  
+        width: auto; 
+        height: 55vh; 
+    }
+    
+    .viewMediaVideoDiv {
+        width: auto; 
+        height: 55vh; 
+    }
+
+}
+
+.mediaModalParentDiv {
+    display: flex;  
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    flex-direction: column;
+}
+
+.mediaModalHeaderDiv {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.mediaModalHeaderIcon {
+    width: auto;
+    margin: 0px;
+    padding: 0px;
+    height: 20px;
+}
+
+.mediaModalUploadDiv {
+    display: flex;
+    padding: 0px;
+    border: none; 
+    width: fit-content;
+    flex-direction: column;
+    margin: 20px 0px 20px 0px; 
+}
+
+.mediaModalHeader {
+    margin: 0px;
+    padding: 0px;
+    max-width: 90%; 
+    font-size: 14px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 20px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lightTheme .mediaModalHeader { color: #171717; }
+
+.darkTheme .mediaModalHeader { color: #FAFAFA; }
+
+.mediaModalUploadBtn { 
+    display: flex;
+    gap: 15px;
+    margin: 0px; 
+    cursor: pointer;
+    border-radius: 10px;
+    align-items: center;
+    padding: 5px 10px 5px 0px;
+    justify-content: flex-start;
+}
+
+.lightTheme .mediaModalUploadBtn { 
+    background-color: #FFFFFF;
+    border: 1px dashed #EEEEEE;
+}
+
+.darkTheme  .mediaModalUploadBtn { 
+    background-color: #111111;
+    border: 1px solid #111111;
+}
+
+.mediaModalUploadLabel {
+    transition: .3s;
+    border-radius: 15px;
+    padding: 5px 12px 5px 12px;
+    border: 1px solid #EEEEEE;
+}
+
+.mediaModalUploadLabel, .mediaModalUploadHint {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lightTheme .mediaModalUploadLabel { 
+    color: #FAFAFA; 
+    border: 1px solid #000000;
+    background-color: #000000; 
+}
+
+.darkTheme .mediaModalUploadLabel {
+    color: #171717;
+    border: 1px solid #F5F5F5;
+    background-color: #F5F5F5;
+}
+
+.mediaModalUploadLabel:active { transform: scale(0.95); }
+
+.mediaModalUploadHint {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    font-style: normal;
+}
+
+.lightTheme .mediaModalUploadHint { color: #9E9EA7; }
+
+.darkTheme .mediaModalUploadHint { color: #616161; }
+
+.mediaModalDisplayDiv {
+    display: flex;
+    gap: 10px; 
+    padding: 0px;
+    border: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.mediaModalHasFile { margin: 0px 0px 20px 0px; }
+
+.mediaModalHasNoFile { margin: 0px; }
+
+.mediaModalDiv {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.mediaModalRemoveButton {
+    position: absolute;
+    display: flex;
+    top: 2px;
+    right: 2px;
+    z-index: 1;
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    transition: .3s;
+    cursor: pointer;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightTheme .mediaModalRemoveButton { background-color: #FFFFFF; }
+
+.darkTheme .mediaModalRemoveButton { background-color: #FFFFFF; }
+
+.mediaModalRemoveButton:active { transform: scale(0.9); }
+
+.mediaModalBtnImg {
+    margin: 0px;
+    width: 15px;
+    padding: 0px;
+    height: 15px;
+}
+
+.mediaModalImage, .mediaModalVideo{
+    width: auto;
+    margin: 0px;
+    padding: 0px;
+    max-height: 10vh;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.mediaModalTextarea { 
+    display: flex;
+    height: 5vh;
+    border: none; 
+    margin: 0px;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    border-radius: 8px; 
+    padding: 8px 10px 8px 10px;
+    font-family: 'Geist' !important;
+}
+
+.lightTheme .mediaModalTextarea { background-color: #FFFFFF; }
+
+.darkTheme .mediaModalTextarea {
+    color: #FAFAFA; 
+    caret-color: #FAFAFA;
+    background-color: #111111; 
+}
+
+.mediaModalTextarea::placeholder {
+    margin: 0px;
+    padding: 0px; 
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: 'Geist' !important;
+}
+
+.lightTheme .mediaModalTextarea::placeholder { color: #999; }
+
+.darkTheme .mediaModalTextarea::placeholder { color: #757575; }
+
+.mediaModalBtnDiv {
+    display: flex;
+    gap: 10px; 
+    padding: 0px;
+    border: none;
+    margin: 10px 0px 0px 0px;
+    justify-content: flex-end;
+}
+ 
+.viewModalCloseBtn {
+    display: flex;
+    margin: 0px;
+    padding: 3px;
+    border: none;
+    transition: .3s;
+    cursor: pointer;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightTheme .viewModalCloseBtn { 
+    background-color: #FFFFFF; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.01) 0px 1px 2px 0px;
+}
+
+.darkTheme .viewModalCloseBtn { background-color: #1A1A1A; }
+ 
+.mediaModalCloseBtn, .mediaModalSendBtn { 
+    display: flex;
+    margin: 0px;
+    font-size: 14px; 
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 14px;     
+    width: fit-content; 
+    font-style: normal;
+    border-radius: 50px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px 8px 20px;
+}
+
+.lightTheme .mediaModalCloseBtn { 
+    color: #666666; 
+    border: 1px solid #E0E0E0;
+    background-color: #FFFFFF; 
+}
+
+.darkTheme .mediaModalCloseBtn {  
+    color: #FAFAFA; 
+    border: 1px solid #000000;
+    background-color: #000000; 
+}
+
+.lightTheme .mediaModalSendBtn { 
+    border: none;
+    color: #F5F5F5;
+    background-color: #000000;
+}
+
+.darkTheme .mediaModalSendBtn {  
+    border: none;
+    color: #000000; 
+    background-color: #FAFAFA;
+}
+ 
+.viewModalCloseBtn:active, .mediaModalCloseBtn:active, .mediaModalSendBtn:active { transform: scale(0.95); }
+
+.viewMediaModalParentDiv {
+    position: fixed; 
+    display: flex;
+    z-index: 3;
+    width: 100%; 
+    padding: 0px;
+    border: none;
+    height: 92.5%; 
+    overflow: hidden;
+    align-items: center;
+    justify-content: center; 
+}
+
+.lightTheme .viewMediaModalParentDiv { background-color: rgba(0,0,0,0.4); }
+
+.darkTheme .viewMediaModalParentDiv { background-color: rgba(0,0,0,0.9); }
+
+.viewMediaModalChildDiv {
+    display: flex;
+    gap: 20px;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.viewMediaModalContentDiv {
+    display: flex;
+    margin: 0px;
+    border: none;
+    padding: 2px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 14px;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightTheme .viewMediaModalContentDiv { background-color: #FFFFFF; }
+
+.darkTheme .viewMediaModalContentDiv { background-color: #111111; }
+
+.viewMediaImageDiv {
+    display: flex; 
+    margin: 0px;
+    padding: 0px; 
+    border-radius: 12px;
+}
+
+.viewMediaVideoDiv {
+    display: flex; 
+    margin: 0px;
+    padding: 0px; 
+    border-radius: 12px;
+}
+ 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+  
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+  
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+}
+  
+.fadeOut {
+    animation-name: fadeOut;
+    animation-duration: 0.3s;
+}

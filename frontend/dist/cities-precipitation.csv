@@ -1,0 +1,801 @@
+Country,City,Annual Precipitation (mm),Precipitation
+Afghanistan,Faizabad,484.9,"Dry, Moist"
+Afghanistan,Herat,238.9,Dry
+Afghanistan,Jalalabad,181.9,Dry
+Afghanistan,Kabul,312.0,"Dry, Moist"
+Afghanistan,Khost,476.5,"Dry, Moist"
+Afghanistan,Mazar-i-Sharif,186.4,Dry
+Albania,Tirana,1266.0,"Moist, Wet"
+Algeria,Batna,326.2,"Dry, Moist"
+Algeria,Biskra,129.1,Dry
+Algeria,Skikda,728.8,Moist
+Algeria,Tamanrasset,58.4,Dry
+Algeria,Algiers,638.0,Moist
+Algeria,Reggane,10.0,Dry
+American Samoa,Pago Pago,3259.0,Wet
+Andorra,Andorra la Vella,812.3,Moist
+Angola,Luanda,387.0,"Dry, Moist"
+Antigua and Barbuda,St. John's,1049.4,"Moist, Wet"
+Argentina,Bahía Blanca,651.2,Moist
+Argentina,Bariloche,1096.5,"Moist, Wet"
+Argentina,Bernardo de Irigoyen,2345.3,Wet
+Argentina,Buenos Aires,1236.3,"Moist, Wet"
+Argentina,Córdoba,881.7,Moist
+Argentina,El Calafate,171.4,Dry
+Argentina,Los Toldos,1829.2,Wet
+Argentina,Mendoza,238.0,Dry
+Argentina,Neuquén,200.9,Dry
+Argentina,Orán,1045.9,"Moist, Wet"
+Argentina,Puerto Blest,3327.4,Wet
+Argentina,Resistencia,1432.9,"Moist, Wet"
+Argentina,Río Gallegos,268.3,Dry
+Argentina,Rosario,1053.5,"Moist, Wet"
+Argentina,San Juan,90.7,Dry
+Argentina,Ushuaia,537.0,"Dry, Moist"
+Argentina,Villa la Angostura,1848.3,Wet
+Argentina,Comodoro Rivadavia,269.0,Dry
+Argentina,Mar del Plata,865.0,Moist
+Argentina,Salta,756.0,Moist
+Argentina,San Miguel de Tucumán,1998.0,Wet
+Argentina,Santiago del Estero,600.0,Moist
+Argentina,Viedma,380.0,"Dry, Moist"
+Armenia,Artashat,245.0,Dry
+Armenia,Vanadzor,565.0,Moist
+Armenia,Yerevan,363.0,"Dry, Moist"
+Aruba,Oranjestad,451.1,"Dry, Moist"
+Australia,Adelaide,537.6,"Dry, Moist"
+Australia,Babinda,4279.4,Wet
+Australia,Brisbane,1040.5,"Moist, Wet"
+Australia,Cairns,1966.0,Wet
+Australia,Canberra,668.3,Moist
+Australia,Coober Pedy,141.0,Dry
+Australia,Darwin,1832.4,Wet
+Australia,Hobart,611.5,Moist
+Australia,Melbourne,515.4,"Dry, Moist"
+Australia,Norfolk Island,1109.8,"Moist, Wet"
+Australia,Perth,729.6,Moist
+Australia,Sydney,1147.1,"Moist, Wet"
+Australia,Wyndham,925.4,Moist
+Australia,Alice Springs,230.0,Dry
+Australia,Burnie,947.4,Moist
+Australia,Dampier,272.2,Dry
+Australia,Launceston,663.4,Moist
+Austria,Bregenz,1519.0,"Moist, Wet"
+Austria,Graz,854.2,Moist
+Austria,Vienna,673.1,Moist
+Azerbaijan,Baku,274.0,"Dry, Moist"
+Bahrain,Manama,70.8,Dry
+Bangladesh,Dhaka,1854.0,Wet
+Bangladesh,Rangpur,2498.0,Wet
+Bangladesh,Chittagong,2651.0,Wet
+Barbados,Bridgetown,1111.0,"Moist, Wet"
+Belarus,Minsk,690.0,Moist
+Belgium,Brussels,848.0,Moist
+Belize,Belize City,1800.0,Wet
+Benin,Cotonou,1208.0,"Moist, Wet"
+Benin,Parakou,1150.6,"Moist, Wet"
+Benin,Kandi,1401.0,"Moist, Wet"
+Bermuda,Hamilton,1453.8,"Moist, Wet"
+Bhutan,Sibsu,5520.5,Wet
+Bhutan,Thimphu,608.0,Moist
+Bolivia,Cobija,1978.6,Wet
+Bolivia,La Paz,602.5,Moist
+Bolivia,San Ignacio,2417.6,Wet
+Bolivia,Santa Cruz,1440.2,"Moist, Wet"
+Bolivia,Sucre,735.0,Moist
+Bolivia,Uyuni,186.9,Dry
+Bolivia,Villa Tunari,5676.0,Wet
+Bolivia,Santa Cruz de la Sierra,1321.0,"Moist, Wet"
+Bosnia and Herzegovina,Banja Luka,1037.2,"Moist, Wet"
+Bosnia and Herzegovina,Bihać,1308.8,"Moist, Wet"
+Bosnia and Herzegovina,Mostar,1522.5,"Moist, Wet"
+Bosnia and Herzegovina,Sarajevo,928.0,Moist
+Botswana,Maun,54.7,Dry
+Botswana,Gaborone,510.0,"Dry, Moist"
+Botswana,Ghanzi,411.4,"Dry, Moist"
+Brazil,Aracaju,1695.3,"Moist, Wet"
+Brazil,Belém,3084.0,Wet
+Brazil,Boa Vista,1754.0,Wet
+Brazil,Brasília,1478.8,"Moist, Wet"
+Brazil,Calçoene,4164.6,Wet
+Brazil,Florianópolis,1768.6,Wet
+Brazil,Fortaleza,1584.0,"Moist, Wet"
+Brazil,João Pessoa,2145.3,Wet
+Brazil,Macapá,2549.7,Wet
+Brazil,Maceió,1867.4,Wet
+Brazil,Manaus,2301.2,Wet
+Brazil,Natal,1691.2,"Moist, Wet"
+Brazil,Paranaguá,2284.3,Wet
+Brazil,Parnaíba,1596.4,"Moist, Wet"
+Brazil,Petrolândia,428.1,"Dry, Moist"
+Brazil,Porto Alegre,1425.2,"Moist, Wet"
+Brazil,Porto Velho,2255.1,Wet
+Brazil,Recife,2417.7,Wet
+Brazil,Rio de Janeiro,1069.2,"Moist, Wet"
+Brazil,Salvador,2144.1,Wet
+Brazil,São Luís,2290.2,Wet
+Brazil,São Paulo,1658.3,"Moist, Wet"
+Brazil,Taracuá,3637.6,Wet
+Brazil,Teresópolis,2774.4,Wet
+Brazil,Vitória,1252.3,"Moist, Wet"
+Brazil,Belo Horizonte,1129.0,"Moist, Wet"
+Brazil,Campos do Jordão,2050.0,Wet
+Brazil,Curitiba,1637.0,"Moist, Wet"
+Brazil,Goiânia,1300.0,"Moist, Wet"
+Brazil,São Joaquim,1693.1,"Moist, Wet"
+Bulgaria,Sofia,625.0,Moist
+Bulgaria,Varna,516.0,"Dry, Moist"
+Burkina Faso,Ouagadougou,800.0,Moist
+Burkina Faso,Ouahigouya,456.0,"Dry, Moist"
+Burundi,Bujumbura,1839.0,Wet
+Cambodia,Phnom Penh,1415.0,"Moist, Wet"
+Cameroon,Debundscha,598.3,Moist
+Cameroon,Douala,3602.7,Wet
+Cameroon,Garoua,997.4,"Moist, Wet"
+Cameroon,Ngaoundéré,2248.0,Wet
+Cameroon,Yaoundé,1727.0,"Moist, Wet"
+Canada,Calgary,445.4,"Dry, Moist"
+Canada,Montreal,1000.3,"Moist, Wet"
+Canada,Prince Rupert,2619.1,Wet
+Canada,Vancouver,1189.0,"Moist, Wet"
+Canada,Edmonton,476.9,"Dry, Moist"
+Canada,Gjoa Haven,77.3,Dry
+Canada,Halifax,1379.0,"Moist, Wet"
+Canada,Iqaluit,592.0,Moist
+Canada,Moncton,1154.0,"Moist, Wet"
+Canada,Ottawa,1088.0,"Moist, Wet"
+Canada,Saskatoon,265.0,Dry
+Canada,St. John's,1400.0,"Moist, Wet"
+Canada,Toronto,830.0,Moist
+Canada,Winnipeg,520.0,"Dry, Moist"
+Canada,Whitehorse,280.0,"Dry, Moist"
+Canada,Yellowknife,280.0,"Dry, Moist"
+Cape Verde,Praia,300.0,"Dry, Moist"
+Cayman Islands,George Town,1500.0,"Moist, Wet"
+Central African Republic,Bangui,1500.0,"Moist, Wet"
+Central African Republic,Birao,1300.0,"Moist, Wet"
+Chad,N'Djamena,510.3,"Dry, Moist"
+Chad,Abéché,400.0,"Dry, Moist"
+Chile,Antofagasta,2.5,Dry
+Chile,Arica,1.8,Dry
+Chile,"Armerillo, San Clemente",2542.1,Wet
+Chile,Calama,5.9,Dry
+Chile,Caleta Chaihuín,3695.1,Wet
+Chile,Chaitén,5091.8,Wet
+Chile,Concepción,1090.3,"Moist, Wet"
+Chile,Copiapó,18.8,Dry
+Chile,La Serena,86.8,Dry
+Chile,Puerto Aguirre,3673.8,Wet
+Chile,Puerto Aysén,2238.5,Wet
+Chile,Punta Arenas,408.2,"Dry, Moist"
+Chile,Quillagua,0.1,Dry
+Chile,San Pedro de Atacama,38.0,Dry
+Chile,Santiago,341.9,"Dry, Moist"
+Chile,Valdivia,1752.9,Wet
+Chile,Villa Puerto Edén,5745.0,Wet
+Chile,Visviri,336.0,"Dry, Moist"
+Chile,Hanga Roa,900.0,Moist
+Chile,Puerto Montt,2500.0,Wet
+China,Beijing,528.0,"Dry, Moist"
+China,Chengdu,923.0,Moist
+China,Hefei,1042.8,"Moist, Wet"
+China,Hong Kong,2431.3,Wet
+China,Shanghai,1245.5,"Moist, Wet"
+China,Turpan,14.7,Dry
+China,Ürümqi,305.2,"Dry, Moist"
+China,Changsha,1350.0,"Moist, Wet"
+China,Chongqing,1100.0,"Moist, Wet"
+China,Guangzhou,1700.0,"Moist, Wet"
+China,Harbin,570.0,Moist
+China,Kunming,1100.0,"Moist, Wet"
+China,Lhasa,400.0,"Dry, Moist"
+China,Shenzhen,1900.0,Wet
+China,Xi'an,600.0,Moist
+China,Yinchuan,200.0,Dry
+Colombia,Aguadas,2905.1,Wet
+Colombia,Arauca,1867.7,Wet
+Colombia,Armenia,2159.6,Wet
+Colombia,Bahía Solano,5408.6,Wet
+Colombia,Barranquilla,820.0,Moist
+Colombia,Bogotá,841.3,Moist
+Colombia,"Briceño, Antioquia",6528.7,Wet
+Colombia,Buenaventura,6898.2,Wet
+Colombia,Cali,1048.9,"Moist, Wet"
+Colombia,Cartagena,1087.0,"Moist, Wet"
+Colombia,Cúcuta,904.2,Moist
+Colombia,Ibagué,1691.6,"Moist, Wet"
+Colombia,Inírida,3328.1,Wet
+Colombia,"Junín, Nariño",8811.0,Wet
+Colombia,La Pedrera,3934.1,Wet
+Colombia,La Raya,4590.9,Wet
+Colombia,Leticia,3389.1,Wet
+Colombia,López de Micay,15992.1,"Wet, Water"
+Colombia,Manizales,1583.6,"Moist, Wet"
+Colombia,Medellín,1752.3,Wet
+Colombia,Mesopotamia,3506.2,Wet
+Colombia,Mitú,3355.6,Wet
+Colombia,Mocoa,3743.7,Wet
+Colombia,Mutatá,5384.4,Wet
+Colombia,Neiva,1384.3,"Moist, Wet"
+Colombia,Pasto,826.5,Moist
+Colombia,Pereira,2424.5,Wet
+Colombia,Popayán,2127.2,Wet
+Colombia,Puerto Carreño,2328.6,Wet
+Colombia,Puerto López,249.5,Dry
+Colombia,Quibdó,8130.5,Wet
+Colombia,"Restrepo, Meta",8000.7,Wet
+Colombia,Riohacha,634.0,Moist
+Colombia,San Antonio de Yurumangui,9444.5,Wet
+Colombia,San José del Guaviare,2725.5,Wet
+Colombia,Santa Marta,545.2,"Dry, Moist"
+Colombia,Sincelejo,1288.3,"Moist, Wet"
+Colombia,Tumaco,2658.4,Wet
+Colombia,Tutunendo,11596.1,Wet
+Colombia,Valledupar,1308.2,"Moist, Wet"
+Colombia,Villavicencio,4537.9,Wet
+Colombia,Yopal,2390.1,Wet
+Congo,Brazzaville,1394.0,"Moist, Wet"
+Cook Islands,Avarua,2206.0,Wet
+Costa Rica,San José,1700.0,"Moist, Wet"
+Crimea,Simferopol,501.0,"Dry, Moist"
+Croatia,Parg,1841.0,Wet
+Croatia,Split,782.8,Moist
+Croatia,Zagreb,840.1,Moist
+Cuba,Havana,1370.0,"Moist, Wet"
+Curaçao,Willemstad,550.0,Moist
+Cyprus,Nicosia,342.2,"Dry, Moist"
+Czech Republic,Liberec,845.3,Moist
+Czech Republic,Prague,587.0,Moist
+Democratic Republic of the Congo,Kinshasa,1172.0,"Moist, Wet"
+Democratic Republic of the Congo,Lubumbashi,1238.0,"Moist, Wet"
+Denmark,Copenhagen,645.7,Moist
+Djibouti,Djibouti,220.0,Dry
+Dominica,Roseau,1053.0,"Moist, Wet"
+Dominican Republic,Santo Domingo,784.0,Moist
+East Timor,Dili,1629.0,"Moist, Wet"
+Ecuador,Alto Tambo,6850.4,Wet
+Ecuador,El Coca,3319.0,Wet
+Ecuador,Esmeraldas,738.0,Moist
+Ecuador,Guayaquil,1273.7,"Moist, Wet"
+Ecuador,Latacunga,515.0,"Dry, Moist"
+Ecuador,Loja,892.5,Moist
+Ecuador,Macas,2914.3,Wet
+Ecuador,Machala,489.0,"Dry, Moist"
+Ecuador,Manta,253.8,Dry
+Ecuador,Nanegalito,3389.1,Wet
+Ecuador,Nueva Loja,3477.0,Wet
+Ecuador,Puerto Baquerizo Moreno,577.7,Moist
+Ecuador,Puyo,4536.0,Wet
+Ecuador,Quito,1098.2,"Moist, Wet"
+Ecuador,Salinas,117.0,Dry
+Ecuador,San Francisco de Borja,3319.8,Wet
+Ecuador,San Lorenzo,2879.0,Wet
+Ecuador,Santo Domingo,3174.3,Wet
+Ecuador,Tena,4552.6,Wet
+Ecuador,Tulcán,941.0,Moist
+Egypt,Cairo,24.8,Dry
+Egypt,Alexandria,210.0,Dry
+El Salvador,San Salvador,1800.0,Wet
+Equatorial Guinea,Bata,2100.0,Wet
+Equatorial Guinea,Malabo,2200.0,Wet
+Eritrea,Asmara,600.0,Moist
+Eritrea,Assab,190.0,Dry
+Estonia,Tallinn,700.0,Moist
+Eswatini,Mbabane,1441.7,"Moist, Wet"
+Ethiopia,Mek'ele,600.0,Moist
+Ethiopia,Addis Ababa,1100.0,"Moist, Wet"
+European Kazakhstan,Kurmangazy,149.8,Dry
+European Russia,Astrakhan,231.0,Dry
+Falkland Islands,Stanley,570.0,Moist
+Faroe Islands,Tórshavn,1321.3,"Moist, Wet"
+Fiji,Rotuma (Ahau),3489.0,Wet
+Fiji,Suva,3023.0,Wet
+Finland,Helsinki,655.0,Moist
+Finland,Kuopio,650.0,Moist
+Finland,Oulu,550.0,Moist
+France,Ajaccio,635.0,Moist
+France,Biarritz,1473.6,"Moist, Wet"
+France,Bordeaux,924.9,Moist
+France,Lille,740.0,Moist
+France,Lyon,831.9,Moist
+France,Marseille,532.3,"Dry, Moist"
+France,Paris,637.4,Moist
+France,Saint-Étienne,728.3,Moist
+France,Toulouse,627.0,Moist
+French Guiana,Cayenne,3488.2,Wet
+French Guiana,Charvein,2837.8,Wet
+French Guiana,Ouanary,3896.5,Wet
+French Guiana,Saül,2522.7,Wet
+French Polynesia,Afaʻahiti,3374.7,Wet
+French Polynesia,Papeʻete,2065.1,Wet
+French Polynesia,Rapa Iti,2435.9,Wet
+Gabon,Cocobeach,3126.0,Wet
+Gabon,Libreville,2609.0,Wet
+Gabon,Port-Gentil,2000.0,Wet
+Gambia,Banjul,839.2,Moist
+Georgia,Akhaltsikhe,527.9,"Dry, Moist"
+Georgia,Ambrolauri,1112.4,"Moist, Wet"
+Georgia,Batumi,2519.0,Wet
+Georgia,Kutaisi,1461.0,"Moist, Wet"
+Georgia,Poti,2068.3,Wet
+Georgia,Tbilisi,495.5,"Dry, Moist"
+Georgia,Zugdidi,1951.8,Wet
+Germany,Bad Wiessee,2388.9,Wet
+Germany,Berlin,515.2,"Dry, Moist"
+Germany,Cologne,802.1,Moist
+Germany,Frankfurt,598.5,Moist
+Germany,Hamburg,776.6,Moist
+Germany,Magdeburg,515.8,"Dry, Moist"
+Germany,Oberstdorf,1801.2,Wet
+Ghana,Accra,798.5,Moist
+Ghana,Tamale,916.0,Moist
+Ghana,Kumasi,1247.0,"Moist, Wet"
+Greece,Athens,433.1,"Dry, Moist"
+Greece,Heraklion,483.2,"Dry, Moist"
+Greece,Kerkyra,1097.3,"Moist, Wet"
+Greece,Piraeus,331.9,"Dry, Moist"
+Greece,Schoinoussa,239.8,Dry
+Greece,Thessaloniki,435.5,"Dry, Moist"
+Greenland,Nuuk,951.0,Moist
+Guam,Dededo,2572.5,Wet
+Guatemala,Flores,1380.0,"Moist, Wet"
+Guatemala,Guatemala City,1200.0,"Moist, Wet"
+Guinea,Conakry,3784.0,Wet
+Guinea,Kankan,1472.2,"Moist, Wet"
+Guinea Bissau,Bissau,2022.8,Wet
+Guinea-Bissau,Bissau,1398.0,"Moist, Wet"
+Guyana,Georgetown,2260.3,Wet
+Guyana,Linden,3058.0,Wet
+Honduras,La Ceiba,2436.0,Wet
+Honduras,Tegucigalpa,1500.0,"Moist, Wet"
+Hungary,Budapest,532.0,"Dry, Moist"
+Hungary,Miskolc,643.9,Moist
+Hungary,Pécs,670.9,Moist
+Iceland,Reykjavík,843.3,Moist
+Iceland,Vík í Mýrdal,2252.5,Wet
+India,Agra,760.7,Moist
+India,Delhi,758.9,Moist
+India,Guwahati,1695.3,"Moist, Wet"
+India,Hyderabad,859.6,Moist
+India,Imphal,1381.1,"Moist, Wet"
+India,Jammu,1402.0,"Moist, Wet"
+India,Kohima,1727.6,"Moist, Wet"
+India,Kolkata,1813.3,Wet
+India,Mawsynram,133.0,Dry
+India,Mumbai,2213.4,Wet
+India,Panaji,2984.1,Wet
+India,Pondicherry,1354.0,"Moist, Wet"
+India,Port Blair,2968.3,Wet
+India,Shimla,1487.3,"Moist, Wet"
+India,Srinagar,697.5,Moist
+India,Gangtok,3200.0,Wet
+India,New Delhi,790.0,Moist
+Indonesia,Jakarta,2097.0,Wet
+Indonesia,Denpasar,1642.0,"Moist, Wet"
+Indonesia,Jayapura,2924.0,Wet
+Indonesia,Makassar,2931.0,Wet
+Indonesia,Medan,3220.0,Wet
+Indonesia,Palembang,2544.0,Wet
+Indonesia,Pontianak,2896.0,Wet
+Indonesia,Surabaya,1805.0,Wet
+Iran,Ahvaz,209.2,Dry
+Iran,Astara,1345.0,"Moist, Wet"
+Iran,Bandar-e Anzali,1713.8,"Moist, Wet"
+Iran,Gorgan,583.8,Moist
+Iran,Ilam,550.6,Moist
+Iran,Isfahan,125.0,Dry
+Iran,Kermanshah,439.2,"Dry, Moist"
+Iran,Mashhad,251.5,Dry
+Iran,Sanandaj,449.9,"Dry, Moist"
+Iran,Tabriz,283.8,"Dry, Moist"
+Iran,Tehran,231.6,Dry
+Iran,Yazd,52.2,Dry
+Iraq,Baghdad,124.7,Dry
+Iraq,Mosul,363.6,"Dry, Moist"
+Iraq,Erbil,370.0,"Dry, Moist"
+Ireland,Dublin,758.0,Moist
+Ireland,Valentia Island,1557.4,"Moist, Wet"
+Israel,Jerusalem,530.0,"Dry, Moist"
+Israel,Tel Aviv,540.0,"Dry, Moist"
+Italy,Bari,466.6,"Dry, Moist"
+Italy,Bolzano,711.5,Moist
+Italy,Cagliari,413.4,"Dry, Moist"
+Italy,Campobasso,673.5,Moist
+Italy,Florence,872.6,Moist
+Italy,Naples,1008.2,"Moist, Wet"
+Italy,Palermo,855.4,Moist
+Italy,Pescara,639.2,Moist
+Italy,Rome,798.5,Moist
+Italy,Tarvisio,1417.0,"Moist, Wet"
+Italy,Turin,981.0,"Moist, Wet"
+Italy,Milan,1020.0,"Moist, Wet"
+Italy,Napoli,940.0,Moist
+Ivory Coast,Abidjan,1847.6,Wet
+Ivory Coast,Gagnoa,1750.0,"Moist, Wet"
+Ivory Coast,Bouaké,1400.0,"Moist, Wet"
+Ivory Coast,Odienné,1300.0,"Moist, Wet"
+Jamaica,Kingston,813.0,Moist
+Jamaica,Port Antonio,3082.0,Wet
+Japan,Nagoya,1535.4,"Moist, Wet"
+Japan,Owase,3969.7,Wet
+Japan,Sapporo,1100.0,"Moist, Wet"
+Japan,Niigata,2488.0,Wet
+Japan,Tokyo,1600.0,"Moist, Wet"
+Japan,Kyoto,1523.0,"Moist, Wet"
+Japan,Hiroshima,1853.0,Wet
+Japan,Fukuoka,1560.0,"Moist, Wet"
+Japan,Naha,2500.0,Wet
+Kazakhstan,Aktau,138.0,Dry
+Kazakhstan,Almaty,673.0,Moist
+Kazakhstan,Astana,338.0,"Dry, Moist"
+Kenya,Mombasa,1192.0,"Moist, Wet"
+Kenya,Nairobi,610.0,Moist
+Kenya,Garissa,375.0,"Dry, Moist"
+Kenya,Lodwar,115.0,Dry
+Kiribati,Kiritimati,1050.9,"Moist, Wet"
+Kiribati,Tarawa,2053.0,Wet
+Kuwait,Kuwait City,110.0,Dry
+Kyrgyzstan,Bishkek,400.0,"Dry, Moist"
+Laos,Vientiane,1800.0,Wet
+Latvia,Riga,620.9,Moist
+Lebanon,Beirut,820.0,Moist
+Lesotho,Maseru,691.0,Moist
+Liberia,Monrovia,4624.0,Wet
+Libya,Tripoli,140.0,Dry
+Libya,Benghazi,150.0,Dry
+Liechtenstein,Vaduz,900.0,Moist
+Lithuania,Vilnius,653.8,Moist
+Luxembourg,Luxembourg City,896.9,Moist
+Luxembourg,Luxembourg City,896.9,Moist
+Madagascar,Fianarantsoa,1700.0,"Moist, Wet"
+Madagascar,Toamasina,3229.1,Wet
+Madagascar,Antananarivo,1171.4,"Moist, Wet"
+Madagascar,Antsiranana,1700.0,"Moist, Wet"
+Madagascar,Mahajanga,1700.0,"Moist, Wet"
+Madagascar,Toliara,400.0,"Dry, Moist"
+Malawi,Karonga,799.3,Moist
+Malawi,Blantyre,1140.0,"Moist, Wet"
+Malawi,Mzuzu,1140.0,"Moist, Wet"
+Malaysia,Labuan,3244.8,Wet
+Malaysia,Kuala Lumpur,2600.0,Wet
+Maldives,Malé,1900.0,Wet
+Mali,Ségou,640.0,Moist
+Mali,Timbuktu,45.0,Dry
+Mali,Bamako,66.9,Dry
+Malta,Valletta,595.8,Moist
+Marshall Islands,Kwajalein,2593.0,Wet
+Marshall Islands,Majuro,3334.0,Wet
+Mauritania,Nouadhibou,18.0,Dry
+Mauritania,Nouakchott,100.0,Dry
+Mexico,Acapulco,1336.8,"Moist, Wet"
+Mexico,Monterrey,666.6,Moist
+Mexico,Tijuana,230.9,Dry
+Mexico,Toluca,980.7,"Moist, Wet"
+Mexico,Cabo San Lucas,265.0,Dry
+Mexico,Chihuahua,479.5,"Dry, Moist"
+Mexico,Guadalajara,1002.0,"Moist, Wet"
+Mexico,La Paz,602.5,Moist
+Mexico,Mexicali,70.9,Dry
+Mexico,Mexico City,820.0,Moist
+Mexico,Veracruz,1564.0,"Moist, Wet"
+Mexico,Villahermosa,1751.4,Wet
+Micronesia,Malem,5447.0,Wet
+Micronesia,Palikir,5202.0,Wet
+Moldova,Chișinău,548.0,Moist
+Monaco,Monaco,743.6,Moist
+Mongolia,Ulaanbaatar,260.0,Dry
+Montenegro,Cetinje,3303.1,Wet
+Montenegro,Podgorica,1659.3,"Moist, Wet"
+Morocco,Ifrane,1118.0,"Moist, Wet"
+Morocco,Rabat,560.0,Moist
+Morocco,Marrakesh,241.0,Dry
+Morocco,Ouarzazate,120.0,Dry
+Mozambique,Maputo,1000.0,"Moist, Wet"
+Myanmar,Mandalay,945.0,Moist
+Myanmar,Yangon,2367.0,Wet
+Nepal,Kathmandu,1400.0,"Moist, Wet"
+Netherlands,Amsterdam,838.2,Moist
+New Caledonia,Nouméa,1034.3,"Moist, Wet"
+New Caledonia,Yaté,2604.9,Wet
+New Zealand,Alexandra,359.4,"Dry, Moist"
+New Zealand,Auckland,1212.5,"Moist, Wet"
+New Zealand,Hokitika,2855.5,Wet
+New Zealand,Milford Sound,6427.7,Wet
+New Zealand,Wellington,1250.4,"Moist, Wet"
+New Zealand,Christchurch,600.0,Moist
+New Zealand,Dunedin,973.0,Moist
+New Zealand,Hamilton,680.0,Moist
+New Zealand,Lake Tekapo,1307.0,"Moist, Wet"
+New Zealand,Napier,906.0,Moist
+New Zealand,Palmerston North,1188.0,"Moist, Wet"
+New Zealand,Tauranga,1369.0,"Moist, Wet"
+Nicaragua,Managua,1305.0,"Moist, Wet"
+Niger,Niamey,540.8,"Dry, Moist"
+Nigeria,Abeokuta,1246.3,"Moist, Wet"
+Nigeria,Kaduna,1280.0,"Moist, Wet"
+Nigeria,Kano,1149.2,"Moist, Wet"
+Nigeria,Lagos,1506.6,"Moist, Wet"
+Nigeria,Port Harcourt,2286.5,Wet
+Nigeria,Yola,886.1,Moist
+Nigeria,Makurdi,901.0,Moist
+Nigeria,Jos,1245.0,"Moist, Wet"
+Nigeria,Sokoto,726.0,Moist
+North Korea,Chongjin,613.9,Moist
+North Korea,Pyongyang,936.4,Moist
+North Macedonia,Skopje,483.0,"Dry, Moist"
+Norway,Bergen,2412.8,Wet
+Norway,Oslo,802.7,Moist
+Norway,Tromsø,1090.6,"Moist, Wet"
+Oman,Muscat,100.3,Dry
+Pakistan,Islamabad,1268.6,"Moist, Wet"
+Pakistan,Lahore,674.2,Moist
+Pakistan,Quetta,241.5,Dry
+Pakistan,Karachi,145.0,Dry
+Palau,Koror,3758.3,Wet
+Panama,Panama City,2095.0,Wet
+Papua New Guinea,Daru,2099.0,Wet
+Papua New Guinea,Ialibu,3539.0,Wet
+Papua New Guinea,Kikori,5611.0,Wet
+Papua New Guinea,Lae,4677.1,Wet
+Papua New Guinea,Madang,3509.0,Wet
+Papua New Guinea,Mount Hagen,2637.8,Wet
+Papua New Guinea,Port Moresby,1170.0,"Moist, Wet"
+Paraguay,Asunción,1401.2,"Moist, Wet"
+Paraguay,Encarnación,1759.7,Wet
+Paraguay,Filadelfia,724.0,Moist
+Peru,Arequipa,96.5,Dry
+Peru,Cerro de Pasco,918.0,Moist
+Peru,Chiclayo,26.9,Dry
+Peru,Chontachaca,5469.0,Wet
+Peru,Cusco,737.0,Moist
+Peru,Ilo,1.2,Dry
+Peru,Iquitos,2878.3,Wet
+Peru,Lima,6.4,Dry
+Peru,Piura,116.4,Dry
+Peru,Pongo de Caynarachi,4496.0,Wet
+Peru,Pucallpa,1667.0,"Moist, Wet"
+Peru,Puerto Maldonado,2167.0,Wet
+Peru,Quince Mil,7353.9,Wet
+Peru,San Gaban District,6629.0,Wet
+Peru,Sandia,2289.4,Wet
+Peru,Tacna,29.3,Dry
+Peru,Trujillo,4.3,Dry
+Philippines,Manila,2000.0,Wet
+Philippines,Baguio,3463.0,Wet
+Poland,Warsaw,529.0,"Dry, Moist"
+Poland,Kraków,871.0,Moist
+Poland,Suwałki,735.0,Moist
+Poland,Wrocław,720.0,Moist
+Portugal,Aveiro,944.0,Moist
+Portugal,Braga,1448.6,"Moist, Wet"
+Portugal,Faro,511.6,"Dry, Moist"
+Portugal,Lisbon,774.0,Moist
+Portugal,Porto,1237.0,"Moist, Wet"
+Portugal,Viana do Castelo,1466.3,"Moist, Wet"
+Puerto Rico,San Juan,1560.0,"Moist, Wet"
+Qatar,Doha,75.2,Dry
+Republic of the Congo,Brazzaville,1400.0,"Moist, Wet"
+Republic of the Congo,Pointe-Noire,1000.0,"Moist, Wet"
+Republic of the Congo,Dolisie,1249.7,"Moist, Wet"
+Romania,Bacău,618.4,Moist
+Romania,Bucharest,643.0,Moist
+Romania,Constanța,429.9,"Dry, Moist"
+Romania,Râmnicu Vâlcea,727.8,Moist
+Romania,Sulina,240.5,Dry
+Romania,Timișoara,593.0,Moist
+Russia,Irkutsk,477.0,"Dry, Moist"
+Russia,Petropavlovsk-Kamchatsky,1177.0,"Moist, Wet"
+Russia,Vladivistok,862.0,Moist
+Russia,Kaliningrad,816.0,Moist
+Russia,Kazan,565.0,Moist
+Russia,Moscow,714.0,Moist
+Russia,Saint Petersburg,670.0,Moist
+Russia,Saratov,466.0,"Dry, Moist"
+Russia,Sochi,1703.0,"Moist, Wet"
+Russia,Vladikavkaz,955.0,Moist
+Russia,Anadyr,489.0,"Dry, Moist"
+Russia,Dikson,458.0,"Dry, Moist"
+Russia,Novosibirsk,571.0,Moist
+Russia,Vladivostok,809.0,Moist
+Russia,Yakutsk,280.0,"Dry, Moist"
+Russia,Arkhangelsk,577.0,Moist
+Russia,Murmansk,622.0,Moist
+Russia,Rostov-on-Don,557.0,Moist
+Saint Pierre and Miquelon,Saint-Pierre,1592.0,"Moist, Wet"
+Samoa,Apia,2965.0,Wet
+San Marino,San Marino,898.0,Moist
+Saudi Arabia,Abha,883.0,Moist
+Saudi Arabia,Riyadh,73.0,Dry
+Senegal,Dakar,392.5,"Dry, Moist"
+Senegal,Kaolack,630.6,Moist
+Senegal,Kolda,1057.8,"Moist, Wet"
+Senegal,Ziguinchor,1401.2,"Moist, Wet"
+Senegal,Thiès,369.0,"Dry, Moist"
+Serbia,Belgrade,690.9,Moist
+Serbia,Niš,580.3,Moist
+Sierra Leone,Freetown,4433.0,Wet
+Singapore,Singapore,2113.3,Wet
+Slovakia,Bratislava,565.0,Moist
+Slovakia,Košice,613.0,Moist
+Slovakia,Prešov,647.9,Moist
+Slovenia,Bovec,2603.0,Wet
+Slovenia,Ljubljana,1362.0,"Moist, Wet"
+Solomon Islands,Gizo,3669.0,Wet
+Solomon Islands,Honiara,2177.0,Wet
+Somalia,Bosaso,72.0,Dry
+Somalia,Hargeisa,412.0,"Dry, Moist"
+Somalia,Mogadishu,429.2,"Dry, Moist"
+South Africa,Cape Town,492.8,"Dry, Moist"
+South Africa,Durban,1019.0,"Moist, Wet"
+South Africa,Port Elizabeth,591.5,Moist
+South Africa,Pretoria,661.0,Moist
+South Africa,Johannesburg,779.0,Moist
+South Africa,Bloemfontein,545.0,"Dry, Moist"
+South Africa,Upington,228.0,Dry
+South Korea,Jeju City,1502.3,"Moist, Wet"
+South Korea,Seoul,1417.9,"Moist, Wet"
+South Korea,Busan,1441.9,"Moist, Wet"
+South Sudan,Juba,972.4,Moist
+South Sudan,Wau,606.5,Moist
+Spain,Ceuta,849.0,Moist
+Spain,Melilla,391.0,"Dry, Moist"
+Spain,Almería,200.0,Dry
+Spain,Barcelona,588.0,Moist
+Spain,Bilbao,1134.0,"Moist, Wet"
+Spain,Madrid,423.0,"Dry, Moist"
+Spain,Santiago de Compostela,1787.0,Wet
+Spain,Seville,539.0,"Dry, Moist"
+Spain,Valencia,475.0,"Dry, Moist"
+Spain,Zaragoza,322.0,"Dry, Moist"
+Spain,Las Palmas,249.0,Dry
+Sri Lanka,Colombo,2608.0,Wet
+Sudan,Port Sudan,164.0,Dry
+Sudan,Khartoum,70.0,Dry
+Suriname,Paramaribo,2192.2,Wet
+Sweden,Gothenburg,912.2,Moist
+Sweden,Stockholm,546.4,"Dry, Moist"
+Switzerland,Camedo,2284.7,Wet
+Switzerland,Geneva,946.0,Moist
+Switzerland,Locarno,1855.1,Wet
+Switzerland,Lugano,1566.6,"Moist, Wet"
+Switzerland,Sion,583.0,Moist
+Switzerland,Zürich,1134.0,"Moist, Wet"
+Syria,Damascus,124.7,Dry
+Syria,Homs,429.4,"Dry, Moist"
+Taiwan,Taipei,2368.5,Wet
+Tajikistan,Dushanbe,654.0,Moist
+Tajikistan,Khujand,226.0,Dry
+Tanzania,Dar es Salaam,1117.4,"Moist, Wet"
+Tanzania,Zanzibar City,1512.0,"Moist, Wet"
+Tanzania,Tabora,835.0,Moist
+Tanzania,Dodoma,447.0,"Dry, Moist"
+Thailand,Bangkok,1668.0,"Moist, Wet"
+Thailand,Chiang Mai,1160.0,"Moist, Wet"
+Thailand,Hat Yai,2096.0,Wet
+Thailand,Nakhon Ratchasima,1149.0,"Moist, Wet"
+The Bahamas,Nassau,1426.0,"Moist, Wet"
+The Gambia,Banjul,1203.5,"Moist, Wet"
+Togo,Lomé,830.3,Moist
+Togo,Mango,830.0,Moist
+Tonga,Nukuʻalofa,1721.0,"Moist, Wet"
+Tunisia,Tunis,158.0,Dry
+Tunisia,Gabès,164.0,Dry
+Turkey,Ankara,413.6,"Dry, Moist"
+Turkey,Antalya,1070.4,"Moist, Wet"
+Turkey,Bolu,573.6,Moist
+Turkey,Bursa,719.1,Moist
+Turkey,Erzurum,429.3,"Dry, Moist"
+Turkey,Giresun,1290.5,"Moist, Wet"
+Turkey,Kars,506.0,"Dry, Moist"
+Turkey,Konya,325.3,"Dry, Moist"
+Turkey,Rize,2309.5,Wet
+Turkey,Trabzon,828.0,Moist
+Turkey,Urfa,459.3,"Dry, Moist"
+Turkey,Edirne,601.9,Moist
+Turkey,Istanbul,849.6,Moist
+Turkey,İzmir,700.0,Moist
+Turkmenistan,Ashgabat,221.0,Dry
+Tuvalu,Funafuti,3513.6,Wet
+Uganda,Kampala,1887.0,Wet
+Uganda,Entebbe,1821.0,Wet
+Ukraine,Kyiv,620.7,Moist
+Ukraine,Lviv,858.0,Moist
+Ukraine,Odesa,464.0,"Dry, Moist"
+United Arab Emirates,Abu Dhabi,49.0,Dry
+United Arab Emirates,Dubai,130.0,Dry
+United Kingdom,Belfast,862.4,Moist
+United Kingdom,Capel Curig,2697.1,Wet
+United Kingdom,Cardiff,1203.5,"Moist, Wet"
+United Kingdom,Edinburgh,704.3,Moist
+United Kingdom,Glasgow,1370.4,"Moist, Wet"
+United Kingdom,Liverpool,824.3,Moist
+United Kingdom,London,601.7,Moist
+United Kingdom,Gibraltar,740.8,Moist
+United States,Anchorage,417.4,"Dry, Moist"
+United States,Atlanta,1252.6,"Moist, Wet"
+United States,Austin,920.6,Moist
+United States,Chicago,1038.0,"Moist, Wet"
+United States,Cincinnati,1252.6,"Moist, Wet"
+United States,Columbus (Ohio),1056.0,"Moist, Wet"
+United States,Dallas,973.2,Moist
+United States,Denver,390.0,"Dry, Moist"
+United States,Des Moines,909.7,Moist
+United States,Detroit,872.0,Moist
+United States,Los Angeles,362.0,"Dry, Moist"
+United States,Miami,1712.0,"Moist, Wet"
+United States,Nashville,1283.0,"Moist, Wet"
+United States,New York City,1258.0,"Moist, Wet"
+United States,Phoenix,183.0,Dry
+United States,Portland,938.0,Moist
+United States,San Diego,249.0,Dry
+United States,San Francisco,501.0,"Dry, Moist"
+United States,Seattle,945.0,Moist
+United States,Hilo,3060.0,Wet
+United States,Honolulu,416.0,"Dry, Moist"
+United States,Albuquerque,228.6,Dry
+United States,Baltimore,1107.4,"Moist, Wet"
+United States,Boise,326.0,"Dry, Moist"
+United States,Boston,1162.0,"Moist, Wet"
+United States,Charlotte,1065.0,"Moist, Wet"
+United States,Columbus,1108.0,"Moist, Wet"
+United States,El Paso,208.0,Dry
+United States,Fairbanks,415.0,"Dry, Moist"
+United States,Fresno,434.0,"Dry, Moist"
+United States,Houston,1264.0,"Moist, Wet"
+United States,Indianapolis,1121.0,"Moist, Wet"
+United States,Jacksonville,1320.8,"Moist, Wet"
+United States,Kansas City,1000.8,"Moist, Wet"
+United States,Las Vegas,100.0,Dry
+United States,Lake Havasu City,96.5,Dry
+United States,Louisville,1219.2,"Moist, Wet"
+United States,Memphis,1363.2,"Moist, Wet"
+United States,Milwaukee,878.1,Moist
+United States,Minneapolis,803.0,Moist
+United States,New Orleans,1574.8,"Moist, Wet"
+United States,Oklahoma City,853.4,Moist
+United States,Omaha,778.0,Moist
+United States,Palm Springs,127.0,Dry
+United States,Philadelphia,1272.0,"Moist, Wet"
+United States,Pittsburgh,975.0,"Moist, Wet"
+United States,Portland ,914.4,Moist
+United States,Sacramento,470.2,"Dry, Moist"
+United States,Salt Lake City,419.0,"Dry, Moist"
+United States,San Antonio,762.0,Moist
+United States,San Jose,2699.0,Wet
+United States,St. Louis,1097.0,"Moist, Wet"
+United States,Tampa,760.0,Moist
+United States,Tucson,269.5,Dry
+United States,Virginia Beach,1148.6,"Moist, Wet"
+United States,"Washington, D.C.",1036.8,"Moist, Wet"
+United States,Wichita,871.5,Moist
+Uruguay,Montevideo,1142.0,"Moist, Wet"
+Uruguay,Rivera,1604.9,"Moist, Wet"
+Uzbekistan,Bukhara,132.4,Dry
+Uzbekistan,Tashkent,628.0,Moist
+Vanuatu,Port Vila,2338.9,Wet
+Vanuatu,Sola,4662.8,Wet
+Venezuela,Barinas,1647.6,"Moist, Wet"
+Venezuela,Caracas,912.8,Moist
+Venezuela,Casigua-El Cubo,3545.9,Wet
+Venezuela,Colonia Tovar,1447.6,"Moist, Wet"
+Venezuela,Maracaibo,580.4,Moist
+Venezuela,Maracay,925.5,Moist
+Venezuela,Mérida,1784.7,Wet
+Venezuela,Mucuchíes,823.0,Moist
+Venezuela,Puerto Ayacucho,2288.6,Wet
+Venezuela,San Fernando de Apure,1414.6,"Moist, Wet"
+Venezuela,San Juan de los Morros,1681.1,"Moist, Wet"
+Venezuela,Urimán,3535.1,Wet
+Venezuela,Valencia,1404.5,"Moist, Wet"
+Vietnam,Da Lat,2079.0,Wet
+Vietnam,Da Nang,2574.0,Wet
+Vietnam,Hanoi,1760.0,Wet
+Vietnam,Ho Chi Minh City,1909.0,Wet
+Wallis and Futuna,Mata Utu,3322.6,Wet
+Yemen,Aden,143.0,Dry
+Yemen,Sanaa,444.0,"Dry, Moist"
+Zambia,Ndola,1161.0,"Moist, Wet"
+Zambia,Lusaka,975.0,"Moist, Wet"
+Zambia,Livingstone,794.0,Moist
+Zimbabwe,Harare,825.0,Moist
+Zimbabwe,Bulawayo,654.0,Moist

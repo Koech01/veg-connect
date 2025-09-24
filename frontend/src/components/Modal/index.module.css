@@ -1,0 +1,184 @@
+/* Smartphones and small tablets in portrait mode */
+@media screen and (max-width: 767px){
+
+    .modalParentDiv, .emojiModalParentDiv { height: 111%; }
+
+    .modalChildDiv { margin: 25% 0% 0% 0%; }
+
+    .emojiModalChildDiv {  
+        width: 100%;
+        align-items: center;
+        margin: 10% 0% 0% 0%;  
+        justify-content: center;  
+    }
+
+    .emojiMobileCloseBtn { display: none !important; }
+
+    .modalContentDiv     { flex-direction: column; }
+ 
+    .emojiMobileModalBtnDiv { 
+        display: flex;
+        margin: 0px; 
+        width: 100%; 
+        border: none;
+        justify-content: flex-end;
+        padding: 15px 0px 0px 0px;   
+    }
+ 
+    .emojiMobileModalBtn { 
+        display: flex;
+        margin: 0px; 
+        font-size: 14px;    
+        transition: .3s;
+        cursor: pointer;
+        font-weight: 500;
+        line-height: 14px;
+        width: fit-content; 
+        font-style: normal;
+        border-radius: 50px;
+        height: fit-content;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 20px 8px 20px;
+    }
+    
+    .lightTheme .emojiMobileModalBtn {  
+        color: #9E9E9E; 
+        border: 1px solid #E0E0E0;
+        background-color: #FFFFFF; 
+    }
+    
+    .darkTheme .emojiMobileModalBtn {     
+        color: #EEEEEE; 
+        border: 1px solid #2F2F2F;  
+        background-color: #1E1E1E; 
+    }
+    
+}
+  
+  
+/* Smartphones and small tablets in landscape mode */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .modalParentDiv, .emojiModalParentDiv { height: 92.5%; }
+
+    .emojiModalChildDiv {  
+        width: fit-content; 
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0px 0px 0px 25px; 
+    }
+
+    .emojiMobileModalBtnDiv { display: none; }
+
+}
+  
+  
+/* Tablets and larger screens */
+@media screen and (min-width: 1024px) { 
+
+    .modalParentDiv, .emojiModalParentDiv { height: 92.5%; }
+
+    .emojiModalChildDiv {   
+        width: fit-content; 
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0px 0px 0px 25px; 
+    }
+
+    .emojiMobileModalBtnDiv { display: none; }
+    
+}
+
+.modalParentDiv {
+    position: fixed; 
+    display: flex;
+    z-index: 3;
+    width: 100%; 
+    padding: 0px;
+    border: none; 
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.emojiModalParentDiv {
+    position: fixed; 
+    display: flex;
+    width: 100%; 
+    padding: 0px;
+    border: none; 
+    overflow: hidden;
+    align-items: center;
+}
+
+.lightTheme .modalParentDiv, .lightTheme .emojiModalParentDiv { background-color: rgba(0,0,0,0.4);  }
+
+.darkTheme .modalParentDiv, .darkTheme .emojiModalParentDiv { background-color: rgba(0,0,0,0.9);  }
+
+.modalChildDiv, .emojiModalChildDiv {
+    display: flex;
+    gap: 20px;
+    border: none;
+    height: fit-content;
+}
+
+.modalChildDiv {  
+    width: fit-content;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.modalCloseBtn {
+    display: flex;
+    margin: 0px;
+    padding: 3px;
+    border: none;
+    transition: .3s;
+    cursor: pointer;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightTheme .modalCloseBtn { 
+    background-color: #FFFFFF; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.01) 0px 1px 2px 0px;
+}
+
+.darkTheme .modalCloseBtn { background-color: #1A1A1A; }
+
+.forumSendMsgIconBtn:active, .modalCloseBtn:active, .emojiMobileModalBtn:active { transform: scale(0.9); }
+
+.modalCloseBtnImg {
+    margin: 0px;
+    width: 20px;
+    padding: 0px;
+    height: 20px;
+}
+
+.modalContentDiv {
+    display: flex;
+    margin: 0px;
+    border: none;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightTheme .modalContentDiv { background-color: #FFFFFF; }
+
+.darkTheme .modalContentDiv { background-color: #111111; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: .3s;
+}
